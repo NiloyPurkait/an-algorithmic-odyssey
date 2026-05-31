@@ -1,0 +1,2283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Algorithm Lab</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0d10;
+      --surface: #14181d;
+      --surface-2: #191f26;
+      --surface-3: #202730;
+      --line: #303944;
+      --line-strong: #4a5665;
+      --text: #eef3f8;
+      --muted: #9ba8b5;
+      --soft: #6f7d8d;
+      --teal: #40c7b9;
+      --amber: #f2b84b;
+      --rose: #ef6a7a;
+      --blue: #62a7ff;
+      --lime: #9bd46a;
+      --violet: #b594ff;
+      --paper: #10151b;
+      --shadow: 0 18px 55px rgba(0, 0, 0, 0.34);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    main {
+      height: 100vh;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr);
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+        var(--bg);
+      background-size: 42px 42px;
+    }
+
+    aside {
+      height: 100vh;
+      min-height: 0;
+      border-right: 1px solid var(--line);
+      background: rgba(20, 24, 29, 0.96);
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr);
+    }
+
+    .brand {
+      padding: 22px 20px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 24px;
+      line-height: 1.1;
+      font-weight: 780;
+    }
+
+    .brand p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .filters {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 10px;
+    }
+
+    .search {
+      width: 100%;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: #0f1318;
+      padding: 0 12px;
+      outline: none;
+    }
+
+    .search:focus {
+      border-color: var(--teal);
+    }
+
+    .module-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+
+    .module-tabs button,
+    .lesson-item,
+    .icon-button,
+    .case-button {
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+      color: var(--text);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .module-tabs button {
+      min-height: 34px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .module-tabs button.active {
+      border-color: var(--teal);
+      color: var(--text);
+      background: rgba(64, 199, 185, 0.11);
+    }
+
+    .lesson-list {
+      min-height: 0;
+      overflow: auto;
+      padding: 12px;
+      display: grid;
+      align-content: start;
+      gap: 8px;
+    }
+
+    .lesson-item {
+      padding: 12px;
+      display: grid;
+      gap: 6px;
+      text-align: left;
+      min-height: 86px;
+    }
+
+    .lesson-item:hover {
+      border-color: var(--line-strong);
+      background: var(--surface-3);
+    }
+
+    .lesson-item.active {
+      border-color: var(--teal);
+      background: rgba(64, 199, 185, 0.10);
+      box-shadow: inset 3px 0 0 var(--teal);
+    }
+
+    .lesson-kicker {
+      color: var(--soft);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .lesson-name {
+      font-size: 15px;
+      font-weight: 720;
+      line-height: 1.25;
+    }
+
+    .lesson-summary {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .workspace {
+      min-width: 0;
+      min-height: 0;
+      height: 100vh;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(11, 13, 16, 0.84);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      padding: 18px 22px;
+      align-items: center;
+    }
+
+    .module-label {
+      color: var(--teal);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 760;
+    }
+
+    h2 {
+      margin-top: 4px;
+      font-size: 30px;
+      line-height: 1.08;
+      font-weight: 820;
+    }
+
+    .subtitle {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      max-width: 76ch;
+    }
+
+    .controls {
+      display: grid;
+      gap: 10px;
+      justify-items: end;
+    }
+
+    .transport {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .icon-button {
+      width: 40px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      font-weight: 780;
+      color: var(--text);
+    }
+
+    .icon-button.primary {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #05110f;
+    }
+
+    .case-row {
+      display: flex;
+      gap: 6px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .case-button {
+      min-height: 32px;
+      padding: 0 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .case-button.active {
+      color: var(--text);
+      border-color: var(--amber);
+      background: rgba(242, 184, 75, 0.12);
+    }
+
+    .speed-control {
+      display: grid;
+      grid-template-columns: auto 118px;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--teal);
+    }
+
+    .lab {
+      min-height: 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 380px;
+      gap: 0;
+    }
+
+    .visual-zone {
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      padding: 22px;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 14px;
+    }
+
+    .canvas-shell {
+      min-width: 0;
+      min-height: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(16, 21, 27, 0.94);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      background: var(--paper);
+    }
+
+    .legend {
+      border-top: 1px solid var(--line);
+      background: rgba(15, 19, 24, 0.96);
+      padding: 10px 14px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 22px;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: inline-block;
+    }
+
+    .prompt-strip {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(25, 31, 38, 0.88);
+      padding: 12px 14px;
+      color: var(--muted);
+      line-height: 1.45;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+    }
+
+    .inspector {
+      min-width: 0;
+      min-height: 0;
+      overflow: auto;
+      border-left: 1px solid var(--line);
+      background: rgba(20, 24, 29, 0.95);
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface-2);
+      padding: 14px;
+    }
+
+    .panel h3 {
+      color: var(--text);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 9px;
+    }
+
+    .panel p,
+    .panel li {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #11161b;
+      padding: 10px;
+      min-height: 64px;
+    }
+
+    .metric-label {
+      color: var(--soft);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .metric-value {
+      margin-top: 4px;
+      color: var(--text);
+      font-size: 20px;
+      font-weight: 780;
+      word-break: break-word;
+    }
+
+    pre {
+      margin: 0;
+      color: #d8efe9;
+      background: #0d1116;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      overflow: auto;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .timeline {
+      border-top: 1px solid var(--line);
+      background: rgba(11, 13, 16, 0.90);
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr) 90px;
+      gap: 14px;
+      align-items: center;
+      padding: 12px 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1120px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        min-height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .lesson-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-height: 360px;
+      }
+
+      .lab {
+        grid-template-columns: 1fr;
+      }
+
+      .inspector {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        justify-items: start;
+      }
+
+      .lesson-list,
+      .module-tabs {
+        grid-template-columns: 1fr;
+      }
+
+      canvas {
+        min-height: 430px;
+      }
+
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <aside>
+      <div class="brand">
+        <h1>Algorithm Lab</h1>
+        <p>Thirty-three course topics, each shown as state changing over time.</p>
+      </div>
+      <div class="filters">
+        <input id="search" class="search" type="search" placeholder="Search algorithms">
+        <div id="moduleTabs" class="module-tabs"></div>
+      </div>
+      <div id="lessonList" class="lesson-list"></div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <div>
+          <div id="moduleLabel" class="module-label"></div>
+          <h2 id="title"></h2>
+          <p id="subtitle" class="subtitle"></p>
+        </div>
+        <div class="controls">
+          <div class="transport">
+          <button id="reset" class="icon-button" aria-label="Reset" title="Reset">&#8634;</button>
+          <button id="back" class="icon-button" aria-label="Previous step" title="Previous step">&#8249;</button>
+          <button id="play" class="icon-button primary" aria-label="Play" title="Play">&#9654;</button>
+          <button id="next" class="icon-button" aria-label="Next step" title="Next step">&gt;|</button>
+          </div>
+          <div id="caseRow" class="case-row"></div>
+          <label class="speed-control">Speed <input id="speed" type="range" min="120" max="1300" step="40" value="620"></label>
+        </div>
+      </header>
+
+      <section class="lab">
+        <div class="visual-zone">
+          <div class="canvas-shell">
+            <canvas id="canvas" width="1280" height="760"></canvas>
+            <div id="legend" class="legend"></div>
+          </div>
+          <div id="prompt" class="prompt-strip"></div>
+        </div>
+
+        <aside class="inspector">
+          <section class="panel">
+            <h3>Current Step</h3>
+            <p id="stepText"></p>
+          </section>
+          <section class="metrics" id="metrics"></section>
+          <section class="panel">
+            <h3>Invariant</h3>
+            <p id="invariant"></p>
+          </section>
+          <section class="panel">
+            <h3>Complexity</h3>
+            <p id="complexity"></p>
+          </section>
+          <section class="panel">
+            <h3>Failure Mode</h3>
+            <p id="failure"></p>
+          </section>
+          <section class="panel">
+            <h3>Pseudocode</h3>
+            <pre id="pseudocode"></pre>
+          </section>
+        </aside>
+      </section>
+
+      <footer class="timeline">
+        <span id="frameLabel"></span>
+        <input id="timeline" type="range" min="0" max="0" step="1" value="0">
+        <span id="frameCount"></span>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    const MODULES = [
+      { id: "all", short: "All", name: "All Modules" },
+      { id: "foundations", short: "M1", name: "Foundations" },
+      { id: "graphs", short: "M2", name: "Spatial Graphs" },
+      { id: "emergence", short: "M3", name: "Natural Emergence" },
+      { id: "stats", short: "M4", name: "Statistical Optimization" },
+      { id: "frontiers", short: "M5", name: "Strategic and Quantum" }
+    ];
+
+    const C = {
+      bg: "#10151b",
+      grid: "#1f2832",
+      line: "#42505f",
+      muted: "#9ba8b5",
+      text: "#eef3f8",
+      teal: "#40c7b9",
+      amber: "#f2b84b",
+      rose: "#ef6a7a",
+      blue: "#62a7ff",
+      lime: "#9bd46a",
+      violet: "#b594ff",
+      dark: "#0c1015"
+    };
+
+    const LESSONS = [
+      lesson("complexity", "foundations", "Time Complexity", "growth", "Cost curves and asymptotic shape", "Count one operation consistently, then watch growth classes separate.", "Cost model stays fixed across input sizes.", "Usually expressed by input size n; compare time and space separately.", "Wall-clock timing can be distorted by setup cost, caching, and input shape.", "Which curve would dominate by n = 1000?", "for n in sizes:\n  run algorithm\n  count chosen operation\nplot n against count"),
+      lesson("antikythera", "foundations", "Antikythera Mechanism", "gear", "Analog computing in bronze", "Gear ratios propagate crank state into solar, lunar, and eclipse-cycle dials.", "Every connected gear preserves child rotation = parent rotation * tooth ratio.", "A tree-shaped gear simulation is O(G) per crank update for G gears.", "Changing one tooth count creates phase error that accumulates over years.", "How does 254/19 - 1 become 235/19?", "turn crank\nfor each gear connection:\n  child_angle += parent_turn * teeth_parent / teeth_child\nmoon_phase = moon_sidereal - sun"),
+      lesson("sorting", "foundations", "Sorting", "sorting", "Comparisons, swaps, and settled regions", "A visible comparison trace makes order emerge from local corrections.", "The settled suffix is in final sorted order after each pass.", "Bubble sort is O(n^2) time and O(1) extra space.", "Local swaps are correct but can be painfully inefficient.", "Where is the sorted region in this frame?", "repeat passes:\n  compare adjacent pair\n  swap if inverted\n  shrink unsorted region"),
+      lesson("levenshtein", "foundations", "Levenshtein Distance", "edit", "Dynamic programming over string prefixes", "A matrix stores the best edit cost for every prefix pair.", "Every filled cell is optimal for two prefixes.", "O(mn) time and O(mn) space; rows can be compressed.", "Edit distance ignores meaning and word frequency.", "Which predecessor cell produced the active value?", "dp[i,j] = min(\n  dp[i-1,j] + delete,\n  dp[i,j-1] + insert,\n  dp[i-1,j-1] + replace\n)"),
+      lesson("gale", "foundations", "Gale-Shapley", "matching", "Stable matching through proposals", "Tentative matches improve one side's local situation until no blocking pair remains.", "A receiver's tentative match only improves by its own preference order.", "At most n^2 proposals.", "The proposing side gets the proposer-optimal stable matching.", "Which proposal changed the tentative matching?", "while someone is unmatched:\n  propose to next choice\n  receiver keeps preferred option\n  reject the other"),
+      lesson("huffman", "foundations", "Huffman Coding", "huffman", "Greedy tree construction", "Frequent symbols drift toward short codes as low-frequency trees merge first.", "The two least frequent remaining trees can be siblings in an optimal prefix code.", "O(k log k) for k distinct symbols.", "It assumes symbol frequencies, not deep language context.", "Which two subtrees merge next?", "make leaf for each symbol\nwhile more than one tree:\n  merge two smallest weights\n  push merged tree back"),
+      lesson("turing", "foundations", "Universal Turing Machine", "turing", "Tape, head, state, transition", "The whole computation is a sequence of configurations.", "State, tape, and head position fully describe the next move.", "Measured in steps until halting; some machines never halt.", "One transition-table error can change halting behavior.", "What is the machine configuration right now?", "read symbol\nlookup state transition\nwrite symbol\nmove head\nchange state"),
+
+      lesson("topo", "graphs", "Topological Sort", "topo", "Dependency order from a DAG", "Ready nodes enter a queue only after all incoming dependencies are satisfied.", "Every emitted node has in-degree zero among remaining nodes.", "O(V + E).", "A cycle makes the ready queue empty before all nodes emit.", "Which dependency just disappeared?", "queue nodes with indegree 0\npop ready node\nremove outgoing edges\npush newly ready nodes"),
+      lesson("mst", "graphs", "Minimum Spanning Tree", "mst", "Safe edges and cycle rejection", "Edges are considered by cost; unsafe cycle-forming edges are skipped.", "The cut property protects every accepted safe edge.", "Kruskal is O(E log E).", "A disconnected graph gives a forest, not one spanning tree.", "Why was the highlighted edge accepted or rejected?", "sort edges by weight\nfor edge in edges:\n  if endpoints disconnected:\n    accept edge\n    union components"),
+      lesson("dijkstra", "graphs", "Dijkstra", "dijkstra", "Relaxation from a settled frontier", "Tentative distances improve until the nearest unsettled node becomes final.", "A settled node has its final shortest-path distance.", "O((V + E) log V) with a heap.", "Negative edges break the settled-node invariant.", "Which edge relaxation improved a distance?", "dist[source] = 0\nwhile frontier remains:\n  settle nearest node\n  relax outgoing edges"),
+      lesson("astar", "graphs", "A Star", "astar", "Heuristic search toward a target", "The heuristic bends exploration toward the goal while preserving optimality if admissible.", "With a consistent heuristic, the first popped goal is optimal.", "Worst case can still be exponential; good heuristics reduce expansions.", "An overestimating heuristic can skip the true best path.", "How does the heuristic reshape the frontier?", "open = {start}\nchoose lowest g+h\nexpand neighbors\nstop when goal is popped"),
+      lesson("floyd", "graphs", "Floyd-Warshall", "floyd", "All-pairs shortest paths", "The matrix improves as each intermediate node becomes allowed.", "After phase k, paths may use only the first k intermediates.", "O(V^3) time and O(V^2) space.", "Negative cycles make shortest paths undefined.", "Which intermediate node caused the active update?", "for k in nodes:\n  for i in nodes:\n    for j in nodes:\n      d[i,j] = min(d[i,j], d[i,k]+d[k,j])"),
+      lesson("flow", "graphs", "Edmonds-Karp", "flow", "BFS augmenting paths and residual capacity", "Each augmentation pushes flow through the current shortest residual path.", "Flow conservation holds at every internal node.", "O(VE^2).", "Ignoring residual back edges hides how earlier choices can be undone.", "What is the bottleneck on this path?", "while path exists in residual graph:\n  find BFS path\n  push bottleneck flow\n  update residual edges"),
+
+      lesson("life", "emergence", "Game of Life", "life", "Local neighbor rules on a grid", "Complex motion emerges from synchronous local updates.", "The next board depends only on the current board.", "O(generations * rows * columns).", "In-place updates contaminate a generation.", "Classify the pattern: death, oscillator, stable, or moving.", "for each generation:\n  count neighbors\n  apply birth/survival rules\n  replace board synchronously"),
+      lesson("boids", "emergence", "Boids", "boids", "Flocking from vector agents", "Separation, alignment, and cohesion turn individual steering into group motion.", "Every agent reads the current flock before the next motion step is applied.", "Naive neighbor search is O(agents^2) per frame; grids or trees can accelerate it.", "Overweighting one rule can scatter, freeze, or collapse the flock.", "Which local rule dominates the flock in this frame?", "for each boid:\n  find nearby flockmates\n  steer away from crowding\n  steer toward average heading\n  steer toward average position\n  limit speed and update position"),
+      lesson("turing-patterns", "emergence", "Turing Patterns", "field", "Reaction-diffusion fields", "Activator and inhibitor fields interact into spots, bands, or waves.", "The same local stencil updates every cell.", "O(steps * rows * columns).", "Unstable parameters produce numerical artifacts.", "Which parameter regime creates spots instead of bands?", "for each cell:\n  diffuse activator/inhibitor\n  apply reaction terms\n  clamp or normalize field"),
+      lesson("perlin", "emergence", "Perlin Noise", "terrain", "Smooth pseudo-random terrain", "Layered octaves add detail without losing continuity.", "Nearby samples are correlated by shared gradients.", "O(samples * octaves).", "Too many high-frequency octaves can erase smoothness.", "Which octave adds the visible roughness?", "noise = 0\nfor octave in octaves:\n  noise += amplitude * smooth_noise(freq*x)\n  freq *= 2\n  amplitude *= persistence"),
+      lesson("penrose", "emergence", "Penrose Tiling", "tiling", "Recursive non-repeating order", "Deflation creates more tiles while preserving global non-periodic structure.", "Substitution preserves local matching constraints.", "Tile count grows exponentially with depth.", "Floating-point drift can create visual cracks.", "What stays ordered even though the pattern never repeats?", "start with seed tiles\nfor each deflation:\n  replace every tile by smaller tiles\n  preserve matching rules"),
+
+      lesson("bloom", "stats", "Bloom Filters", "bloom", "Compact probabilistic membership", "Hash functions set bits; queries must see every required bit.", "Inserted items never become false negatives if bits are not cleared.", "O(k) insert and lookup.", "False positives rise as the bit array saturates.", "Which query is a false positive?", "insert(x): set k hash positions\nquery(x): check all k positions\nif all set: maybe present\nelse: absent"),
+      lesson("markov", "stats", "Markov Chains", "markov", "Probability mass over states", "A probability vector flows through a transition matrix.", "The probability vector sums to one after every transition.", "Dense update is O(n^2); sparse chains can be cheaper.", "Reducibility or periodicity can prevent simple convergence.", "Where does probability mass accumulate?", "p = initial distribution\nrepeat:\n  p = p @ transition_matrix"),
+      lesson("pagerank", "stats", "PageRank", "pagerank", "Random-surfer importance", "Rank mass moves through links and is stabilized by teleportation.", "Rank remains a probability distribution.", "Power iteration is O(iterations * edges) for sparse graphs.", "Dangling nodes and link farms need damping.", "Which node gains rank from incoming links?", "rank = uniform\nrepeat:\n  rank = damping * link_flow(rank)\n       + teleportation"),
+      lesson("kmeans", "stats", "K-Means", "kmeans", "Cluster assignment and centroid motion", "Points join their nearest center; centers move to their assigned mean.", "Assignment/update steps do not increase within-cluster squared error.", "O(iterations * k * n * dimensions).", "Initialization can trap a local optimum.", "Which center moved the most?", "repeat:\n  assign each point to nearest center\n  move each center to cluster mean"),
+      lesson("descent", "stats", "Gradient Descent", "descent", "Loss landscape and step size", "A point walks downhill by following the negative gradient.", "Small enough steps reduce local loss on smooth functions.", "O(iterations * gradient cost).", "Large learning rates overshoot or diverge.", "Is this run slow, stable, or unstable?", "x = initial\nrepeat:\n  grad = derivative(loss, x)\n  x = x - learning_rate * grad"),
+      lesson("pseudoinverse", "stats", "Moore-Penrose Pseudoinverse", "leastSquares", "Projection and least-squares fit", "The best-fit solution projects observations onto the model space.", "The pseudoinverse minimizes residual norm.", "SVD-based methods are roughly O(min(mn^2, m^2n)).", "Tiny singular values amplify noise.", "What is residual error versus fitted signal?", "decompose A with SVD\ninvert nonzero singular values\nx = A_plus b"),
+      lesson("tensor", "stats", "Penrose Graphical Notation", "tensor", "Tensor contraction as wires", "Connected wires are summed indices; free wires become output axes.", "Wire connections preserve the index-contraction meaning.", "Contraction order can dominate cost.", "A simple diagram can hide a huge intermediate tensor.", "Which wire disappears in this contraction?", "draw tensors as nodes\nconnect shared indices\ncontract connected wires\nfree wires define output shape"),
+      lesson("fft", "stats", "Fast Fourier Transform", "fft", "Butterfly recombination", "Even and odd transforms recombine through roots of unity.", "Each butterfly combines two smaller transforms correctly.", "O(n log n), compared with O(n^2) DFT.", "Undersampling aliases frequencies.", "Which frequency peak is being combined?", "split signal into even and odd\nrecursively transform\ncombine with twiddle factors"),
+
+      lesson("minimax", "frontiers", "Minimax", "minimax", "Value backup in a game tree", "Leaf scores move upward through alternating max and min choices.", "Max nodes choose best child; min nodes choose worst for max.", "O(b^d) before pruning.", "A bad evaluation function makes shallow search misleading.", "Which child determines the root value?", "evaluate leaves\nbackup values:\n  max level takes max\n  min level takes min\nchoose root action"),
+      lesson("mcts", "frontiers", "Monte Carlo Tree Search", "mcts", "Selection, rollout, backpropagation", "Visit counts and win rates reveal where sampling has concentrated.", "Backpropagated statistics summarize simulations through each node.", "Budget-driven: playouts times rollout length.", "Too few playouts overfit noise.", "Which branch is exploration versus exploitation?", "select by UCB\nexpand a child\nsimulate rollout\nbackpropagate result"),
+      lesson("ant", "frontiers", "Ant Colony Optimization", "ant", "Pheromone-reinforced routes", "Good tours reinforce edges while evaporation keeps exploration alive.", "Better paths receive stronger pheromone reinforcement.", "Budget-driven: ants * iterations * route length.", "Too much early reinforcement locks in poor routes.", "Which edge is becoming attractive?", "for each ant:\n  build probabilistic tour\nupdate pheromones:\n  evaporate\n  reinforce good tours"),
+      lesson("genetic", "frontiers", "Genetic Algorithms", "genetic", "Selection, crossover, mutation", "A population shifts as fitter candidates reproduce and variation remains.", "Selection raises fit candidates; mutation preserves diversity.", "Population * generations * fitness cost.", "Low diversity causes premature convergence.", "Is diversity rising or collapsing?", "score population\nselect parents\ncrossover offspring\nmutate\nreplace population"),
+      lesson("enigma", "frontiers", "Enigma", "enigma", "Rotor state machine", "A letter path changes because the rotor state steps after each character.", "For a fixed state, wiring is reversible.", "O(message length) encryption; brute force scales with key space.", "Repeated settings and procedures leak structure.", "Why does the same input letter produce a new output?", "step rotor\npass signal through rotors\nreflect\npass back through rotors\nemit ciphertext"),
+      lesson("rsa", "frontiers", "RSA", "rsa", "Modular exponentiation and keys", "Repeated squaring turns a huge exponent into a small sequence of modular steps.", "Public and private exponents are modular inverses.", "Modular exponentiation is polynomial in bit length; factoring is the hard classical step.", "Tiny primes and bad padding break real security.", "Which squaring step contributes to the result?", "choose primes p, q\nn = p*q\nchoose e and d\ncipher = message^e mod n"),
+      lesson("shor", "frontiers", "Shor's Algorithm", "period", "Factoring through period finding", "Modular powers repeat; the period can reveal a factor.", "A usable even period gives gcd(a^(r/2)-1, n).", "Quantum period finding is polynomial; the classical baseline is not known polynomial.", "Some bases give unusable periods.", "When does the modular cycle repeat?", "choose random base a\nfind period r of a^x mod n\nif r usable:\n  compute gcd factors")
+    ];
+
+    function lesson(id, module, title, kind, subtitle, summary, invariant, complexity, failure, prompt, pseudocode) {
+      return { id, module, title, kind, subtitle, summary, invariant, complexity, failure, prompt, pseudocode };
+    }
+
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const lessonList = document.getElementById("lessonList");
+    const moduleTabs = document.getElementById("moduleTabs");
+    const search = document.getElementById("search");
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
+    const moduleLabel = document.getElementById("moduleLabel");
+    const stepText = document.getElementById("stepText");
+    const invariant = document.getElementById("invariant");
+    const complexity = document.getElementById("complexity");
+    const failure = document.getElementById("failure");
+    const pseudocode = document.getElementById("pseudocode");
+    const metrics = document.getElementById("metrics");
+    const prompt = document.getElementById("prompt");
+    const legend = document.getElementById("legend");
+    const timeline = document.getElementById("timeline");
+    const frameLabel = document.getElementById("frameLabel");
+    const frameCount = document.getElementById("frameCount");
+    const playButton = document.getElementById("play");
+    const speed = document.getElementById("speed");
+    const caseRow = document.getElementById("caseRow");
+
+    let activeModule = "all";
+    let activeLesson = LESSONS[0];
+    let activeCase = "standard";
+    let frames = [];
+    let index = 0;
+    let timer = null;
+
+    function init() {
+      MODULES.forEach((module) => {
+        const button = document.createElement("button");
+        button.textContent = module.short;
+        button.title = module.name;
+        button.addEventListener("click", () => {
+          activeModule = module.id;
+          renderNavigation();
+        });
+        moduleTabs.appendChild(button);
+      });
+      search.addEventListener("input", renderNavigation);
+      document.getElementById("reset").addEventListener("click", () => setFrame(0));
+      document.getElementById("back").addEventListener("click", () => setFrame(Math.max(0, index - 1)));
+      document.getElementById("next").addEventListener("click", () => setFrame(Math.min(frames.length - 1, index + 1)));
+      playButton.addEventListener("click", togglePlay);
+      timeline.addEventListener("input", () => {
+        stop();
+        setFrame(Number(timeline.value));
+      });
+      speed.addEventListener("input", () => {
+        if (timer) {
+          stop();
+          play();
+        }
+      });
+      renderNavigation();
+      selectLesson(LESSONS.find((lessonData) => lessonData.id === "sorting") || LESSONS[0]);
+    }
+
+    function renderNavigation() {
+      [...moduleTabs.children].forEach((button, i) => {
+        button.classList.toggle("active", MODULES[i].id === activeModule);
+      });
+      const query = search.value.trim().toLowerCase();
+      const visible = LESSONS.filter((lesson) => {
+        const moduleMatch = activeModule === "all" || lesson.module === activeModule;
+        const queryMatch = !query || `${lesson.title} ${lesson.subtitle} ${lesson.summary}`.toLowerCase().includes(query);
+        return moduleMatch && queryMatch;
+      });
+      lessonList.innerHTML = "";
+      visible.forEach((lesson) => {
+        const item = document.createElement("button");
+        item.className = "lesson-item";
+        item.classList.toggle("active", lesson.id === activeLesson.id);
+        item.innerHTML = `
+          <span class="lesson-kicker">${moduleName(lesson.module)}</span>
+          <span class="lesson-name">${lesson.title}</span>
+          <span class="lesson-summary">${lesson.subtitle}</span>
+        `;
+        item.addEventListener("click", () => selectLesson(lesson));
+        lessonList.appendChild(item);
+      });
+    }
+
+    function selectLesson(lesson) {
+      stop();
+      activeLesson = lesson;
+      activeCase = "standard";
+      frames = buildFrames(lesson, activeCase);
+      index = 0;
+      renderCaseButtons();
+      renderNavigation();
+      render();
+    }
+
+    function renderCaseButtons() {
+      const cases = [
+        ["standard", "Standard"],
+        ["stress", "Stress"],
+        ["failure", "Failure"]
+      ];
+      caseRow.innerHTML = "";
+      cases.forEach(([id, label]) => {
+        const button = document.createElement("button");
+        button.className = "case-button";
+        button.classList.toggle("active", activeCase === id);
+        button.textContent = label;
+        button.addEventListener("click", () => {
+          stop();
+          activeCase = id;
+          frames = buildFrames(activeLesson, activeCase);
+          index = 0;
+          renderCaseButtons();
+          render();
+        });
+        caseRow.appendChild(button);
+      });
+    }
+
+    function togglePlay() {
+      if (timer) {
+        stop();
+      } else {
+        play();
+      }
+    }
+
+    function play() {
+      playButton.textContent = "||";
+      timer = setInterval(() => {
+        if (index >= frames.length - 1) {
+          setFrame(0, false);
+        } else {
+          setFrame(index + 1, false);
+        }
+      }, Number(speed.value));
+    }
+
+    function stop() {
+      if (timer) clearInterval(timer);
+      timer = null;
+      playButton.textContent = "\u25b6";
+    }
+
+    function setFrame(next, shouldStop = true) {
+      if (shouldStop) stop();
+      index = Math.max(0, Math.min(frames.length - 1, next));
+      render();
+    }
+
+    function render() {
+      const frame = frames[index];
+      title.textContent = activeLesson.title;
+      subtitle.textContent = activeLesson.summary;
+      moduleLabel.textContent = moduleName(activeLesson.module);
+      invariant.textContent = activeLesson.invariant;
+      complexity.textContent = activeLesson.complexity;
+      failure.textContent = activeLesson.failure;
+      pseudocode.textContent = activeLesson.pseudocode;
+      stepText.textContent = frame.text;
+      prompt.textContent = activeLesson.prompt;
+      timeline.max = frames.length - 1;
+      timeline.value = index;
+      frameLabel.textContent = frame.label;
+      frameCount.textContent = `${index + 1} / ${frames.length}`;
+      metrics.innerHTML = "";
+      Object.entries(frame.metrics || {}).forEach(([key, value]) => {
+        const box = document.createElement("div");
+        box.className = "metric";
+        box.innerHTML = `<div class="metric-label">${key}</div><div class="metric-value">${value}</div>`;
+        metrics.appendChild(box);
+      });
+      drawLegend(frame.legend || defaultLegend());
+      drawFrame(activeLesson.kind, frame);
+    }
+
+    function drawLegend(items) {
+      legend.innerHTML = "";
+      items.forEach((item) => {
+        const node = document.createElement("span");
+        node.className = "legend-item";
+        node.innerHTML = `<span class="swatch" style="background:${item.color}"></span>${item.label}`;
+        legend.appendChild(node);
+      });
+    }
+
+    function buildFrames(lesson, mode) {
+      const builders = {
+        growth: buildGrowth,
+        gear: buildGear,
+        sorting: buildSorting,
+        edit: buildEdit,
+        matching: buildMatching,
+        huffman: buildHuffman,
+        turing: buildTuring,
+        topo: buildTopo,
+        mst: buildMst,
+        dijkstra: buildDijkstra,
+        astar: buildAstar,
+        floyd: buildFloyd,
+        flow: buildFlow,
+        life: buildLife,
+        boids: buildBoids,
+        field: buildField,
+        terrain: buildTerrain,
+        tiling: buildTiling,
+        bloom: buildBloom,
+        markov: buildMarkov,
+        pagerank: buildPageRank,
+        kmeans: buildKMeans,
+        descent: buildDescent,
+        leastSquares: buildLeastSquares,
+        tensor: buildTensor,
+        fft: buildFft,
+        minimax: buildMinimax,
+        mcts: buildMcts,
+        ant: buildAnt,
+        genetic: buildGenetic,
+        enigma: buildEnigma,
+        rsa: buildRsa,
+        period: buildPeriod
+      };
+      return builders[lesson.kind](mode);
+    }
+
+    function frame(label, text, state, metrics = {}, legendItems = defaultLegend()) {
+      return { label, text, state, metrics, legend: legendItems };
+    }
+
+    function buildGrowth(mode) {
+      const stress = mode === "stress";
+      const failure = mode === "failure";
+      const sizes = stress ? [10, 20, 40, 80, 160, 320] : [5, 10, 20, 40, 80, 160];
+      const frames = [];
+      sizes.forEach((n) => {
+        const measured = failure ? Math.round(n * Math.log2(n) + Math.sin(n) * n * 1.2) : Math.round(n * Math.log2(n));
+        frames.push(frame(`n = ${n}`, "Operation counts make growth visible before formal notation arrives.", { sizes, n, measured, failure }, { n, "n log n": measured, "n^2": n * n }));
+      });
+      return frames;
+    }
+
+    function buildGear(mode) {
+      const teeth = mode === "failure"
+        ? [64, 39, 48, 24, 127, 32]
+        : mode === "stress"
+          ? [64, 38, 48, 24, 127, 31]
+          : [64, 38, 48, 24, 127, 32];
+      const names = ["b1", "c1", "c2", "d1", "d2", "e2"];
+      const positions = [[210,370],[380,300],[380,455],[570,455],[570,300],[790,300]];
+      const links = [[0,1,"mesh"],[1,2,"axle"],[2,3,"mesh"],[3,4,"axle"],[4,5,"mesh"]];
+      const ratios = [
+        -teeth[0] / teeth[1],
+        1,
+        -teeth[2] / teeth[3],
+        1,
+        -teeth[4] / teeth[5]
+      ];
+      const frames = [];
+      for (let step = 0; step <= 18; step++) {
+        const crankTurns = step / 3;
+        const turns = [crankTurns];
+        for (let i = 0; i < ratios.length; i++) turns.push(turns[i] * ratios[i]);
+        const sidereal = Math.abs(turns[5] / crankTurns || 0);
+        const phase = Math.abs(turns[5]) - crankTurns;
+        const target = 235 / 19 * crankTurns;
+        frames.push(frame(
+          `crank ${crankTurns.toFixed(2)} turns`,
+          "A solar-year crank turn cascades through meshed and axle-locked gears.",
+          { teeth, names, positions, links, turns, crankTurns, phase, target, mode },
+          {
+            "crank turns": crankTurns.toFixed(2),
+            "sidereal ratio": crankTurns ? sidereal.toFixed(4) : "0.0000",
+            "phase error": crankTurns ? (phase - target).toFixed(4) : "0.0000"
+          }
+        ));
+      }
+      return frames;
+    }
+
+    function buildSorting(mode) {
+      const arr = mode === "failure" ? [1, 2, 3, 4, 5, 0] : mode === "stress" ? [9, 1, 8, 2, 7, 3, 6, 4, 5] : [7, 3, 6, 2, 8, 4, 5];
+      const values = arr.slice();
+      const frames = [frame("start", "The unsorted region is the whole array.", { arr: values.slice(), focus: [], boundary: values.length - 1 }, { comparisons: 0, swaps: 0 })];
+      let comparisons = 0;
+      let swaps = 0;
+      for (let end = values.length - 1; end > 0; end--) {
+        for (let i = 0; i < end; i++) {
+          comparisons++;
+          frames.push(frame("compare", "Compare adjacent values and decide whether the local order is valid.", { arr: values.slice(), focus: [i, i + 1], boundary: end }, { comparisons, swaps }));
+          if (values[i] > values[i + 1]) {
+            [values[i], values[i + 1]] = [values[i + 1], values[i]];
+            swaps++;
+            frames.push(frame("swap", "Swap the inverted pair; the largest value in this pass drifts right.", { arr: values.slice(), focus: [i, i + 1], boundary: end }, { comparisons, swaps }));
+          }
+        }
+      }
+      frames.push(frame("sorted", "The boundary has collapsed; every adjacent pair is ordered.", { arr: values.slice(), focus: [], boundary: 0 }, { comparisons, swaps }));
+      return frames;
+    }
+
+    function buildEdit(mode) {
+      const a = mode === "stress" ? "algorithm" : "kitten";
+      const b = mode === "failure" ? "sitting?" : mode === "stress" ? "logarithm" : "sitting";
+      const rows = a.length + 1;
+      const cols = b.length + 1;
+      const dp = Array.from({ length: rows }, () => Array(cols).fill(0));
+      for (let i = 0; i < rows; i++) dp[i][0] = i;
+      for (let j = 0; j < cols; j++) dp[0][j] = j;
+      const frames = [frame("base", "Empty prefixes require only insertions or deletions.", { matrix: clone(dp), cell: [0, 0], a, b }, { cells: rows + cols - 1 })];
+      let cells = rows + cols - 1;
+      for (let i = 1; i < rows; i++) {
+        for (let j = 1; j < cols; j++) {
+          const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+          dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
+          cells++;
+          frames.push(frame("fill", `Compare ${a[i - 1]} with ${b[j - 1]}; choose the cheapest predecessor.`, { matrix: clone(dp), cell: [i, j], a, b }, { cells, distance: dp[i][j] }));
+        }
+      }
+      return frames;
+    }
+
+    function buildMatching(mode) {
+      const proposers = ["A", "B", "C", "D"];
+      const receivers = ["W", "X", "Y", "Z"];
+      const sequence = mode === "failure" ? [["A","W"],["B","W"],["C","W"],["D","W"],["A","X"],["B","Y"],["C","Z"]] : [["A","X"],["B","X"],["B","Y"],["C","W"],["D","Y"],["D","Z"],["A","W"]];
+      const held = {};
+      const frames = [frame("start", "No tentative matches exist yet.", { proposers, receivers, held: {}, active: null }, { proposals: 0, matches: 0 })];
+      sequence.forEach((pair, i) => {
+        const [p, r] = pair;
+        held[r] = p;
+        frames.push(frame("proposal", `${p} proposes to ${r}; ${r} keeps the most preferred current proposal.`, { proposers, receivers, held: { ...held }, active: pair }, { proposals: i + 1, matches: Object.keys(held).length }));
+      });
+      return frames;
+    }
+
+    function buildHuffman(mode) {
+      let forest = mode === "stress" ? [["a",45],["b",13],["c",12],["d",16],["e",9],["f",5],["g",4]] : [["A",8],["B",3],["C",5],["D",1],["E",1]];
+      const frames = [frame("forest", "Every symbol starts as a leaf weighted by frequency.", { forest: clone(forest), merged: [] }, { trees: forest.length })];
+      while (forest.length > 1) {
+        forest.sort((x, y) => x[1] - y[1]);
+        const left = forest.shift();
+        const right = forest.shift();
+        const merged = [`${left[0]}${right[0]}`, left[1] + right[1], left, right];
+        forest.push(merged);
+        frames.push(frame("merge", `Merge the two smallest trees: ${left[0]} and ${right[0]}.`, { forest: clone(forest), merged: [left[0], right[0]] }, { trees: forest.length, weight: merged[1] }));
+      }
+      return frames;
+    }
+
+    function buildTuring(mode) {
+      const tape = mode === "stress" ? ["1","1","1","0","_","_","_"] : ["1","1","0","_","_","_","_"];
+      const frames = [];
+      let head = 0;
+      let state = "scan";
+      for (let step = 0; step < 9; step++) {
+        frames.push(frame(`step ${step}`, `State ${state} reads ${tape[head] || "_"}.`, { tape: tape.slice(), head, state }, { step, head }));
+        if (state === "halt") break;
+        if (tape[head] === "1") {
+          tape[head] = "1";
+          head++;
+        } else if (tape[head] === "0") {
+          tape[head] = "1";
+          state = mode === "failure" ? "scan" : "halt";
+        } else {
+          state = "halt";
+        }
+      }
+      return frames;
+    }
+
+    function buildTopo(mode) {
+      const graph = sampleDag(mode === "failure");
+      const indegree = Object.fromEntries(graph.nodes.map((n) => [n.id, 0]));
+      graph.edges.forEach((e) => indegree[e[1]]++);
+      const ready = graph.nodes.filter((n) => indegree[n.id] === 0).map((n) => n.id);
+      const emitted = [];
+      const frames = [frame("ready", "Nodes with no unmet incoming dependencies enter the ready queue.", { ...graph, active: [], emitted: emitted.slice(), ready: ready.slice() }, { ready: ready.length, emitted: 0 })];
+      while (ready.length) {
+        const node = ready.shift();
+        emitted.push(node);
+        frames.push(frame("emit", `Emit ${node}; all of its dependencies are satisfied.`, { ...graph, active: [node], emitted: emitted.slice(), ready: ready.slice() }, { ready: ready.length, emitted: emitted.length }));
+        graph.edges.filter((e) => e[0] === node).forEach((edge) => {
+          indegree[edge[1]]--;
+          if (indegree[edge[1]] === 0) ready.push(edge[1]);
+        });
+      }
+      if (emitted.length < graph.nodes.length) frames.push(frame("cycle", "The queue is empty before every node emits: a cycle is blocking progress.", { ...graph, active: [], emitted, ready }, { emitted: emitted.length, blocked: graph.nodes.length - emitted.length }));
+      return frames;
+    }
+
+    function buildMst(mode) {
+      const graph = sampleWeightedGraph();
+      const parent = Object.fromEntries(graph.nodes.map((n) => [n.id, n.id]));
+      const edges = graph.edges.slice().sort((a, b) => a[2] - b[2]);
+      const accepted = [];
+      const frames = [frame("start", "Sort edges by weight and begin with separate components.", { ...graph, accepted, active: null }, { cost: 0, edges: 0 })];
+      edges.forEach((edge) => {
+        const [u, v, w] = edge;
+        const safe = find(parent, u) !== find(parent, v);
+        if (safe) {
+          parent[find(parent, u)] = find(parent, v);
+          accepted.push(edge);
+        }
+        frames.push(frame(safe ? "accept" : "reject", `${safe ? "Accept" : "Reject"} edge ${u}-${v} with weight ${w}.`, { ...graph, accepted: accepted.slice(), active: edge }, { cost: accepted.reduce((s, e) => s + e[2], 0), edges: accepted.length }));
+      });
+      return frames;
+    }
+
+    function buildDijkstra(mode) {
+      const graph = sampleWeightedGraph();
+      if (mode === "failure") graph.edges.push(["E", "B", -4]);
+      const adj = adjacency(graph.edges);
+      const dist = Object.fromEntries(graph.nodes.map((n) => [n.id, Infinity]));
+      dist.A = 0;
+      const visited = new Set();
+      const frames = [frame("start", "Only the source has known distance zero.", { ...graph, dist: cleanDist(dist), visited: [], active: null }, { settled: 0 })];
+      while (visited.size < graph.nodes.length) {
+        const candidates = graph.nodes.map((n) => n.id).filter((n) => !visited.has(n)).sort((a, b) => dist[a] - dist[b]);
+        const node = candidates[0];
+        if (!isFinite(dist[node])) break;
+        visited.add(node);
+        frames.push(frame("settle", `Settle ${node}; its shortest distance is final under nonnegative weights.`, { ...graph, dist: cleanDist(dist), visited: Array.from(visited), active: [node] }, { settled: visited.size, distance: dist[node] }));
+        (adj[node] || []).forEach(([to, w]) => {
+          if (!visited.has(to) && dist[node] + w < dist[to]) {
+            dist[to] = dist[node] + w;
+            frames.push(frame("relax", `Improve ${to} through ${node}.`, { ...graph, dist: cleanDist(dist), visited: Array.from(visited), active: [node, to] }, { settled: visited.size, candidate: dist[to] }));
+          }
+        });
+      }
+      return frames;
+    }
+
+    function buildAstar(mode) {
+      const frames = [];
+      const grid = Array.from({ length: 9 }, () => Array(12).fill(0));
+      const walls = mode === "failure" ? [[2,3],[3,3],[4,3],[5,3],[6,3],[6,4],[6,5]] : [[2,4],[3,4],[4,4],[5,4],[5,5],[5,6],[5,7]];
+      walls.forEach(([r,c]) => grid[r][c] = 1);
+      const open = [[0,0]];
+      const closed = [];
+      for (let step = 0; step < 18; step++) {
+        const current = open.shift() || [Math.min(8, step), Math.min(11, step)];
+        closed.push(current);
+        [[current[0]+1,current[1]],[current[0],current[1]+1]].forEach((p) => {
+          if (p[0] < 9 && p[1] < 12 && grid[p[0]][p[1]] === 0) open.push(p);
+        });
+        frames.push(frame("expand", "Expand the lowest estimated total cost cell.", { grid, open: open.slice(-10), closed: closed.slice(), current, goal: [8,11] }, { expanded: closed.length, frontier: open.length }));
+      }
+      return frames;
+    }
+
+    function buildFloyd(mode) {
+      const inf = 99;
+      const matrix = mode === "stress" ? [[0,3,8,inf],[inf,0,2,5],[inf,inf,0,1],[2,inf,inf,0]] : [[0,4,inf,8],[inf,0,2,inf],[5,inf,0,1],[2,inf,inf,0]];
+      const frames = [frame("start", "Begin with direct edge distances.", { matrix: clone(matrix), cell: [0,0], phase: 0 }, { phase: 0 })];
+      for (let k = 0; k < matrix.length; k++) {
+        for (let i = 0; i < matrix.length; i++) {
+          for (let j = 0; j < matrix.length; j++) {
+            const next = matrix[i][k] + matrix[k][j];
+            if (next < matrix[i][j]) matrix[i][j] = next;
+          }
+        }
+        frames.push(frame(`phase ${k + 1}`, `Allow node ${k + 1} as an intermediate and update all pairs.`, { matrix: clone(matrix), cell: [k,k], phase: k + 1 }, { phase: k + 1 }));
+      }
+      return frames;
+    }
+
+    function buildFlow(mode) {
+      const graph = sampleFlow();
+      const paths = mode === "stress" ? [["S","A","C","T",5],["S","B","D","T",8],["S","A","D","T",4],["S","B","A","D","C","T",1]] : [["S","A","C","T",5],["S","B","D","T",8],["S","A","D","T",4]];
+      const flow = Object.fromEntries(graph.edges.map((e) => [`${e[0]}-${e[1]}`, 0]));
+      const frames = [frame("start", "All edge flows begin at zero.", { ...graph, flow: { ...flow }, path: [] }, { maxflow: 0 })];
+      let total = 0;
+      paths.forEach((path) => {
+        const amount = mode === "failure" ? Math.max(1, path[4] - 2) : path[4];
+        total += amount;
+        for (let i = 0; i < path.length - 2; i++) flow[`${path[i]}-${path[i + 1]}`] = (flow[`${path[i]}-${path[i + 1]}`] || 0) + amount;
+        frames.push(frame("augment", `Push ${amount} units through ${path.slice(0, -1).join(" -> ")}.`, { ...graph, flow: { ...flow }, path: path.slice(0, -1) }, { maxflow: total, bottleneck: amount }));
+      });
+      return frames;
+    }
+
+    function buildLife(mode) {
+      let grid = Array.from({ length: 16 }, () => Array(20).fill(0));
+      const seed = mode === "stress" ? [[4,4],[4,5],[4,6],[5,4],[6,5]] : [[2,3],[3,4],[4,2],[4,3],[4,4]];
+      seed.forEach(([r,c]) => grid[r][c] = 1);
+      const frames = [];
+      for (let gen = 0; gen < 26; gen++) {
+        frames.push(frame(`gen ${gen}`, "Alive cells update from neighbor counts at the same moment.", { grid: clone(grid) }, { generation: gen, alive: sum(grid) }));
+        grid = lifeStep(grid, mode === "failure");
+      }
+      return frames;
+    }
+
+    function buildBoids(mode) {
+      const bounds = { x: 110, y: 86, w: 1060, h: 565 };
+      const count = mode === "stress" ? 120 : 90;
+      const perception = mode === "stress" ? 92 : 76;
+      const avoidDistance = 30;
+      const maxSpeed = mode === "failure" ? 3.0 : 4.0;
+      const maxForce = 0.12;
+      const weights = mode === "failure"
+        ? { separation: 0.12, alignment: 0.18, cohesion: 2.55, predator: 0.0 }
+        : { separation: 1.45, alignment: 1.0, cohesion: 0.82, predator: mode === "stress" ? 2.4 : 0.0 };
+      let boids = Array.from({ length: count }, (_, i) => {
+        const a = i * 2.3999632297;
+        const radius = 12 * Math.sqrt(i + 1);
+        const x = bounds.x + bounds.w / 2 + Math.cos(a) * radius;
+        const y = bounds.y + bounds.h / 2 + Math.sin(a) * radius;
+        const heading = i * 0.71;
+        return { x, y, vx: Math.cos(heading) * 2.2, vy: Math.sin(heading) * 2.2 };
+      });
+      const frames = [];
+      for (let t = 0; t <= 90; t++) {
+        const predator = mode === "stress"
+          ? {
+              x: bounds.x + bounds.w / 2 + Math.cos(t * 0.15) * 285,
+              y: bounds.y + bounds.h / 2 + Math.sin(t * 0.11) * 185
+            }
+          : null;
+        if (t % 3 === 0) {
+          const metrics = boidMetrics(boids);
+          frames.push(frame(
+            `step ${t}`,
+            mode === "failure"
+              ? "Weak separation and heavy cohesion make the flock collapse into a clump."
+              : mode === "stress"
+                ? "A predator introduces local avoidance; the flock scatters, then reforms."
+                : "Local steering aligns headings while preserving space between agents.",
+            {
+              boids: boids.map((b) => ({ x: b.x, y: b.y, vx: b.vx, vy: b.vy })),
+              bounds,
+              perception,
+              predator,
+              focus: Math.floor(t / 3) % count,
+              mode
+            },
+            {
+              agents: count,
+              alignment: `${Math.round(metrics.alignment * 100)}%`,
+              spacing: Math.round(metrics.nearest)
+            },
+            [
+              { color: C.blue, label: "agent" },
+              { color: C.teal, label: "visible neighbor" },
+              { color: C.amber, label: "focused boid" },
+              { color: C.rose, label: "predator / collapse risk" }
+            ]
+          ));
+        }
+        boids = boidStep(boids, bounds, perception, avoidDistance, maxSpeed, maxForce, weights, predator);
+      }
+      return frames;
+    }
+
+    function buildField(mode) {
+      const frames = [];
+      for (let t = 0; t < 24; t++) {
+        frames.push(frame(`t ${t}`, "Activator and inhibitor waves create repeating visible structure.", { t, mode }, { step: t, regime: mode }));
+      }
+      return frames;
+    }
+
+    function buildTerrain(mode) {
+      const frames = [];
+      const maxOctave = mode === "stress" ? 6 : 4;
+      for (let octave = 1; octave <= maxOctave; octave++) {
+        frames.push(frame(`octave ${octave}`, "Each octave adds finer structure to the terrain.", { octave, mode }, { octaves: octave, persistence: mode === "failure" ? 0.92 : 0.52 }));
+      }
+      return frames;
+    }
+
+    function buildTiling(mode) {
+      const frames = [];
+      const maxDepth = mode === "stress" ? 6 : 5;
+      for (let depth = 0; depth <= maxDepth; depth++) {
+        frames.push(frame(`depth ${depth}`, "Recursive substitution grows non-repeating geometric order.", { depth, mode }, { depth, tiles: Math.pow(2, depth + 3) }));
+      }
+      return frames;
+    }
+
+    function buildBloom(mode) {
+      const bits = Array(24).fill(0);
+      const words = mode === "stress" ? ["cat","dog","eel","fox","gnu","yak"] : ["cat","dog","eel","fox"];
+      const frames = [frame("empty", "The bit array starts empty.", { bits: bits.slice(), positions: [] }, { inserted: 0, saturation: "0%" })];
+      words.forEach((word, i) => {
+        const positions = hashes(word, bits.length, mode === "failure" ? 4 : 3);
+        positions.forEach((p) => bits[p] = 1);
+        frames.push(frame("insert", `Insert ${word}; each hash sets one bit.`, { bits: bits.slice(), positions }, { inserted: i + 1, saturation: `${Math.round(100 * sum([bits]) / bits.length)}%` }));
+      });
+      const query = mode === "failure" ? "cow" : "cat";
+      frames.push(frame("query", `Query ${query}; all highlighted bits must be set.`, { bits: bits.slice(), positions: hashes(query, bits.length, mode === "failure" ? 4 : 3) }, { query, answer: mode === "failure" ? "maybe" : "present" }));
+      return frames;
+    }
+
+    function buildMarkov(mode) {
+      const frames = [];
+      let p = mode === "failure" ? [1,0,0,0] : [0.7,0.1,0.1,0.1];
+      const matrix = mode === "failure" ? [[0,1,0,0],[1,0,0,0],[0,0,0,1],[0,0,1,0]] : [[.6,.2,.1,.1],[.1,.7,.1,.1],[.2,.2,.5,.1],[.1,.1,.3,.5]];
+      for (let t = 0; t < 18; t++) {
+        frames.push(frame(`step ${t}`, "Probability mass flows through the transition matrix.", { p: p.slice(), matrix }, { step: t, total: p.reduce((a,b) => a+b,0).toFixed(2) }));
+        p = multiply(p, matrix);
+      }
+      return frames;
+    }
+
+    function buildPageRank(mode) {
+      const graph = sampleDirected();
+      let ranks = Object.fromEntries(graph.nodes.map((n) => [n.id, 1 / graph.nodes.length]));
+      const frames = [frame("uniform", "All pages start with equal rank.", { ...graph, ranks: { ...ranks }, active: [] }, { iteration: 0 })];
+      for (let t = 1; t <= 10; t++) {
+        const next = Object.fromEntries(graph.nodes.map((n) => [n.id, 0.15 / graph.nodes.length]));
+        graph.edges.forEach(([u, v]) => {
+          const out = graph.edges.filter((e) => e[0] === u).length || 1;
+          next[v] += 0.85 * ranks[u] / out;
+        });
+        ranks = next;
+        frames.push(frame(`iter ${t}`, "Rank flows through links, with damping preventing traps.", { ...graph, ranks: { ...ranks }, active: graph.edges[t % graph.edges.length] }, { iteration: t, top: topRank(ranks) }));
+      }
+      return frames;
+    }
+
+    function buildKMeans(mode) {
+      const points = [[140,180],[180,150],[170,230],[520,170],[590,210],[540,250],[310,500],[390,470],[340,560]];
+      let centers = mode === "failure" ? [[260,250],[330,300],[390,350]] : [[120,360],[620,140],[480,600]];
+      let labels = points.map(() => 0);
+      const frames = [];
+      for (let t = 0; t < 7; t++) {
+        labels = points.map((p) => nearest(p, centers));
+        frames.push(frame("assign", "Each point joins the closest center.", { points, centers: clone(centers), labels }, { iteration: t, phase: "assign" }));
+        centers = centers.map((center, k) => mean(points.filter((_, i) => labels[i] === k), center));
+        frames.push(frame("update", "Each center moves to the mean of its assigned points.", { points, centers: clone(centers), labels }, { iteration: t, phase: "update" }));
+      }
+      return frames;
+    }
+
+    function buildDescent(mode) {
+      const frames = [];
+      const lr = mode === "failure" ? 1.08 : mode === "stress" ? 0.08 : 0.24;
+      let x = -3;
+      const history = [];
+      for (let t = 0; t < 22; t++) {
+        history.push(x);
+        frames.push(frame(`step ${t}`, "The current point moves opposite the local slope.", { history: history.slice(), x, lr }, { step: t, loss: loss(x).toFixed(2), lr }));
+        x = x - lr * 2 * (x - 1.4);
+      }
+      return frames;
+    }
+
+    function buildLeastSquares(mode) {
+      const points = mode === "failure" ? [[1,1.2],[2,2.0],[3,8.3],[4,4.1],[5,5.3]] : [[1,1.1],[2,2.2],[3,2.8],[4,4.2],[5,4.9]];
+      const frames = [];
+      for (let t = 0; t <= 10; t++) {
+        frames.push(frame(`fit ${t}`, "The fitted line minimizes squared vertical residuals.", { points, t }, { iteration: t, residual: (10 / (t + 1)).toFixed(2) }));
+      }
+      return frames;
+    }
+
+    function buildTensor(mode) {
+      const frames = [];
+      const sequence = [["A","B"],["AB","C"],["ABC","D"],["output",""]];
+      sequence.forEach((pair, i) => frames.push(frame(`contract ${i + 1}`, "Connected wires represent indices being summed away.", { pair, step: i, mode }, { contractions: i + 1, freeWires: Math.max(1, 5 - i) })));
+      return frames;
+    }
+
+    function buildFft(mode) {
+      const frames = [];
+      const n = mode === "stress" ? 16 : 8;
+      for (let stage = 0; stage <= Math.log2(n); stage++) {
+        frames.push(frame(`stage ${stage}`, "Butterflies recombine even and odd transforms.", { n, stage }, { stage, groups: Math.pow(2, stage) }));
+      }
+      return frames;
+    }
+
+    function buildMinimax(mode) {
+      const frames = [];
+      const leaves = mode === "failure" ? [3, 12, 2, 9, 1, 4, 0, 7, 6] : [3, 5, 2, 9, 1, 4, 0, 7, 6];
+      for (let i = 0; i < 3; i++) frames.push(frame("backup", "A min node chooses the value worst for max.", { leaves, level: i, rootReady: false }, { backedUp: i + 1 }));
+      frames.push(frame("choose", "The root max node chooses the best guaranteed branch.", { leaves, level: 3, rootReady: true }, { root: Math.max(Math.min(...leaves.slice(0,3)), Math.min(...leaves.slice(3,6)), Math.min(...leaves.slice(6,9))) }));
+      return frames;
+    }
+
+    function buildMcts(mode) {
+      const frames = [];
+      const visits = [1,1,1];
+      const wins = [0.5,0.5,0.5];
+      const budget = mode === "stress" ? 42 : 24;
+      for (let t = 0; t < budget; t++) {
+        const branch = mode === "failure" ? Math.floor(Math.random() * 3) : t % 3;
+        visits[branch]++;
+        wins[branch] += branch === 1 ? 0.7 : branch === 2 ? 0.45 : 0.35;
+        frames.push(frame(`playout ${t + 1}`, "Selection, rollout, and backpropagation update visit counts.", { visits: visits.slice(), wins: wins.slice(), branch }, { playouts: t + 1, best: visits.indexOf(Math.max(...visits)) + 1 }));
+      }
+      return frames;
+    }
+
+    function buildAnt(mode) {
+      const graph = sampleRoute();
+      const pheromone = graph.edges.map(() => 1);
+      const frames = [];
+      for (let t = 0; t < 16; t++) {
+        const chosen = t % graph.edges.length;
+        for (let i = 0; i < pheromone.length; i++) pheromone[i] *= mode === "failure" ? 0.98 : 0.82;
+        pheromone[chosen] += mode === "failure" ? 2.0 : 0.8;
+        frames.push(frame(`tour ${t + 1}`, "Pheromone evaporates globally and reinforces the selected route.", { ...graph, pheromone: pheromone.slice(), chosen }, { iteration: t + 1, strongest: Math.max(...pheromone).toFixed(2) }));
+      }
+      return frames;
+    }
+
+    function buildGenetic(mode) {
+      let population = mode === "failure" ? [8,8,7,8,7,8,7,8] : [2,6,3,8,4,5,1,7];
+      const frames = [];
+      for (let t = 0; t < 18; t++) {
+        frames.push(frame(`gen ${t}`, "Selection raises fitness while mutation keeps diversity alive.", { population: population.slice(), t }, { generation: t, best: Math.max(...population), diversity: new Set(population).size }));
+        population = population.map((v, i) => Math.min(10, Math.max(0, Math.round((v + Math.max(...population)) / 2 + (mode === "stress" ? Math.sin(t + i) : mode === "failure" ? 0 : Math.sin(t + i) * 0.7)))));
+      }
+      return frames;
+    }
+
+    function buildEnigma(mode) {
+      const text = mode === "stress" ? "ALGORITHM" : "AAAAAA";
+      const frames = [];
+      for (let i = 0; i < text.length; i++) {
+        frames.push(frame(`letter ${i + 1}`, "Rotor stepping changes the signal path before each character.", { char: text[i], index: i, mode }, { input: text[i], rotor: i % 26, output: String.fromCharCode(65 + (i * 7 + text.charCodeAt(i)) % 26) }));
+      }
+      return frames;
+    }
+
+    function buildRsa(mode) {
+      const n = mode === "stress" ? 55 : 33;
+      const base = mode === "failure" ? 3 : 7;
+      const exp = mode === "stress" ? 17 : 13;
+      const frames = [];
+      let result = 1;
+      let power = base % n;
+      let e = exp;
+      let bit = 0;
+      while (e > 0) {
+        if (e & 1) result = (result * power) % n;
+        frames.push(frame(`bit ${bit}`, "Repeated squaring keeps exponentiation small modulo n.", { n, base, exp, result, power, bit, used: Boolean(e & 1) }, { bit, result, power }));
+        power = (power * power) % n;
+        e >>= 1;
+        bit++;
+      }
+      return frames;
+    }
+
+    function buildPeriod(mode) {
+      const n = mode === "failure" ? 21 : 15;
+      const a = mode === "stress" ? 7 : 2;
+      const frames = [];
+      const seen = {};
+      let value = 1;
+      const residues = [];
+      for (let x = 0; x < 18; x++) {
+        residues.push(value);
+        const period = seen[value] === undefined ? "-" : x - seen[value];
+        frames.push(frame(`x = ${x}`, "A repeated modular residue exposes a period.", { n, a, residues: residues.slice(), value, period }, { x, residue: value, period }));
+        if (seen[value] !== undefined) break;
+        seen[value] = x;
+        value = (value * a) % n;
+      }
+      return frames;
+    }
+
+    function drawFrame(kind, frameData) {
+      const renderers = {
+        growth: drawGrowth,
+        gear: drawGear,
+        sorting: drawSorting,
+        edit: drawMatrix,
+        matching: drawMatching,
+        huffman: drawHuffman,
+        turing: drawTuring,
+        topo: drawGraph,
+        mst: drawGraph,
+        dijkstra: drawGraph,
+        astar: drawAstar,
+        floyd: drawMatrix,
+        flow: drawFlow,
+        life: drawGrid,
+        boids: drawBoids,
+        field: drawField,
+        terrain: drawTerrain,
+        tiling: drawTiling,
+        bloom: drawBloom,
+        markov: drawMarkov,
+        pagerank: drawGraph,
+        kmeans: drawKMeans,
+        descent: drawDescent,
+        leastSquares: drawLeastSquares,
+        tensor: drawTensor,
+        fft: drawFft,
+        minimax: drawMinimax,
+        mcts: drawMcts,
+        ant: drawAnt,
+        genetic: drawGenetic,
+        enigma: drawEnigma,
+        rsa: drawRsa,
+        period: drawPeriod
+      };
+      clearCanvas();
+      renderers[kind](frameData.state);
+      drawCanvasTitle(frameData.label);
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = C.bg;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = C.grid;
+      ctx.lineWidth = 1;
+      for (let x = 0; x < canvas.width; x += 40) line(x, 0, x, canvas.height);
+      for (let y = 0; y < canvas.height; y += 40) line(0, y, canvas.width, y);
+    }
+
+    function drawCanvasTitle(text) {
+      ctx.fillStyle = C.text;
+      ctx.font = "700 20px sans-serif";
+      ctx.textAlign = "left";
+      ctx.fillText(text, 30, 40);
+    }
+
+    function drawGrowth(s) {
+      const origin = [120, 620], w = 940, h = 480;
+      axes(origin, w, h);
+      const maxN = Math.max(...s.sizes);
+      const maxY = Math.log10(maxN * maxN + 1);
+      plotCurve(s.sizes.map((n) => [n, n]), maxN, maxY, origin, w, h, C.teal, "n");
+      plotCurve(s.sizes.map((n) => [n, n * Math.log2(n)]), maxN, maxY, origin, w, h, C.amber, "n log n");
+      plotCurve(s.sizes.map((n) => [n, n * n]), maxN, maxY, origin, w, h, C.rose, "n^2");
+      const x = origin[0] + s.n / maxN * w;
+      ctx.strokeStyle = C.violet;
+      ctx.lineWidth = 3;
+      line(x, origin[1], x, origin[1] - h);
+      s.sizes.forEach((n) => {
+        const y = Math.log10(n * Math.log2(n) + 1);
+        const p = mapPlot(n, y, 0, maxN, 0, maxY, origin, w, h);
+        ctx.fillStyle = n === s.n ? C.amber : C.teal;
+        circle(p[0], p[1], n === s.n ? 8 : 5);
+      });
+      label(origin[0] + 90, origin[1] - h - 22, "log-scaled cost axis", C.muted);
+    }
+
+    function drawGear(s) {
+      s.links.forEach(([a, b, type]) => {
+        const pa = s.positions[a], pb = s.positions[b];
+        edge(pa, pb, type === "mesh" ? C.amber : C.violet, type === "mesh" ? 4 : 3);
+        label((pa[0] + pb[0]) / 2, (pa[1] + pb[1]) / 2 - 12, type, C.muted);
+      });
+      s.positions.forEach((p, i) => {
+        const radius = Math.max(30, Math.min(78, s.teeth[i] * 0.55));
+        ctx.fillStyle = i === 0 ? C.amber : i === 5 ? C.lime : C.blue;
+        circle(p[0], p[1], radius);
+        ctx.strokeStyle = "rgba(255,255,255,0.25)";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        for (let t = 0; t < Math.min(s.teeth[i], 42); t++) {
+          const angle = 2 * Math.PI * t / Math.min(s.teeth[i], 42) + s.turns[i] * 2 * Math.PI;
+          const x1 = p[0] + Math.cos(angle) * (radius + 2);
+          const y1 = p[1] + Math.sin(angle) * (radius + 2);
+          const x2 = p[0] + Math.cos(angle) * (radius + 9);
+          const y2 = p[1] + Math.sin(angle) * (radius + 9);
+          edge([x1, y1], [x2, y2], "rgba(238,243,248,0.42)", 1);
+        }
+        ctx.strokeStyle = C.dark;
+        ctx.lineWidth = 4;
+        const pointerAngle = -Math.PI / 2 + s.turns[i] * 2 * Math.PI;
+        line(p[0], p[1], p[0] + Math.cos(pointerAngle) * radius * 0.72, p[1] + Math.sin(pointerAngle) * radius * 0.72);
+        label(p[0], p[1] + 5, s.names[i], "#071012");
+        label(p[0], p[1] + radius + 26, `${s.teeth[i]} teeth`, C.text);
+      });
+      const x0 = 930, y0 = 230;
+      node(x0, y0, "Sun", C.amber, `${(s.crankTurns % 1 * 360).toFixed(0)} deg`);
+      node(x0, y0 + 170, "Moon", C.lime, `${((s.phase % 1 + 1) % 1 * 360).toFixed(0)} deg phase`);
+      node(x0, y0 + 340, "Saros", C.rose, `${((s.phase % 223 + 223) % 223).toFixed(1)} mo`);
+      label(510, 665, "64/38 * 48/24 * 127/32 = 254/19; subtract one solar turn to get 235/19", C.muted);
+    }
+
+    function drawSorting(s) {
+      const max = Math.max(...s.arr);
+      const start = 150, base = 620, gap = 18;
+      const width = Math.min(78, (900 - gap * s.arr.length) / s.arr.length);
+      s.arr.forEach((value, i) => {
+        const h = value / max * 430;
+        const settled = i > s.boundary;
+        ctx.fillStyle = s.focus.includes(i) ? C.amber : settled ? C.lime : C.blue;
+        rounded(start + i * (width + gap), base - h, width, h, 7);
+        ctx.fillStyle = C.text;
+        ctx.font = "18px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(value, start + i * (width + gap) + width / 2, base + 34);
+      });
+    }
+
+    function drawMatrix(s) {
+      const matrix = s.matrix;
+      const rows = matrix.length, cols = matrix[0].length;
+      const size = Math.min(64, 720 / Math.max(rows, cols));
+      const x0 = 230, y0 = 110;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const active = s.cell && s.cell[0] === r && s.cell[1] === c;
+          ctx.fillStyle = active ? "rgba(242,184,75,0.9)" : "rgba(98,167,255,0.18)";
+          rect(x0 + c * size, y0 + r * size, size - 2, size - 2);
+          ctx.strokeStyle = active ? C.amber : C.line;
+          ctx.lineWidth = active ? 3 : 1;
+          strokeRect(x0 + c * size, y0 + r * size, size - 2, size - 2);
+          ctx.fillStyle = C.text;
+          ctx.font = `${Math.max(12, size * 0.32)}px sans-serif`;
+          ctx.textAlign = "center";
+          ctx.fillText(matrix[r][c] === 99 ? "inf" : matrix[r][c], x0 + c * size + size / 2, y0 + r * size + size / 2 + 5);
+        }
+      }
+    }
+
+    function drawMatching(s) {
+      const leftX = 250, rightX = 850;
+      s.proposers.forEach((p, i) => node(leftX, 160 + i * 110, p, C.blue));
+      s.receivers.forEach((r, i) => node(rightX, 160 + i * 110, r, C.violet));
+      Object.entries(s.held).forEach(([r, p]) => {
+        const pi = s.proposers.indexOf(p), ri = s.receivers.indexOf(r);
+        edge([leftX, 160 + pi * 110], [rightX, 160 + ri * 110], C.lime, 5);
+      });
+      if (s.active) {
+        const pi = s.proposers.indexOf(s.active[0]), ri = s.receivers.indexOf(s.active[1]);
+        edge([leftX, 160 + pi * 110], [rightX, 160 + ri * 110], C.amber, 3);
+      }
+    }
+
+    function drawHuffman(s) {
+      const x0 = 130, y0 = 150;
+      s.forest.forEach((tree, i) => {
+        const x = x0 + (i % 5) * 190;
+        const y = y0 + Math.floor(i / 5) * 180;
+        const active = s.merged.includes(tree[0]);
+        node(x, y, tree[0], active ? C.amber : C.teal, String(tree[1]));
+      });
+    }
+
+    function drawTuring(s) {
+      const x0 = 230, y = 330, size = 86;
+      s.tape.forEach((symbol, i) => {
+        ctx.fillStyle = i === s.head ? "rgba(242,184,75,0.9)" : "rgba(98,167,255,0.16)";
+        rounded(x0 + i * size, y, size - 8, size - 8, 8);
+        ctx.fillStyle = C.text;
+        ctx.font = "28px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(symbol, x0 + i * size + size / 2 - 4, y + 52);
+      });
+      node(x0 + s.head * size + 38, y - 96, s.state, C.rose);
+      edge([x0 + s.head * size + 38, y - 64], [x0 + s.head * size + 38, y - 6], C.rose, 3);
+    }
+
+    function drawGraph(s) {
+      s.edges.forEach((e) => {
+        const active = s.active && (Array.isArray(s.active) ? s.active.includes(e[0]) && s.active.includes(e[1]) : false);
+        const accepted = s.accepted && s.accepted.some((a) => a[0] === e[0] && a[1] === e[1]);
+        const color = accepted ? C.lime : active ? C.amber : C.line;
+        const a = pointOf(s, e[0]), b = pointOf(s, e[1]);
+        edge(a, b, color, active || accepted ? 4 : 2);
+        if (e[2] !== undefined) label((a[0] + b[0]) / 2, (a[1] + b[1]) / 2 - 8, e[2], C.muted);
+      });
+      s.nodes.forEach((n) => {
+        const active = s.active && s.active.includes && s.active.includes(n.id);
+        const visited = s.visited && s.visited.includes(n.id);
+        const emitted = s.emitted && s.emitted.includes(n.id);
+        const ready = s.ready && s.ready.includes(n.id);
+        const color = active ? C.amber : visited || emitted ? C.lime : ready ? C.violet : C.blue;
+        const sub = s.dist ? s.dist[n.id] : s.ranks ? s.ranks[n.id].toFixed(2) : "";
+        node(n.x, n.y, n.id, color, sub);
+      });
+    }
+
+    function drawAstar(s) {
+      const x0 = 130, y0 = 95, size = 54;
+      for (let r = 0; r < s.grid.length; r++) {
+        for (let c = 0; c < s.grid[0].length; c++) {
+          const key = `${r},${c}`;
+          const closed = s.closed.some((p) => `${p[0]},${p[1]}` === key);
+          const open = s.open.some((p) => `${p[0]},${p[1]}` === key);
+          const current = `${s.current[0]},${s.current[1]}` === key;
+          const goal = `${s.goal[0]},${s.goal[1]}` === key;
+          ctx.fillStyle = s.grid[r][c] ? "#303944" : current ? C.amber : goal ? C.rose : closed ? C.lime : open ? C.violet : "rgba(98,167,255,0.12)";
+          rect(x0 + c * size, y0 + r * size, size - 4, size - 4);
+        }
+      }
+    }
+
+    function drawFlow(s) {
+      s.edges.forEach((e) => {
+        const onPath = s.path.slice(0, -1).some((p, i) => p === e[0] && s.path[i + 1] === e[1]);
+        const a = pointOf(s, e[0]), b = pointOf(s, e[1]);
+        edge(a, b, onPath ? C.amber : C.line, onPath ? 5 : 2);
+        label((a[0] + b[0]) / 2, (a[1] + b[1]) / 2 - 9, `${s.flow[`${e[0]}-${e[1]}`] || 0}/${e[2]}`, C.text);
+      });
+      s.nodes.forEach((n) => node(n.x, n.y, n.id, n.id === "S" || n.id === "T" ? C.violet : C.blue));
+    }
+
+    function drawGrid(s) {
+      const grid = s.grid;
+      const size = Math.min(36, 780 / grid[0].length);
+      const x0 = 245, y0 = 90;
+      for (let r = 0; r < grid.length; r++) {
+        for (let c = 0; c < grid[0].length; c++) {
+          ctx.fillStyle = grid[r][c] ? C.lime : "rgba(255,255,255,0.055)";
+          rect(x0 + c * size, y0 + r * size, size - 3, size - 3);
+        }
+      }
+    }
+
+    function drawBoids(s) {
+      ctx.strokeStyle = C.line;
+      ctx.lineWidth = 2;
+      strokeRect(s.bounds.x, s.bounds.y, s.bounds.w, s.bounds.h);
+
+      const focus = s.boids[s.focus % s.boids.length];
+      const neighbors = new Set();
+      s.boids.forEach((boid, i) => {
+        if (boid !== focus && distance(boid, focus) <= s.perception) neighbors.add(i);
+      });
+
+      ctx.beginPath();
+      ctx.arc(focus.x, focus.y, s.perception, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(64,199,185,0.25)";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      neighbors.forEach((i) => {
+        const boid = s.boids[i];
+        edge([focus.x, focus.y], [boid.x, boid.y], "rgba(64,199,185,0.17)", 1);
+      });
+
+      if (s.predator) {
+        ctx.fillStyle = "rgba(239,106,122,0.14)";
+        circle(s.predator.x, s.predator.y, 120);
+        ctx.fillStyle = C.rose;
+        circle(s.predator.x, s.predator.y, 18);
+        label(s.predator.x, s.predator.y + 45, "predator", C.rose);
+      }
+
+      s.boids.forEach((boid, i) => {
+        const isFocus = boid === focus;
+        const isNeighbor = neighbors.has(i);
+        const color = isFocus ? C.amber : isNeighbor ? C.teal : s.mode === "failure" ? C.rose : C.blue;
+        ctx.strokeStyle = isFocus ? "rgba(242,184,75,0.75)" : "rgba(255,255,255,0.10)";
+        ctx.lineWidth = isFocus ? 3 : 1;
+        line(boid.x - boid.vx * 8, boid.y - boid.vy * 8, boid.x, boid.y);
+        triangle(boid.x, boid.y, isFocus ? 12 : isNeighbor ? 9 : 7, Math.atan2(boid.vy, boid.vx), color);
+      });
+
+      label(s.bounds.x + s.bounds.w / 2, s.bounds.y + s.bounds.h + 38, "separation + alignment + cohesion = emergent flocking", C.muted);
+    }
+
+    function drawField(s) {
+      const cells = 46, size = 12, x0 = 350, y0 = 92;
+      for (let r = 0; r < cells; r++) {
+        for (let c = 0; c < cells; c++) {
+          const v = Math.sin((r * 0.32 + s.t * 0.2)) + Math.cos((c * 0.28 - s.t * 0.18)) + Math.sin((r + c) * 0.12);
+          ctx.fillStyle = colorRamp(v);
+          rect(x0 + c * size, y0 + r * size, size, size);
+        }
+      }
+    }
+
+    function drawTerrain(s) {
+      const cells = 56, size = 10, x0 = 330, y0 = 90;
+      for (let r = 0; r < cells; r++) {
+        for (let c = 0; c < cells; c++) {
+          let v = 0, amp = 1, freq = 0.08;
+          for (let o = 0; o < s.octave; o++) {
+            v += amp * Math.sin((r + 9) * freq) * Math.cos((c - 4) * freq);
+            amp *= s.mode === "failure" ? 0.92 : 0.52;
+            freq *= 2;
+          }
+          ctx.fillStyle = terrainColor(v);
+          rect(x0 + c * size, y0 + r * size, size, size);
+        }
+      }
+    }
+
+    function drawTiling(s) {
+      const cx = 640, cy = 380;
+      const count = Math.min(90, Math.pow(2, s.depth + 3));
+      for (let i = 0; i < count; i++) {
+        const angle = i * Math.PI * (3 - Math.sqrt(5));
+        const radius = 16 * Math.sqrt(i + 1) * (1 + s.depth * 0.04);
+        const x = cx + Math.cos(angle) * radius;
+        const y = cy + Math.sin(angle) * radius;
+        triangle(x, y, 22, angle, i % 2 ? C.teal : C.amber);
+      }
+    }
+
+    function drawBloom(s) {
+      const x0 = 120, y0 = 300, w = 38;
+      s.bits.forEach((bit, i) => {
+        const active = s.positions.includes(i);
+        ctx.fillStyle = active ? C.amber : bit ? C.teal : "rgba(255,255,255,0.07)";
+        rounded(x0 + i * (w + 6), y0, w, 72, 6);
+        label(x0 + i * (w + 6) + w / 2, y0 + 112, i, C.muted);
+      });
+    }
+
+    function drawMarkov(s) {
+      const xs = [260, 490, 720, 950], y = 360;
+      s.p.forEach((prob, i) => {
+        node(xs[i], y, String.fromCharCode(65 + i), [C.teal, C.amber, C.rose, C.violet][i], prob.toFixed(2));
+        const barH = prob * 260;
+        ctx.fillStyle = [C.teal, C.amber, C.rose, C.violet][i];
+        rounded(xs[i] - 30, y + 110 - barH, 60, barH, 6);
+      });
+      for (let i = 0; i < xs.length - 1; i++) edge([xs[i], y], [xs[i + 1], y], C.line, 2);
+    }
+
+    function drawKMeans(s) {
+      const colors = [C.teal, C.amber, C.rose, C.violet];
+      s.points.forEach((p, i) => {
+        ctx.fillStyle = colors[s.labels[i] % colors.length];
+        circle(p[0] + 120, p[1] + 20, 13);
+      });
+      s.centers.forEach((p, i) => {
+        cross(p[0] + 120, p[1] + 20, colors[i % colors.length]);
+      });
+    }
+
+    function drawDescent(s) {
+      const origin = [140, 620], w = 920, h = 470;
+      axes(origin, w, h);
+      ctx.strokeStyle = C.blue;
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      for (let i = 0; i <= 220; i++) {
+        const x = -4 + 8 * i / 220;
+        const y = loss(x);
+        const p = mapPlot(x, y, -4, 4, 0, 24, origin, w, h);
+        if (i === 0) ctx.moveTo(p[0], p[1]);
+        else ctx.lineTo(p[0], p[1]);
+      }
+      ctx.stroke();
+      s.history.forEach((x, i) => {
+        const p = mapPlot(x, loss(x), -4, 4, 0, 24, origin, w, h);
+        ctx.fillStyle = i === s.history.length - 1 ? C.amber : C.rose;
+        circle(p[0], p[1], i === s.history.length - 1 ? 10 : 6);
+      });
+    }
+
+    function drawLeastSquares(s) {
+      const origin = [170, 620], w = 840, h = 470;
+      axes(origin, w, h);
+      const slope = 0.85 + 0.04 * s.t;
+      s.points.forEach((p) => {
+        const pt = mapPlot(p[0], p[1], 0, 6, 0, 9, origin, w, h);
+        ctx.fillStyle = C.amber;
+        circle(pt[0], pt[1], 9);
+        const yhat = slope * p[0] + 0.4;
+        const fit = mapPlot(p[0], yhat, 0, 6, 0, 9, origin, w, h);
+        edge(pt, fit, C.rose, 2);
+      });
+      const a = mapPlot(0, 0.4, 0, 6, 0, 9, origin, w, h);
+      const b = mapPlot(6, slope * 6 + 0.4, 0, 6, 0, 9, origin, w, h);
+      edge(a, b, C.teal, 4);
+    }
+
+    function drawTensor(s) {
+      const nodes = [[300,280,"A"],[540,220,"B"],[760,300,"C"],[950,420,"D"]];
+      for (let i = 0; i < nodes.length - 1; i++) edge(nodes[i], nodes[i + 1], i <= s.step ? C.amber : C.line, i <= s.step ? 5 : 2);
+      nodes.forEach((n, i) => node(n[0], n[1], i <= s.step ? s.pair[0] || n[2] : n[2], i <= s.step ? C.teal : C.blue));
+      label(640, 580, "connected wire = summed index", C.muted);
+    }
+
+    function drawFft(s) {
+      const x0 = 160, xGap = 220, y0 = 120, yGap = 62;
+      const n = s.n;
+      for (let stage = 0; stage <= Math.log2(n); stage++) {
+        for (let i = 0; i < n; i++) {
+          const x = x0 + stage * xGap;
+          const y = y0 + i * yGap;
+          node(x, y, stage === 0 ? `x${i}` : `F${i}`, stage <= s.stage ? C.teal : C.blue);
+          if (stage > 0) edge([x - xGap, y], [x, y], stage <= s.stage ? C.amber : C.line, 2);
+        }
+      }
+    }
+
+    function drawMinimax(s) {
+      const root = [640, 120], mids = [[340,330],[640,330],[940,330]], leaves = [[240,570],[340,570],[440,570],[540,570],[640,570],[740,570],[840,570],[940,570],[1040,570]];
+      mids.forEach((m) => edge(root, m, C.line, 2));
+      s.leaves.forEach((v, i) => {
+        const m = mids[Math.floor(i / 3)];
+        edge(m, leaves[i], C.line, 2);
+        node(leaves[i][0], leaves[i][1], v, C.blue);
+      });
+      mids.forEach((m, i) => {
+        const value = Math.min(...s.leaves.slice(i * 3, i * 3 + 3));
+        node(m[0], m[1], i <= s.level ? value : "min", i <= s.level ? C.amber : C.violet);
+      });
+      const rootValue = Math.max(...[0,1,2].map((i) => Math.min(...s.leaves.slice(i*3, i*3+3))));
+      node(root[0], root[1], s.rootReady ? rootValue : "max", s.rootReady ? C.lime : C.rose);
+    }
+
+    function drawMcts(s) {
+      const root = [640, 130], mids = [[360,360],[640,360],[920,360]];
+      mids.forEach((m, i) => {
+        edge(root, m, i === s.branch ? C.amber : C.line, i === s.branch ? 5 : 2);
+        node(m[0], m[1], `M${i+1}`, i === s.branch ? C.amber : C.blue, `${s.visits[i]} / ${s.wins[i].toFixed(1)}`);
+      });
+      node(root[0], root[1], "root", C.teal);
+    }
+
+    function drawAnt(s) {
+      s.edges.forEach((e, i) => {
+        const a = pointOf(s, e[0]), b = pointOf(s, e[1]);
+        edge(a, b, i === s.chosen ? C.amber : C.teal, Math.min(8, 1 + s.pheromone[i] * 2));
+        label((a[0]+b[0])/2, (a[1]+b[1])/2, s.pheromone[i].toFixed(1), C.text);
+      });
+      s.nodes.forEach((n) => node(n.x, n.y, n.id, C.blue));
+    }
+
+    function drawGenetic(s) {
+      const x0 = 190, base = 620, width = 76;
+      s.population.forEach((v, i) => {
+        const h = v * 42;
+        ctx.fillStyle = i % 2 ? C.teal : C.violet;
+        rounded(x0 + i * (width + 26), base - h, width, h, 8);
+        label(x0 + i * (width + 26) + width/2, base + 30, v, C.text);
+      });
+    }
+
+    function drawEnigma(s) {
+      const xs = [240,430,620,810,1000];
+      ["Input","Rotor 1","Rotor 2","Reflect","Output"].forEach((name, i) => node(xs[i], 360, i === 0 ? s.char : i === 4 ? String.fromCharCode(65 + (s.index * 7 + s.char.charCodeAt(0)) % 26) : String((s.index + i) % 26), i === 0 || i === 4 ? C.amber : C.teal, name));
+      for (let i = 0; i < xs.length - 1; i++) edge([xs[i],360],[xs[i+1],360], C.rose, 4);
+    }
+
+    function drawRsa(s) {
+      const cx = 640, cy = 370, radius = 230;
+      for (let r = 0; r < s.n; r++) {
+        const ang = -Math.PI / 2 + 2 * Math.PI * r / s.n;
+        const x = cx + Math.cos(ang) * radius;
+        const y = cy + Math.sin(ang) * radius;
+        if (r % Math.ceil(s.n / 16) === 0) node(x, y, r, r === s.result ? C.amber : C.blue);
+      }
+      node(cx, cy, s.result, C.teal, "result");
+      label(cx, cy + 300, `power=${s.power}, modulus=${s.n}`, C.muted);
+    }
+
+    function drawPeriod(s) {
+      const cx = 640, cy = 370, radius = 240;
+      for (let r = 0; r < s.n; r++) {
+        const ang = -Math.PI / 2 + 2 * Math.PI * r / s.n;
+        const x = cx + Math.cos(ang) * radius;
+        const y = cy + Math.sin(ang) * radius;
+        node(x, y, r, s.residues.includes(r) ? C.teal : C.blue);
+      }
+      for (let i = 0; i < s.residues.length - 1; i++) {
+        const a = residuePoint(s.residues[i], s.n, cx, cy, radius);
+        const b = residuePoint(s.residues[i + 1], s.n, cx, cy, radius);
+        edge(a, b, C.amber, 4);
+      }
+      label(cx, cy + 310, `${s.a}^x mod ${s.n}`, C.text);
+    }
+
+    function sampleDag(withCycle) {
+      const nodes = pos(["A","B","C","D","E","F"], [[250,180],[520,120],[520,290],[780,180],[780,360],[1020,260]]);
+      const edges = [["A","B"],["A","C"],["B","D"],["C","D"],["C","E"],["D","F"],["E","F"]];
+      if (withCycle) edges.push(["D","B"]);
+      return { nodes, edges };
+    }
+
+    function sampleWeightedGraph() {
+      return {
+        nodes: pos(["A","B","C","D","E"], [[230,230],[460,130],[460,360],[740,240],[980,360]]),
+        edges: [["A","B",2],["A","C",5],["B","C",1],["B","D",4],["C","D",1],["C","E",7],["D","E",3]]
+      };
+    }
+
+    function sampleFlow() {
+      return {
+        nodes: pos(["S","A","B","C","D","T"], [[180,360],[420,190],[420,520],[710,190],[710,520],[1010,360]]),
+        edges: [["S","A",10],["S","B",8],["A","C",5],["A","D",4],["B","A",2],["B","D",10],["C","T",7],["D","C",6],["D","T",10]]
+      };
+    }
+
+    function sampleDirected() {
+      return {
+        nodes: pos(["A","B","C","D","E"], [[260,210],[520,130],[500,430],[790,230],[930,470]]),
+        edges: [["A","B"],["A","C"],["B","D"],["C","B"],["C","D"],["D","E"],["E","C"]]
+      };
+    }
+
+    function sampleRoute() {
+      return {
+        nodes: pos(["A","B","C","D","E"], [[260,230],[520,150],[820,250],[700,520],[360,500]]),
+        edges: [["A","B"],["B","C"],["C","D"],["D","E"],["E","A"],["B","D"],["A","D"]]
+      };
+    }
+
+    function pos(names, coords) {
+      return names.map((id, i) => ({ id, x: coords[i][0], y: coords[i][1] }));
+    }
+
+    function moduleName(id) {
+      return MODULES.find((m) => m.id === id)?.name || "All Modules";
+    }
+
+    function defaultLegend() {
+      return [
+        { color: C.teal, label: "settled / selected" },
+        { color: C.amber, label: "active step" },
+        { color: C.blue, label: "candidate state" },
+        { color: C.rose, label: "risk / failure" }
+      ];
+    }
+
+    function pointOf(s, id) {
+      const nodeData = s.nodes.find((n) => n.id === id);
+      return [nodeData.x, nodeData.y];
+    }
+
+    function edge(a, b, color, width) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.lineCap = "round";
+      line(a[0], a[1], b[0], b[1]);
+    }
+
+    function node(x, y, text, color, sub = "") {
+      ctx.fillStyle = "rgba(0,0,0,0.34)";
+      circle(x + 3, y + 5, 38);
+      ctx.fillStyle = color;
+      circle(x, y, 36);
+      ctx.strokeStyle = "rgba(255,255,255,0.22)";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.fillStyle = "#081012";
+      ctx.font = "800 18px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(String(text), x, y + 6);
+      if (sub !== "") {
+        ctx.fillStyle = C.muted;
+        ctx.font = "12px sans-serif";
+        ctx.fillText(String(sub), x, y + 58);
+      }
+    }
+
+    function label(x, y, text, color) {
+      ctx.fillStyle = color;
+      ctx.font = "14px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(String(text), x, y);
+    }
+
+    function axes(origin, w, h) {
+      ctx.strokeStyle = C.line;
+      ctx.lineWidth = 2;
+      line(origin[0], origin[1], origin[0] + w, origin[1]);
+      line(origin[0], origin[1], origin[0], origin[1] - h);
+    }
+
+    function plotCurve(points, maxX, maxY, origin, w, h, color, name) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      points.forEach(([x, y], i) => {
+        const p = mapPlot(x, Math.log10(y + 1), 0, maxX, 0, maxY, origin, w, h);
+        if (i === 0) ctx.moveTo(p[0], p[1]);
+        else ctx.lineTo(p[0], p[1]);
+      });
+      ctx.stroke();
+      const last = points[points.length - 1];
+      const lp = mapPlot(last[0], Math.log10(last[1] + 1), 0, maxX, 0, maxY, origin, w, h);
+      label(lp[0] + 34, lp[1], name, color);
+    }
+
+    function mapPlot(x, y, xMin, xMax, yMin, yMax, origin, w, h) {
+      return [origin[0] + (x - xMin) / (xMax - xMin) * w, origin[1] - (y - yMin) / (yMax - yMin) * h];
+    }
+
+    function line(x1, y1, x2, y2) {
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+    }
+
+    function rect(x, y, w, h) {
+      ctx.fillRect(x, y, w, h);
+    }
+
+    function strokeRect(x, y, w, h) {
+      ctx.strokeRect(x, y, w, h);
+    }
+
+    function rounded(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.roundRect(x, y, w, h, r);
+      ctx.fill();
+    }
+
+    function circle(x, y, r) {
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function cross(x, y, color) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 7;
+      line(x - 18, y - 18, x + 18, y + 18);
+      line(x + 18, y - 18, x - 18, y + 18);
+    }
+
+    function triangle(x, y, r, angle, color) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      for (let i = 0; i < 3; i++) {
+        const a = angle + i * 2 * Math.PI / 3;
+        const px = x + Math.cos(a) * r;
+        const py = y + Math.sin(a) * r;
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function colorRamp(v) {
+      const t = Math.max(0, Math.min(1, (v + 2.5) / 5));
+      const r = Math.round(20 + t * 220);
+      const g = Math.round(70 + (1 - Math.abs(t - 0.5) * 2) * 140);
+      const b = Math.round(110 + (1 - t) * 130);
+      return `rgb(${r},${g},${b})`;
+    }
+
+    function terrainColor(v) {
+      if (v < -0.45) return "#1b4f72";
+      if (v < 0.05) return "#2f8f5b";
+      if (v < 0.55) return "#8aa45f";
+      return "#d8d2bd";
+    }
+
+    function clone(x) {
+      return JSON.parse(JSON.stringify(x));
+    }
+
+    function sum(grid) {
+      return grid.flat().reduce((a, b) => a + b, 0);
+    }
+
+    function lifeStep(grid, inPlace) {
+      const rows = grid.length, cols = grid[0].length;
+      const next = inPlace ? grid.map((row) => row.slice()) : Array.from({ length: rows }, () => Array(cols).fill(0));
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          let total = 0;
+          for (let dr = -1; dr <= 1; dr++) {
+            for (let dc = -1; dc <= 1; dc++) {
+              if (dr || dc) total += grid[(r + dr + rows) % rows][(c + dc + cols) % cols];
+            }
+          }
+          next[r][c] = total === 3 || (grid[r][c] && total === 2) ? 1 : 0;
+          if (inPlace) grid[r][c] = next[r][c];
+        }
+      }
+      return next;
+    }
+
+    function boidStep(boids, bounds, perception, avoidDistance, maxSpeed, maxForce, weights, predator) {
+      return boids.map((boid, i) => {
+        let sepX = 0, sepY = 0, alignX = 0, alignY = 0, cohX = 0, cohY = 0;
+        let closeCount = 0, seenCount = 0;
+        boids.forEach((other, j) => {
+          if (i === j) return;
+          const dx = other.x - boid.x;
+          const dy = other.y - boid.y;
+          const d = Math.hypot(dx, dy);
+          if (d > 0 && d < avoidDistance) {
+            sepX -= dx / (d * d);
+            sepY -= dy / (d * d);
+            closeCount++;
+          }
+          if (d > 0 && d < perception) {
+            alignX += other.vx;
+            alignY += other.vy;
+            cohX += other.x;
+            cohY += other.y;
+            seenCount++;
+          }
+        });
+
+        let ax = 0, ay = 0;
+        if (closeCount) {
+          const steer = steerToward(sepX / closeCount, sepY / closeCount, boid, maxSpeed, maxForce);
+          ax += steer.x * weights.separation;
+          ay += steer.y * weights.separation;
+        }
+        if (seenCount) {
+          const align = steerToward(alignX / seenCount, alignY / seenCount, boid, maxSpeed, maxForce);
+          const targetX = cohX / seenCount - boid.x;
+          const targetY = cohY / seenCount - boid.y;
+          const cohesion = steerToward(targetX, targetY, boid, maxSpeed, maxForce);
+          ax += align.x * weights.alignment + cohesion.x * weights.cohesion;
+          ay += align.y * weights.alignment + cohesion.y * weights.cohesion;
+        }
+        if (predator) {
+          const dx = boid.x - predator.x;
+          const dy = boid.y - predator.y;
+          const d = Math.hypot(dx, dy);
+          if (d < 140) {
+            const flee = steerToward(dx / Math.max(d, 1), dy / Math.max(d, 1), boid, maxSpeed, maxForce);
+            ax += flee.x * weights.predator;
+            ay += flee.y * weights.predator;
+          }
+        }
+
+        let vx = boid.vx + ax;
+        let vy = boid.vy + ay;
+        const speed = Math.hypot(vx, vy);
+        if (speed > maxSpeed) {
+          vx = vx / speed * maxSpeed;
+          vy = vy / speed * maxSpeed;
+        }
+        let x = boid.x + vx;
+        let y = boid.y + vy;
+        if (x < bounds.x) x += bounds.w;
+        if (x > bounds.x + bounds.w) x -= bounds.w;
+        if (y < bounds.y) y += bounds.h;
+        if (y > bounds.y + bounds.h) y -= bounds.h;
+        return { x, y, vx, vy };
+      });
+    }
+
+    function steerToward(x, y, boid, maxSpeed, maxForce) {
+      const mag = Math.hypot(x, y);
+      if (!mag) return { x: 0, y: 0 };
+      let sx = x / mag * maxSpeed - boid.vx;
+      let sy = y / mag * maxSpeed - boid.vy;
+      const force = Math.hypot(sx, sy);
+      if (force > maxForce) {
+        sx = sx / force * maxForce;
+        sy = sy / force * maxForce;
+      }
+      return { x: sx, y: sy };
+    }
+
+    function boidMetrics(boids) {
+      let vx = 0, vy = 0, nearest = 0;
+      boids.forEach((boid, i) => {
+        const speed = Math.max(1, Math.hypot(boid.vx, boid.vy));
+        vx += boid.vx / speed;
+        vy += boid.vy / speed;
+        let best = Infinity;
+        boids.forEach((other, j) => {
+          if (i !== j) best = Math.min(best, distance(boid, other));
+        });
+        nearest += best;
+      });
+      return {
+        alignment: Math.hypot(vx, vy) / boids.length,
+        nearest: nearest / boids.length
+      };
+    }
+
+    function distance(a, b) {
+      return Math.hypot(a.x - b.x, a.y - b.y);
+    }
+
+    function hashes(word, m, k) {
+      let base = 0;
+      for (const ch of word) base += ch.charCodeAt(0);
+      return Array.from({ length: k }, (_, i) => (base * (i + 3) + i * i * 7) % m);
+    }
+
+    function multiply(p, matrix) {
+      return matrix[0].map((_, j) => p.reduce((sumValue, value, i) => sumValue + value * matrix[i][j], 0));
+    }
+
+    function topRank(ranks) {
+      return Object.entries(ranks).sort((a, b) => b[1] - a[1])[0][0];
+    }
+
+    function adjacency(edges) {
+      const adj = {};
+      edges.forEach(([u, v, w]) => {
+        adj[u] = adj[u] || [];
+        adj[v] = adj[v] || [];
+        adj[u].push([v, w]);
+        adj[v].push([u, w]);
+      });
+      return adj;
+    }
+
+    function cleanDist(dist) {
+      return Object.fromEntries(Object.entries(dist).map(([k, v]) => [k, isFinite(v) ? v : "inf"]));
+    }
+
+    function find(parent, x) {
+      while (parent[x] !== x) x = parent[x];
+      return x;
+    }
+
+    function nearest(point, centers) {
+      let best = 0;
+      let bestDistance = Infinity;
+      centers.forEach((c, i) => {
+        const distance = (point[0] - c[0]) ** 2 + (point[1] - c[1]) ** 2;
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = i;
+        }
+      });
+      return best;
+    }
+
+    function mean(points, fallback) {
+      if (!points.length) return fallback;
+      return [points.reduce((s, p) => s + p[0], 0) / points.length, points.reduce((s, p) => s + p[1], 0) / points.length];
+    }
+
+    function loss(x) {
+      return (x - 1.4) ** 2 + 0.5;
+    }
+
+    function residuePoint(value, n, cx, cy, radius) {
+      const ang = -Math.PI / 2 + 2 * Math.PI * value / n;
+      return [cx + Math.cos(ang) * radius, cy + Math.sin(ang) * radius];
+    }
+
+    init();
+  </script>
+</body>
+</html>
