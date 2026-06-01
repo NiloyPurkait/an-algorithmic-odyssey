@@ -53,6 +53,7 @@ Each notebook should include one assumption-breaking test:
 - A* with an inadmissible heuristic
 - Voronoi with duplicate, nearly collinear, or edge-heavy sites
 - Schelling segregation with threshold, vacancy, or movement-rule changes
+- spatial Prisoner's Dilemma played as a one-shot game, with no repeated rounds to reward reciprocity
 - Biomorphs with mutation too small, mutation too large, or recursion depth too high
 - topological sort with a cycle
 - Bloom filter near saturation

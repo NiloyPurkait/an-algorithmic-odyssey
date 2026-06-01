@@ -38,6 +38,17 @@ Deliverables:
 - best solution over time
 - explanation of premature convergence
 
+### 4. Artificial Selection Lineage
+
+Run the Biomorphs artificial-selection playground for at least 10 generations.
+
+Deliverables:
+
+- starting genome and final genome
+- visual lineage snapshots
+- description of the selection criterion or scoring function used
+- explanation of why mutation is random but selection is not, and how cumulative selection samples a space too large to enumerate
+
 ## Reflection
 
 Take one hard search problem and compare where exact search, stochastic sampling, and evolutionary search each change what is practical. Note which method you would reach for first and why.

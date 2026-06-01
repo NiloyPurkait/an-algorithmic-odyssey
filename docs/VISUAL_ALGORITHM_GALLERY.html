@@ -626,8 +626,9 @@
 
       lesson("life", "emergence", "Game of Life", "life", "Local neighbor rules on a grid", "Complex motion emerges from synchronous local updates.", "The next board depends only on the current board.", "O(generations * rows * columns).", "In-place updates contaminate a generation.", "Classify the pattern: death, oscillator, stable, or moving.", "for each generation:\n  count neighbors\n  apply birth/survival rules\n  replace board synchronously"),
       lesson("schelling", "emergence", "Schelling Segregation", "schelling", "Micro-motives and macro-patterns", "Mild local satisfaction rules can amplify into large spatial clusters.", "Moves preserve the counts of red agents, blue agents, and empty cells.", "A naive round is O(n^2) for an n by n grid with constant neighbor checks.", "Thresholds, vacancies, and movement rules can change the macro-pattern.", "How can tolerant local rules still produce strong clustering?", "initialize red/blue/empty grid\nfor each round:\n  find unsatisfied agents\n  move them to empty cells\n  measure same-neighbor ratio"),
+      lesson("ipd", "emergence", "Spatial Prisoner's Dilemma", "ipd", "Cooperation among neighbors", "Tit-for-Tat clusters out-earn defectors at their boundary and stop shrinking.", "The next grid depends only on the current neighborhood scores (synchronous update).", "O(generations * cells * neighbors); pairing scores precomputed in a 3x3 table.", "One-shot games remove the shadow of the future, so cooperation collapses.", "Why do defectors win at first, then starve?", "for each cell: score against neighbors, then copy the best-scoring neighbor strategy"),
       lesson("boids", "emergence", "Boids", "boids", "Flocking from vector agents", "Separation, alignment, and cohesion turn individual steering into group motion.", "Every agent reads the current flock before the next motion step is applied.", "Naive neighbor search is O(agents^2) per frame; grids or trees can accelerate it.", "Overweighting one rule can scatter, freeze, or collapse the flock.", "Which local rule dominates the flock in this frame?", "for each boid:\n  find nearby flockmates\n  steer away from crowding\n  steer toward average heading\n  steer toward average position\n  limit speed and update position"),
-      lesson("biomorphs", "emergence", "Dawkins' Biomorphs", "biomorphs", "Artificial selection over genomes", "Small integer mutations become complex recursive forms when selection is cumulative.", "Every child is a bounded mutation of its parent and draws deterministically from its genes.", "Drawing is O(2^d) in recursion depth d, capped by the depth gene.", "Too much mutation breaks continuity; too little mutation stagnates.", "Which child would you promote as the next parent?", "draw parent from genes\nmake eight mutated children\nstudent selects a child\npromote child to parent\nrepeat generations"),
+      lesson("biomorphs", "frontiers", "Dawkins' Biomorphs", "biomorphs", "Artificial selection over genomes", "Small integer mutations become complex recursive forms when selection is cumulative.", "Every child is a bounded mutation of its parent and draws deterministically from its genes.", "Drawing is O(2^d) in recursion depth d, capped by the depth gene.", "Too much mutation breaks continuity; too little mutation stagnates.", "Which child would you promote as the next parent?", "draw parent from genes\nmake eight mutated children\nstudent selects a child\npromote child to parent\nrepeat generations"),
       lesson("turing-patterns", "emergence", "Turing Patterns", "field", "Reaction-diffusion fields", "Activator and inhibitor fields interact into spots, bands, or waves.", "The same local stencil updates every cell.", "O(steps * rows * columns).", "Unstable parameters produce numerical artifacts.", "Which parameter regime creates spots instead of bands?", "for each cell:\n  diffuse activator/inhibitor\n  apply reaction terms\n  clamp or normalize field"),
       lesson("perlin", "emergence", "Perlin Noise", "terrain", "Smooth pseudo-random terrain", "Layered octaves add detail without losing continuity.", "Nearby samples are correlated by shared gradients.", "O(samples * octaves).", "Too many high-frequency octaves can erase smoothness.", "Which octave adds the visible roughness?", "noise = 0\nfor octave in octaves:\n  noise += amplitude * smooth_noise(freq*x)\n  freq *= 2\n  amplitude *= persistence"),
       lesson("penrose", "emergence", "Penrose Tiling", "tiling", "Recursive non-repeating order", "Deflation creates more tiles while preserving global non-periodic structure.", "Substitution preserves local matching constraints.", "Tile count grows exponentially with depth.", "Floating-point drift can create visual cracks.", "What stays ordered even though the pattern never repeats?", "start with seed tiles\nfor each deflation:\n  replace every tile by smaller tiles\n  preserve matching rules"),
@@ -859,6 +860,7 @@
         flow: buildFlow,
         life: buildLife,
         schelling: buildSchelling,
+        ipd: buildIpd,
         boids: buildBoids,
         biomorphs: buildBiomorphs,
         field: buildField,
@@ -1222,6 +1224,107 @@
       return frames;
     }
 
+    // --- Spatial Prisoner's Dilemma (Axelrod / Nowak-May) ---
+    const PD_T = 5, PD_R = 3, PD_P = 1, PD_S = 0;
+    function pdPayoff(mine, theirs) {
+      if (mine === 1 && theirs === 1) return PD_R;
+      if (mine === 1 && theirs === 0) return PD_S;
+      if (mine === 0 && theirs === 1) return PD_T;
+      return PD_P;
+    }
+    function pdMove(strat, oppLast) {
+      if (strat === 0) return 0;            // Always Defect
+      if (strat === 1) return 1;            // Always Cooperate
+      return oppLast === null ? 1 : oppLast; // Tit-for-Tat
+    }
+    function pdPairScore(a, b, rounds) {
+      let score = 0, aLast = null, bLast = null;
+      for (let i = 0; i < rounds; i++) {
+        const am = pdMove(a, bLast), bm = pdMove(b, aLast);
+        score += pdPayoff(am, bm);
+        aLast = am; bLast = bm;
+      }
+      return score;
+    }
+    function pdPairMatrix(rounds) {
+      const m = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+      for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) m[i][j] = pdPairScore(i, j, rounds);
+      return m;
+    }
+    const PD_OFFSETS = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
+    function pdFitness(grid, pair) {
+      const n = grid.length;
+      const fit = grid.map((row) => row.map(() => 0));
+      for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+        const s = grid[r][c];
+        let total = 0;
+        for (const [dr, dc] of PD_OFFSETS) total += pair[s][grid[(r + dr + n) % n][(c + dc + n) % n]];
+        fit[r][c] = total;
+      }
+      return fit;
+    }
+    function pdStep(grid, pair) {
+      const n = grid.length, fit = pdFitness(grid, pair), next = grid.map((row) => row.slice());
+      for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+        let bestStrat = grid[r][c], bestFit = fit[r][c];
+        for (const [dr, dc] of PD_OFFSETS) {
+          const nr = (r + dr + n) % n, nc = (c + dc + n) % n;
+          if (fit[nr][nc] > bestFit) { bestFit = fit[nr][nc]; bestStrat = grid[nr][nc]; }
+        }
+        next[r][c] = bestStrat;
+      }
+      return next;
+    }
+    function pdFractions(grid) {
+      const t = [0, 0, 0];
+      for (const row of grid) for (const v of row) t[v]++;
+      const total = grid.length * grid[0].length;
+      return [t[0] / total, t[1] / total, t[2] / total];
+    }
+    function pdInitGrid(n, mode) {
+      const mix = [0.34, 0.33, 0.33];
+      let seed = mode === "stress" ? 99 : 7;
+      const rnd = () => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; };
+      const grid = [];
+      for (let r = 0; r < n; r++) {
+        const row = [];
+        for (let c = 0; c < n; c++) { const x = rnd(); row.push(x < mix[0] ? 0 : x < mix[0] + mix[1] ? 1 : 2); }
+        grid.push(row);
+      }
+      return grid;
+    }
+    function buildIpd(mode) {
+      const n = 30;
+      const rounds = mode === "failure" ? 1 : 10;
+      const generations = mode === "stress" ? 30 : 22;
+      const pair = pdPairMatrix(rounds);
+      let grid = pdInitGrid(n, mode);
+      const frames = [];
+      for (let gen = 0; gen <= generations; gen++) {
+        const fr = pdFractions(grid);
+        frames.push(frame(
+          `generation ${gen}`,
+          rounds === 1
+            ? "One-shot games: Tit-for-Tat cannot retaliate, so defection takes the whole board."
+            : "Each cell plays its neighbors and copies the best; Tit-for-Tat clusters become cooperation shields.",
+          { grid: grid.map((row) => row.slice()), mode },
+          {
+            rounds,
+            defect: `${Math.round(fr[0] * 100)}%`,
+            cooperate: `${Math.round(fr[1] * 100)}%`,
+            titForTat: `${Math.round(fr[2] * 100)}%`
+          },
+          [
+            { color: C.rose, label: "Always Defect" },
+            { color: C.blue, label: "Always Cooperate" },
+            { color: C.lime, label: "Tit-for-Tat" }
+          ]
+        ));
+        grid = pdStep(grid, pair);
+      }
+      return frames;
+    }
+
     function buildBoids(mode) {
       const bounds = { x: 110, y: 86, w: 1060, h: 565 };
       const count = mode === "stress" ? 120 : 90;
@@ -1541,6 +1644,7 @@
         flow: drawFlow,
         life: drawGrid,
         schelling: drawSchelling,
+        ipd: drawIpd,
         boids: drawBoids,
         biomorphs: drawBiomorphs,
         field: drawField,
@@ -1850,6 +1954,20 @@
         }
       }
       label(x0 + grid.length * cell / 2, y0 + grid.length * cell + 34, "local satisfaction threshold -> macro-level clustering", C.muted);
+    }
+
+    function drawIpd(s) {
+      const grid = s.grid;
+      const cell = Math.min(16, 560 / grid.length);
+      const x0 = 370, y0 = 96;
+      const palette = [C.rose, C.blue, C.lime];
+      for (let r = 0; r < grid.length; r++) {
+        for (let c = 0; c < grid[0].length; c++) {
+          ctx.fillStyle = palette[grid[r][c]];
+          rect(x0 + c * cell, y0 + r * cell, cell - 1, cell - 1);
+        }
+      }
+      label(x0 + grid.length * cell / 2, y0 + grid.length * cell + 34, "repeated local play -> cooperation survives in clusters", C.muted);
     }
 
     function drawBoids(s) {

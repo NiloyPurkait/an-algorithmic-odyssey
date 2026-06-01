@@ -29,7 +29,18 @@ Deliverables:
 - explanation of why a local tolerance threshold does not determine global mixing by itself
 - short note about what the model omits about real segregation
 
-### 3. Flocking and Swarm Behavior
+### 3. Cooperation on a Grid
+
+Run the spatial Prisoner's Dilemma seeded with Always Defect, Always Cooperate, and Tit-for-Tat.
+
+Deliverables:
+
+- grid snapshots at the start, at the defector peak, and at the final generation
+- population fraction of each strategy over generations
+- explanation of why Tit-for-Tat clusters survive while isolated cooperators are eaten
+- one-shot test: set the iterated rounds to 1 and explain why cooperation collapses without the shadow of the future
+
+### 4. Flocking and Swarm Behavior
 
 Run the Boids simulation with at least two parameter settings: one coherent flock and one unstable or scattered flock.
 
@@ -39,17 +50,6 @@ Deliverables:
 - a short table of separation, alignment, and cohesion weights
 - one metric such as alignment score or mean nearest-neighbor distance
 - explanation of how local steering rules produce the observed group motion
-
-### 4. Artificial Selection Lineage
-
-Run the Biomorphs artificial-selection playground for at least 10 generations.
-
-Deliverables:
-
-- starting genome and final genome
-- visual lineage snapshots
-- description of the selection criterion used by the student or scoring function
-- explanation of why mutation is random but selection is not
 
 ### 5. Reaction-Diffusion Parameter Sweep
 

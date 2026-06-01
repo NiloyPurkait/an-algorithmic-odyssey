@@ -55,8 +55,8 @@ Simple local interactions can produce global structure that is hard to predict f
 
 - [Game of Life](../03-natural-emergence/00-game-of-life/game-of-life.ipynb): synchronous neighbor rules create stable, oscillating, and moving patterns.
 - [Schelling's Model of Segregation](../03-natural-emergence/01-schelling-segregation/schelling-segregation.ipynb): mild local preferences can amplify into global clustering.
-- [Boids](../03-natural-emergence/02-boids/boids.ipynb): separation, alignment, and cohesion create flocking from autonomous vector agents.
-- [Dawkins' Biomorphs](../03-natural-emergence/03-biomorphs/biomorphs.ipynb): mutation plus artificial selection walks through a space of recursive forms.
+- [Spatial Prisoner's Dilemma](../03-natural-emergence/02-spatial-prisoners-dilemma/spatial-prisoners-dilemma.ipynb): repeated local play lets cooperator clusters emerge among defectors.
+- [Boids](../03-natural-emergence/03-boids/boids.ipynb): separation, alignment, and cohesion create flocking from autonomous vector agents.
 - [Turing Patterns](../03-natural-emergence/04-turing-patterns/turing-patterns.ipynb): reaction and diffusion create spots, bands, and waves.
 - [Perlin Noise](../03-natural-emergence/05-perlin-noise/perlin-noise.ipynb): local gradient structure creates smooth procedural terrain.
 - [Penrose Tiling](../03-natural-emergence/06-penrose-tiling/tiling.ipynb): recursive substitution creates non-repeating order.
@@ -66,14 +66,24 @@ Simple local interactions can produce global structure that is hard to predict f
 Social simulations can reveal how individual rules and institutional constraints create group-level patterns.
 
 - [Schelling's Model of Segregation](../03-natural-emergence/01-schelling-segregation/schelling-segregation.ipynb): micro-level satisfaction rules produce macro-level spatial clustering.
+- [Spatial Prisoner's Dilemma](../03-natural-emergence/02-spatial-prisoners-dilemma/spatial-prisoners-dilemma.ipynb): self-interested agents evolve cooperation through repeated local interaction.
 - [Game of Life](../03-natural-emergence/00-game-of-life/game-of-life.ipynb): local neighbor rules create larger grid dynamics.
-- [Boids](../03-natural-emergence/02-boids/boids.ipynb): agent-level rules create collective motion.
+- [Boids](../03-natural-emergence/03-boids/boids.ipynb): agent-level rules create collective motion.
+
+## Game Theory and Strategy
+
+Players choose moves against other players; the payoff structure decides whether interests clash or align.
+
+- [Minimax](../05-strategic-search/00-min-max/min-max.ipynb): zero-sum games where one player's gain is the other's loss.
+- [Monte Carlo Tree Search](../05-strategic-search/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb): sample a large game tree instead of searching all of it.
+- [Spatial Prisoner's Dilemma](../03-natural-emergence/02-spatial-prisoners-dilemma/spatial-prisoners-dilemma.ipynb): non-zero-sum games where cooperation can emerge from repeated local play.
+- [Gale-Shapley](../01-foundations/03-gale-shapley/gale-shapley.ipynb): strategy-proof stable matching with no blocking pair.
 
 ## Evolutionary Search
 
 Evolutionary systems generate variation and preserve selected structure over repeated generations.
 
-- [Dawkins' Biomorphs](../03-natural-emergence/03-biomorphs/biomorphs.ipynb): artificial selection chooses among small integer-gene mutations.
+- [Dawkins' Biomorphs](../05-strategic-search/03-biomorphs/biomorphs.ipynb): artificial selection chooses among small integer-gene mutations.
 - [Genetic Algorithms](../05-strategic-search/02-ant-colony/genetic-algorithms.ipynb): selection, crossover, and mutation optimize candidate solutions.
 - [Ant Colony Optimization](../05-strategic-search/02-ant-colony/ant-colony.ipynb): successful paths reinforce future search behavior.
 

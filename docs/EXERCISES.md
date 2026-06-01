@@ -25,8 +25,8 @@ For full course assignments with implementation, proof, visual traces, and rubri
 
 - Change a Game of Life starting pattern and track whether it dies, stabilizes, or moves.
 - Change Schelling's satisfaction threshold and compare the final same-neighbor ratio.
+- Seed the Prisoner's Dilemma grid with all three strategies and find the generation where defectors peak before Tit-for-Tat clusters take over.
 - Tune Boids separation, alignment, or cohesion and describe how the flock changes.
-- Select Biomorph children for 10 generations and describe which visual traits accumulate.
 - Adjust reaction-diffusion parameters and describe the visible pattern shift.
 - Change Perlin noise octaves or persistence and compare smooth terrain against rough terrain.
 - Run one more Penrose deflation step and describe what stays ordered despite never repeating.
@@ -46,6 +46,7 @@ For full course assignments with implementation, proof, visual traces, and rubri
 - Change a Minimax board position and explain the best move.
 - Increase MCTS playouts and compare whether the recommended move becomes more stable.
 - Change Ant Colony or Genetic Algorithm parameters and compare solution quality.
+- Select Biomorph children for 10 generations and describe which visual traits accumulate under cumulative selection.
 - Checkpoint: take one hard search problem and compare how exhaustive search, sampling (MCTS), and a metaheuristic each scale.
 
 ## Module 6: Cryptography and Quantum Frontiers
