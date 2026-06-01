@@ -61,4 +61,4 @@ Deliverables:
 
 ## Reflection
 
-Trace the chain from secrecy to its weakness: explain why RSA is considered secure, then how Shor's algorithm reframes factoring as period finding. State exactly which assumption breaks and what that implies about the role of large keys and future quantum hardware.
+Trace the chain from secrecy to its weakness: explain why RSA is considered secure, then how Shor's algorithm reframes factoring as period finding. Contrast that with Grover, whose square-root speedup only weakens unstructured search and must stop at its optimal iteration count. State exactly which assumption breaks and what that implies about the role of large keys and future quantum hardware.

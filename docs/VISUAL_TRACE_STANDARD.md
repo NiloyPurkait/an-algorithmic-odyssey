@@ -50,6 +50,7 @@ AlgorithmPlayer(trace, renderer=my_renderer).display()
 | Probability vector | mass flow, stacked bars, long-run distribution |
 | Optimization | loss curve, current point, trajectory, step size |
 | Cryptography | state machine path, modular cycle, key dependency graph |
+| Quantum search | amplitude bar chart, inversion about the mean, target amplification |
 | Quantum period finding | modular-power cycle, period marker, gcd attempt |
 
 ## Interaction Standard

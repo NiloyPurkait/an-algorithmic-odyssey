@@ -1,6 +1,6 @@
 # Algorithmic Notebook Curriculum
 
-This repository is organized as six sequential modules. Each module has a short README, a recommended path, and self-contained notebooks with runnable simulations.
+This repository is organized as six sequential modules. Each module has a short README, a recommended path, and self-contained notebooks with runnable simulations. Treat it as less of a "course" and more of a digital memory palace of algorithms, across several diciplines of science.
 
 The sequence moves from deterministic mechanics to graph structure, natural emergence, statistical optimization, strategic search and metaheuristics, and finally cryptography and quantum computing.
 
