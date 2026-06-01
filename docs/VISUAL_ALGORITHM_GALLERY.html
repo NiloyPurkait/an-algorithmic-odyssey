@@ -511,7 +511,7 @@
     <aside>
       <div class="brand">
         <h1>Algorithm Lab</h1>
-        <p>Thirty-nine course topics, each shown as state changing over time.</p>
+        <p>Forty course topics, each shown as state changing over time.</p>
       </div>
       <div class="filters">
         <input id="search" class="search" type="search" placeholder="Search algorithms">
@@ -650,7 +650,8 @@
       lesson("rsa", "crypto", "RSA", "rsa", "Modular exponentiation and keys", "Repeated squaring turns a huge exponent into a small sequence of modular steps.", "Public and private exponents are modular inverses.", "Modular exponentiation is polynomial in bit length; factoring is the hard classical step.", "Tiny primes and bad padding break real security.", "Which squaring step contributes to the result?", "choose primes p, q\nn = p*q\nchoose e and d\ncipher = message^e mod n"),
       lesson("zkp", "crypto", "Zero-Knowledge Proofs", "zkp", "Prove a fact, reveal nothing", "Each random challenge a cheat can dodge with probability one half, so the verifier's doubt falls as (1/2)^k.", "An honest prover passes every challenge; a false claim survives each round with probability at most one half.", "k rounds of O(1) work; soundness error shrinks as (1/2)^k.", "Predictable challenges let a cheat pre-position and pass every round.", "How many rounds until a faker's odds fall below one in a million?", "repeat k times:\n  prover commits\n  verifier issues a random challenge\n  prover answers\n  reject on any failure"),
       lesson("grover", "crypto", "Grover's Algorithm", "grover", "Quantum search by amplitude amplification", "Oracle and diffusion invert amplitudes about the mean, amplifying the marked answer each round.", "Amplitudes stay normalized; success after k steps is sin^2((2k+1)*theta) with sin(theta)=1/sqrt(N).", "Optimal iterations about (pi/4)*sqrt(N); O(sqrt(N)) queries versus the classical O(N).", "Too many iterations over-rotate past the target and reduce the success probability.", "How many iterations until the marked state is almost certain?", "uniform superposition\nrepeat about (pi/4)*sqrt(N) times:\n  oracle: flip the target's sign\n  invert about the mean\nmeasure"),
-      lesson("shor", "crypto", "Shor's Algorithm", "period", "Factoring through period finding", "Modular powers repeat; the period can reveal a factor.", "A usable even period gives gcd(a^(r/2)-1, n).", "Quantum period finding is polynomial; the classical baseline is not known polynomial.", "Some bases give unusable periods.", "When does the modular cycle repeat?", "choose random base a\nfind period r of a^x mod n\nif r usable:\n  compute gcd factors")
+      lesson("shor", "crypto", "Shor's Algorithm", "period", "Factoring through period finding", "Modular powers repeat; the period can reveal a factor.", "A usable even period gives gcd(a^(r/2)-1, n).", "Quantum period finding is polynomial; the classical baseline is not known polynomial.", "Some bases give unusable periods.", "When does the modular cycle repeat?", "choose random base a\nfind period r of a^x mod n\nif r usable:\n  compute gcd factors"),
+      lesson("qkd", "crypto", "Quantum Key Distribution", "qkd", "Key security from physics, not hard math", "Bits ride photon polarizations; measuring in the wrong basis randomizes the result and cannot be undone.", "With matched bases and no eavesdropper Bob's bit equals Alice's; intercept-resend corrupts a sifted bit with probability 1/4.", "n raw photons give about n/2 sifted bits; a random sample is sacrificed to estimate the error rate.", "An eavesdropper who intercepts every photon injects an unmistakable 25% error rate.", "How does measuring the photons betray the eavesdropper?", "Alice: random bit + random basis -> photon\nBob: measure in a random basis\nkeep bits where bases agree\ncompare a sample: errors expose Eve")
     ];
 
     function lesson(id, module, title, kind, subtitle, summary, invariant, complexity, failure, prompt, pseudocode) {
@@ -884,6 +885,7 @@
         rsa: buildRsa,
         zkp: buildZkp,
         grover: buildGrover,
+        qkd: buildQkd,
         period: buildPeriod
       };
       return builders[lesson.kind](mode);
@@ -1393,6 +1395,38 @@
       return frames;
     }
 
+    function buildQkd(mode) {
+      const total = 40;
+      const eve = mode !== "calm";
+      const classical = mode === "failure";
+      const frames = [];
+      let errs = 0;
+      for (let k = 1; k <= total; k++) {
+        if (mode === "stress" && k % 4 === 0) errs++;   // full intercept-resend -> ~25%
+        const q = errs / k;
+        const basis = k % 2;
+        const bit = (k >> 1) % 2;
+        frames.push(frame(
+          `photon ${k}`,
+          mode === "stress"
+            ? "An eavesdropper intercepts every photon; matched-basis errors climb toward 25% and expose her."
+            : classical
+              ? "Classical copyable bits: the eavesdropper clones the key with zero error and is never detected."
+              : "No eavesdropper: matched-basis bits agree, so the error rate stays at zero.",
+          { k, total, qber: q, eve, classical, basis, bit, intercepted: eve },
+          classical
+            ? { photon: k, qber: "0%", status: "key leaked" }
+            : { photon: k, qber: `${Math.round(q * 100)}%`, status: eve ? (q > 0.11 ? "eavesdropper!" : "sampling") : "secure" },
+          [
+            { color: C.blue, label: "Alice / Bob" },
+            { color: C.rose, label: eve ? "Eve intercepts" : "no eavesdropper" },
+            { color: C.amber, label: "photon polarization" }
+          ]
+        ));
+      }
+      return frames;
+    }
+
     function buildBoids(mode) {
       const bounds = { x: 110, y: 86, w: 1060, h: 565 };
       const count = mode === "stress" ? 120 : 90;
@@ -1734,6 +1768,7 @@
         rsa: drawRsa,
         zkp: drawZkp,
         grover: drawGrover,
+        qkd: drawQkd,
         period: drawPeriod
       };
       clearCanvas();
@@ -2149,6 +2184,62 @@
       ctx.font = "700 18px sans-serif";
       ctx.textAlign = "left";
       ctx.fillText(`iteration ${s.iter}: P(answer) = ${Math.round(probs[target] * 100)}%`, x0, 122);
+    }
+
+    function drawQkd(s) {
+      const y = 250, ax = 190, bx = 1080, ex = 635;
+      ctx.strokeStyle = C.line;
+      ctx.lineWidth = 3;
+      line(ax, y, bx, y);
+      ctx.fillStyle = C.blue;
+      circle(ax, y, 34);
+      circle(bx, y, 34);
+      ctx.fillStyle = "#0c1015";
+      ctx.font = "700 15px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("Alice", ax, y + 5);
+      ctx.fillText("Bob", bx, y + 5);
+      if (s.eve) {
+        ctx.fillStyle = s.intercepted ? C.rose : "#3a2530";
+        circle(ex, y, 30);
+        ctx.fillStyle = s.intercepted ? "#0c1015" : C.muted;
+        ctx.fillText("Eve", ex, y + 5);
+      }
+      const angle = s.basis === 0 ? (s.bit ? Math.PI / 2 : 0) : (s.bit ? 3 * Math.PI / 4 : Math.PI / 4);
+      const px = 380, r = 26;
+      ctx.strokeStyle = C.amber;
+      ctx.lineWidth = 4;
+      ctx.lineCap = "round";
+      line(px - r * Math.cos(angle), y - r * Math.sin(angle), px + r * Math.cos(angle), y + r * Math.sin(angle));
+      label(px, y - 52, `photon ${s.k}: basis ${s.basis === 0 ? "+" : "x"}`, C.muted);
+
+      const gx = 560, gy0 = 650, gh = 300, gw = 84;
+      ctx.strokeStyle = C.line;
+      ctx.lineWidth = 2;
+      strokeRect(gx, gy0 - gh, gw, gh);
+      const fillH = Math.min(s.qber, 0.5) / 0.5 * gh;
+      ctx.fillStyle = s.qber > 0.11 ? C.rose : C.lime;
+      rect(gx, gy0 - fillH, gw, fillH);
+      [[0.11, "abort 11%", C.muted], [0.25, "intercept-resend 25%", C.amber]].forEach(([v, lab, col]) => {
+        const ly = gy0 - v / 0.5 * gh;
+        ctx.save();
+        ctx.setLineDash([6, 6]);
+        ctx.strokeStyle = col;
+        ctx.lineWidth = 2;
+        line(gx - 30, ly, gx + gw + 220, ly);
+        ctx.restore();
+        label(gx + gw + 130, ly - 8, lab, col);
+      });
+      label(gx + gw / 2, gy0 + 26, "error rate (QBER)", C.muted);
+      ctx.fillStyle = C.text;
+      ctx.font = "700 20px sans-serif";
+      ctx.textAlign = "left";
+      const status = s.classical
+        ? "QBER 0% — but Eve copied the key (no-cloning broken)"
+        : s.eve
+          ? `QBER ${Math.round(s.qber * 100)}% — ${s.qber > 0.11 ? "eavesdropper detected" : "sampling for errors"}`
+          : "QBER 0% — channel secure";
+      ctx.fillText(status, 120, 120);
     }
 
     function drawBoids(s) {

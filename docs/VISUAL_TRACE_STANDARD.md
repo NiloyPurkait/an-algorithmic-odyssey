@@ -52,6 +52,7 @@ AlgorithmPlayer(trace, renderer=my_renderer).display()
 | Cryptography | state machine path, modular cycle, key dependency graph |
 | Quantum search | amplitude bar chart, inversion about the mean, target amplification |
 | Quantum period finding | modular-power cycle, period marker, gcd attempt |
+| Quantum key distribution | photon polarization, basis match, error-rate gauge |
 
 ## Interaction Standard
 

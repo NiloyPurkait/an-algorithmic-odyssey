@@ -2,7 +2,7 @@
 
 ## Goals
 
-Students should be able to model classical encryption as state, build public-key cryptography from modular arithmetic and explain why its security rests on a hardness assumption, prove a statement without revealing it and bound a cheating prover's success, search an unstructured space with a quantum square-root speedup, and show how quantum period finding threatens the hardness assumption.
+Students should be able to model classical encryption as state, build public-key cryptography from modular arithmetic and explain why its security rests on a hardness assumption, prove a statement without revealing it and bound a cheating prover's success, search an unstructured space with a quantum square-root speedup, show how quantum period finding threatens the hardness assumption, and distribute a key whose security rests on physics rather than computation.
 
 ## Problems
 
@@ -59,6 +59,17 @@ Deliverables:
 - gcd factor attempt
 - explanation of what the quantum subroutine accelerates
 
+### 6. Quantum Key Distribution
+
+Simulate the BB84 protocol over `n` photons, with and without an eavesdropper, sifting the key where Alice and Bob's bases agree.
+
+Deliverables:
+
+- sifted-key fraction and the error rate (QBER) on a clean channel
+- the QBER under a full intercept-resend attack, with the `1/2 x 1/2` derivation of the 25% figure
+- a sweep of Eve's interception fraction showing information and disturbance rising together
+- a classical-bits run showing that without no-cloning the eavesdropper is undetectable
+
 ## Reflection
 
-Trace the chain from secrecy to its weakness: explain why RSA is considered secure, then how Shor's algorithm reframes factoring as period finding. Contrast that with Grover, whose square-root speedup only weakens unstructured search and must stop at its optimal iteration count. State exactly which assumption breaks and what that implies about the role of large keys and future quantum hardware.
+Trace the chain from secrecy to its weakness: explain why RSA is considered secure, then how Shor's algorithm reframes factoring as period finding. Contrast that with Grover, whose square-root speedup only weakens unstructured search and must stop at its optimal iteration count. State exactly which assumption breaks and what that implies about the role of large keys and future quantum hardware. Then explain how BB84 sidesteps that arms race by resting on no-cloning, and what a measured 25% error rate tells Alice and Bob.

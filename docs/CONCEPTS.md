@@ -115,6 +115,7 @@ Randomness can reduce memory, model uncertainty, or search spaces too large to e
 - [Ant Colony Optimization](../05-strategic-search/02-ant-colony/ant-colony.ipynb)
 - [Genetic Algorithms](../05-strategic-search/03-genetic-algorithms/genetic-algorithms.ipynb)
 - [Zero-Knowledge Proofs](../06-cryptography-and-quantum/02-zero-knowledge-proofs/zero-knowledge-proofs.ipynb): repeated random challenges drive a cheating prover's success toward zero, the same one-sided error as a Bloom filter.
+- [Quantum Key Distribution](../06-cryptography-and-quantum/05-quantum-key-distribution/quantum-key-distribution.ipynb): random measurement bases and a sacrificed sample of sifted bits reveal any eavesdropper.
 
 ## Optimization
 
