@@ -1,6 +1,6 @@
 # Bloom Filters
 
-A Bloom filter is a space-efficient membership structure. It can prove that an item is absent, or report that an item is probably present. This opens the probability module by making a controlled trade: less memory in exchange for a measurable chance of false positives.
+A Bloom filter is built for membership tests when memory is scarce. It uses multiple hash functions to mark bits, which makes false negatives impossible for inserted items but allows false positives as the bit array fills. That memory-accuracy tradeoff becomes measurable.
 
 ## Open
 

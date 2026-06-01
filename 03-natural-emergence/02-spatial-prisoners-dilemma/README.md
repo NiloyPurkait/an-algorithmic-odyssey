@@ -1,6 +1,6 @@
 # Spatial Prisoner's Dilemma
 
-The Prisoner's Dilemma is a non-zero-sum game where two agents each choose to cooperate or defect, and betraying a cooperator pays best in a single round. Always Defect, Always Cooperate, and Tit-for-Tat agents live on a grid, play their neighbors, and copy whoever scores highest. Repeated local games become the bridge from emergence to strategy, making cooperation spatially defensible.
+The Prisoner's Dilemma captures the tension between short-term betrayal and mutual cooperation. Placing strategies on a grid changes the game, because agents repeatedly meet neighbors and copy high-scoring local strategies. Tit-for-Tat clusters can make cooperation spatially defensible.
 
 ## Open
 

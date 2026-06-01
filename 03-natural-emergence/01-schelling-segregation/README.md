@@ -1,6 +1,6 @@
 # Schelling's Model of Segregation
 
-Schelling's model places agents on a grid, gives each agent a local tolerance threshold, and moves agents who are unsatisfied with their neighborhood. The grid idea moves into social science, where individual preferences can produce population-level patterns no individual explicitly chose.
+Schelling's segregation model studies how local satisfaction rules can create population-level clustering. Agents move when their neighborhood falls below a tolerance threshold, even when that threshold allows mixed neighborhoods. The grid separates the local rule from the spatial pattern it produces.
 
 ## Open
 

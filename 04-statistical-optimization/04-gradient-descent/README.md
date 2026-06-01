@@ -1,6 +1,6 @@
 # Gradient Descent
 
-Gradient descent updates parameters by moving against the gradient of a loss function. The notebook shows how learning rate changes the path. This makes optimization concrete as motion through a loss surface, a theme that returns in later search and learning systems.
+Gradient descent treats optimization as movement across a loss surface. Each step follows the negative gradient, and the learning rate decides whether the path is slow, stable, or unstable. Parameter fitting becomes visible as a trajectory.
 
 ## Open
 

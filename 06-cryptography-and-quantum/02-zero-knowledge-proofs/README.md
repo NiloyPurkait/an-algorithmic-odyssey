@@ -1,6 +1,6 @@
 # Zero-Knowledge Proofs
 
-A zero-knowledge proof lets a Prover convince a skeptical Verifier that a statement is true while revealing nothing beyond that truth. The verifier does not receive the password, the witness, or, in the interactive setting shown here, a reusable certificate for someone else. The guarantee comes from interaction and randomness. The Verifier issues an unpredictable challenge each round, and a Prover who lacks the secret cannot prepare for every challenge at once. Knowledge can be demonstrated without being handed over.
+Zero-knowledge proofs separate proving from revealing. Interaction and randomness let a Prover convince a Verifier that a statement is true while exposing no reusable witness in the protocol shown here. Repeated unpredictable challenges drive soundness error down.
 
 ## Open
 

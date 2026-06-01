@@ -1,6 +1,6 @@
 # A* Search
 
-A* ranks frontier nodes by `f(n) = g(n) + h(n)`, combining cost already paid with an estimate of the cost still ahead. Search changes when the algorithm has both a disciplined guess about the world and a record of where it has been.
+A* adds a map-informed estimate to shortest-path search. It ranks each frontier node by cost already paid plus a heuristic estimate of cost still ahead. A good heuristic narrows exploration while preserving optimality under the right assumptions.
 
 ## Open
 

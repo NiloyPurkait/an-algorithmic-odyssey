@@ -1,6 +1,6 @@
 # Spatial Predator-Prey
 
-A grid of grass, rabbits, and foxes runs on one local rule in a cycle: rabbits graze grass into new rabbits, foxes eat rabbits into new foxes, and a fox with no prey nearby starves so the ground returns to grass. From a random start this organizes itself into rotating spiral waves that support long-lived coexistence in the finite grid. Remove the space - shuffle the grid so the population is well-mixed - and the spirals cannot form, stochastic drift can erase a species, and the cycle collapses. It bridges discrete cellular rules to continuous population models, and shows how space can stabilize coexistence.
+Cyclic predator-prey systems reveal why space matters in ecology. Grass, rabbits, and foxes invade one another in a local loop, and the grid organizes that loop into rotating spiral waves. Spatial coexistence contrasts with a well-mixed failure mode where stochastic drift can erase a species.
 
 ## Open
 

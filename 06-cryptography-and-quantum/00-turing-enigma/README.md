@@ -1,6 +1,6 @@
 # Enigma and the Bombe
 
-The Enigma machine encrypts by composing rotor, reflector, and plugboard permutations. The Bombe searched machine settings by exploiting known plaintext and contradictions. The final module begins with computation back in hardware, but now the state machine is an object of secrecy and attack.
+Enigma shows encryption as a changing state machine. Rotor, reflector, and plugboard permutations transform each letter, and rotor stepping makes the substitution change after every keypress. Mechanical state connects secrecy to cryptanalysis.
 
 ## Open
 

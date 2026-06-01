@@ -1,6 +1,6 @@
 # Gale-Shapley Stable Matching
 
-Stable matching studies markets where two sides rank each other and the goal is to avoid a blocking pair, meaning two participants who would rather match with each other than keep their assigned partners. A new kind of guarantee appears here. The algorithm converges to an arrangement that certifies its own stability.
+Stable matching models allocation problems where two sides rank each other, such as residency matching and school choice. Gale-Shapley works by repeated proposals and rejections until no blocking pair remains. Proposal traces make convergence and stability visible rather than treating the final matching as a black box.
 
 ## Open
 

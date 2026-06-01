@@ -1,6 +1,6 @@
 # PageRank
 
-PageRank scores pages by modeling a random surfer on a directed link graph. A page receives rank from pages that link to it, weighted by their own rank. It joins the graph and probability arcs: long-run movement through a network becomes a ranking.
+PageRank turns links into a probability model of attention. A random surfer moves through a directed graph, with teleportation preventing rank from getting trapped. Repeated probability flow settles into a stable importance score.
 
 ## Open
 

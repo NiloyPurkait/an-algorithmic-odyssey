@@ -1,6 +1,6 @@
 # Monte Carlo Tree Search
 
-Monte Carlo Tree Search estimates good moves by sampling possible continuations instead of expanding the full game tree. It keeps the game-tree frame from minimax but trades full certainty for evidence gathered by repeated simulation.
+Monte Carlo Tree Search handles game trees too large to expand fully. It samples continuations, updates visit counts and win estimates, then uses those statistics to balance exploration and exploitation. Exhaustive certainty gives way to budgeted evidence.
 
 ## Open
 

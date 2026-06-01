@@ -1,6 +1,6 @@
 # Genetic Algorithms
 
-A genetic algorithm searches a space too large to enumerate by evolving a population of candidate solutions. Each candidate is scored by a fitness function, fitter candidates are more likely to reproduce, and crossover and mutation generate the next generation. Over many generations the population concentrates around good solutions without ever scanning the whole space. It makes search evolutionary: not a single path through a tree, but a population adapting under selection.
+Genetic algorithms search by evolving a population rather than following one path. Candidate solutions are scored, selected, recombined, and mutated, so useful traits tend to spread while variation remains. Optimization becomes adaptation under a fitness function.
 
 ## Open
 

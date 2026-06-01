@@ -1,6 +1,6 @@
 # Floyd-Warshall
 
-Floyd-Warshall computes all-pairs shortest paths by allowing one more possible intermediate vertex at each phase. It brings dynamic programming back from strings to networks, turning "use earlier answers" into a map between every pair of places.
+Some graph questions need every route, not one source. Floyd-Warshall computes all-pairs shortest paths by allowing one more intermediate vertex at a time. The dynamic-programming idea from strings returns as a matrix of distances.
 
 ## Open
 

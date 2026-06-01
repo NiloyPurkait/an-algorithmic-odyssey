@@ -1,6 +1,6 @@
 # Grover's Algorithm
 
-Grover's algorithm searches an unstructured set of `N` items in about `(pi/4) * sqrt(N)` oracle queries, while classical unstructured search has linear query complexity. It is the module's entry point to quantum algorithms and teaches the core mechanic: a quantum computer holds all states in superposition, but measuring returns a random one, so Grover spends a few rounds using interference to drain probability from the wrong answers and pile it onto the right one before measuring. It introduces quantum advantage as amplitude amplification before Shor's lesson uses quantum computation for period finding.
+Grover's algorithm gives the simplest visual entry into quantum speedup. An oracle marks one answer, diffusion reflects amplitudes about their mean, and repeated rotations concentrate probability on the target. The square-root query advantage appears alongside the over-rotation failure mode.
 
 ## Open
 

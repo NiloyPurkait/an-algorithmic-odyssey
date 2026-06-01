@@ -1,6 +1,6 @@
 # Dawkins' Biomorphs
 
-Biomorphs are recursive line drawings controlled by a small genome. Mutation creates nearby variants, and selection promotes one of them, so cumulative selection searches a space of forms far too large to enumerate. The same mutate-and-select engine used by genetic algorithms becomes tactile here, with visual preference standing in for a numeric fitness function.
+Dawkins' biomorphs turn artificial selection into a visual experiment. A small genome controls a recursive drawing, mutation creates nearby variants, and selection promotes one branch of the lineage. Cumulative selection appears without reducing visual form to a fixed numeric score.
 
 ## Open
 

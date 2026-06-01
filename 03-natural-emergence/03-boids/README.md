@@ -1,6 +1,6 @@
 # Boids
 
-Boids are autonomous agents that steer using local information. Reynolds' original model used separation, alignment, and cohesion to produce flock-like motion. The lesson moves the local-rule idea from cells to bodies in motion, so emergence becomes a question of vectors, neighborhoods, and time.
+Boids turns flocking into three local vector rules. Each agent steers away from crowding, toward nearby headings, and toward nearby positions. Local motion rules create coordinated swarm behavior without a leader.
 
 ## Open
 

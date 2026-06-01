@@ -1,6 +1,6 @@
 # Voronoi Diagrams and Delaunay Triangulation
 
-Voronoi diagrams partition the plane by nearest site. Delaunay triangulations connect sites that are natural neighbors under that partition. The lesson extends graph thinking into continuous space: proximity itself creates cells, adjacencies, and useful data structures.
+Spatial data often begins with nearest-neighbor ownership. A Voronoi diagram partitions the plane by closest site, while the Delaunay triangulation connects sites that share natural borders. Scattered points become cells, adjacencies, and live queries.
 
 ## Open
 

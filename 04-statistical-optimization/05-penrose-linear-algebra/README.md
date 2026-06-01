@@ -1,6 +1,6 @@
 # Penrose Linear Algebra
 
-This folder pairs diagrammatic linear algebra with the Moore-Penrose pseudoinverse. One notebook emphasizes structure, and the other emphasizes least-squares computation. The shared move is to rewrite a system in a clearer representation, then solve the closest version available.
+Linear algebra often becomes clearer when equations are rewritten. This folder pairs Penrose graphical notation for structure with the Moore-Penrose pseudoinverse for least-squares solutions. Together they show how representation affects what can be computed and explained.
 
 ## Open
 

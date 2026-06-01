@@ -1,6 +1,6 @@
 # Topological Sort
 
-Topological sorting turns prerequisites into a legal order. If no such order exists, the dependency graph contains a directed cycle. The first graph question is structural. Before optimizing a network, find which orders are even possible.
+Dependency problems come before optimization. Topological sort asks whether a directed graph has any legal order and exposes cycles when no such order exists. Tracing in-degree and ready nodes turns scheduling into a state process.
 
 ## Open
 

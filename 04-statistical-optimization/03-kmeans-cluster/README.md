@@ -1,6 +1,6 @@
 # K-means Clustering
 
-K-means alternates between assigning points to the nearest centroid and moving each centroid to the mean of its assigned points. It revisits spatial partitioning from the Voronoi lesson, but now the centers are learned from data rather than chosen in advance.
+K-means is a compact model of unsupervised clustering. Points are assigned to the nearest centroid, then each centroid moves to the mean of its assigned points. Geometry, iteration, and objective improvement meet in one loop.
 
 ## Open
 

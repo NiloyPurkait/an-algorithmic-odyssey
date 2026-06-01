@@ -1,6 +1,6 @@
 # Algorithmic Thinking and Sorting
 
-These two notebooks set the working habits for the course: trace state, name the invariant, choose a data shape, and compare growth rates. Everything later reuses that habit: make a process visible before arguing about its cost or correctness.
+Algorithms are easier to reason about once their moving parts have names. This opening pair sets the course habits by tracing state, invariants, data shape, and growth rate. Sorting makes those habits concrete with comparisons, swaps, and input-size experiments.
 
 ## Open
 

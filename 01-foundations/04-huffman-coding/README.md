@@ -1,6 +1,6 @@
 # Huffman Coding
 
-Huffman coding builds a prefix-free binary code from symbol frequencies. Frequent symbols move closer to the root, while rare symbols receive longer bit strings. Greedy choice becomes representation here, turning a data distribution into a code tree.
+Compression begins with a simple asymmetry. Frequent symbols deserve short codes. Huffman coding uses that asymmetry greedily, repeatedly merging the two least frequent trees to build an optimal prefix code for known frequencies. A data distribution becomes a binary tree.
 
 ## Open
 

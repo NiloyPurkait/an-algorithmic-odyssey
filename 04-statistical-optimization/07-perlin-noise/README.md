@@ -1,6 +1,6 @@
 # Perlin Noise
 
-Perlin noise produces coherent randomness, so nearby coordinates tend to have related values. Read as a signal, it is frequency synthesis. Stacked octaves add low- and high-frequency detail, making Perlin the constructive counterpart to Fourier analysis. Probabilistic structure becomes drawable material for terrain, texture, and motion.
+Perlin noise creates randomness with continuity, which is why it works for terrain, texture, and motion. Gradients on a lattice are interpolated smoothly, then layered across octaves for detail at multiple scales. Procedural noise becomes constructive signal synthesis.
 
 ## Open
 

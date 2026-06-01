@@ -1,6 +1,6 @@
 # Levenshtein Distance
 
-Levenshtein distance counts the cheapest sequence of insertions, deletions, and substitutions needed to turn one string into another. It is the first dynamic-programming table in the course: small local edits become a reusable map of the whole problem.
+Approximate text matching begins with a practical question. How far apart are two strings? Levenshtein distance answers by pricing insertions, deletions, and substitutions, then filling a dynamic-programming table over prefixes. A visible table trace turns local edit choices into a global minimum.
 
 ## Open
 

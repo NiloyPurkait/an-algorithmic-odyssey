@@ -1,6 +1,6 @@
 # Quantum Key Distribution
 
-The BB84 protocol shares a secret key over a public channel and detects intercept-resend eavesdropping statistically. Its test rests on quantum measurement rather than on a computational hardness assumption. Alice encodes each bit in a photon's polarization using a random basis. Bob measures in a random basis. They keep the bits where their bases agree. Because BB84 uses nonorthogonal states, an unknown photon cannot be copied and a wrong-basis measurement disturbs the state. A full intercept-resend attack produces an expected 25% error rate in the sifted key. After Shor breaks security built on hard math, BB84 asks whether the channel itself has been disturbed.
+BB84 changes the cryptography question from hard-to-compute to hard-to-measure-without-disturbance. Alice and Bob keep only matched-basis bits, then sample the sifted key for errors caused by intercept-resend eavesdropping. Ideal quantum key distribution depends on nonorthogonal states, no-cloning, and statistical detection.
 
 ## Open
 

@@ -1,6 +1,6 @@
 # Fast Fourier Transform
 
-The FFT computes the discrete Fourier transform faster by exploiting symmetry in roots of unity. It is a compact example of representation change: the same signal becomes easier to analyze once it is expressed by frequency.
+The Fourier transform rewrites a signal in terms of frequency. The FFT computes the same transform faster by exploiting symmetry in roots of unity. A change in representation turns an expensive calculation into a structured recursion.
 
 ## Open
 

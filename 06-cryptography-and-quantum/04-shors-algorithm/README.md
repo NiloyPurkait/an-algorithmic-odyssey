@@ -1,6 +1,6 @@
 # Shor's Algorithm
 
-Shor's algorithm reduces factoring to period finding. The quantum part estimates a period, and classical post-processing turns that period into candidate factors. The module returns to RSA's hardness assumption and shows how a different representation can change what is computationally feasible.
+Shor's algorithm connects factoring to period finding. Classical post-processing can turn a usable period into nontrivial factors, while the quantum subroutine supplies the period efficiently in principle. Small numbers make the RSA-breaking idea traceable.
 
 ## Open
 
