@@ -67,6 +67,16 @@ Deliverables:
 - trace for at least 12 steps or until halting
 - a short answer: what configuration fully describes the machine at any moment?
 
+### 7. Recursive Substitution and Self-Similarity
+
+Run Penrose tiling for at least three deflation depths.
+
+Deliverables:
+
+- tile count by depth and the growth ratio between successive depths
+- visual comparison across depths
+- one sentence on how a local substitution rule produces global non-periodic order
+
 ## Reflection
 
 Choose one idea from this module and explain where it appears again in graph algorithms, optimization, or cryptography.

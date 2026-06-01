@@ -1,6 +1,6 @@
 # Module 1: Foundational Mechanics & Deterministic Logic
 
-Computers become less mysterious when their rules are visible. This module builds the baseline vocabulary: objects, arrays, loops, complexity, deterministic state, simple dynamic programming, greedy choice, trees, and formal machines.
+Computers become less mysterious when their rules are visible. This module builds the baseline vocabulary: objects, arrays, loops, complexity, deterministic state, simple dynamic programming, greedy choice, trees, recursion, and formal machines.
 
 ## Field
 
@@ -13,7 +13,8 @@ Classical computer science and discrete mathematics.
 3. [Levenshtein Distance](02-levenshtein-distance/levenshtein-distance.ipynb) introduces dynamic programming through a small, visual string matrix.
 4. [Gale-Shapley](03-gale-shapley/gale-shapley.ipynb) shows stable convergence using plain logic and repeated proposals.
 5. [Huffman Coding](04-huffman-coding/huffman-coding.ipynb) introduces greedy compression and the first major tree structure.
-6. [Universal Turing Machine](05-turing-universal-machine/universal-turing-machine.ipynb) closes the module by asking what a program is at its most mechanical level.
+6. [Universal Turing Machine](05-turing-universal-machine/universal-turing-machine.ipynb) asks what a program is at its most mechanical level.
+7. [Penrose Tiling](06-penrose-tiling/tiling.ipynb) ends with recursion made visible: a deterministic substitution rule whose tile count grows exponentially with depth.
 
 ## Lesson Guide
 
@@ -25,6 +26,7 @@ Classical computer science and discrete mathematics.
 | [Gale-Shapley](03-gale-shapley/gale-shapley.ipynb) | 2/5 | 30 min | Stable matching loop |
 | [Huffman Coding](04-huffman-coding/huffman-coding.ipynb) | 3/5 | 40 min | Greedy binary tree |
 | [Universal Turing Machine](05-turing-universal-machine/universal-turing-machine.ipynb) | 3/5 | 45 min | Tape and state machine |
+| [Penrose Tiling](06-penrose-tiling/tiling.ipynb) | 3/5 | 40 min | Recursive substitution |
 
 ## Why This Module Comes First
 

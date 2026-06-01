@@ -62,29 +62,9 @@ Deliverables:
 - explanation of which parameter changed
 - note about numerical stability, boundary conditions, or time-step sensitivity
 
-### 6. Terrain from Noise
+### 6. Generated World Mini-Project
 
-Generate terrain using one octave and multiple octaves of Perlin noise.
-
-Deliverables:
-
-- two terrain images
-- roughness metric or qualitative comparison
-- explanation of persistence and frequency
-
-### 7. Recursive Geometry
-
-Run Penrose tiling for at least three deflation depths.
-
-Deliverables:
-
-- tile count by depth
-- visual comparison
-- one sentence about non-periodic order
-
-### 8. Generated World Mini-Project
-
-Combine one terrain field, organism generator, or local interaction rule. The rule can be grid-based, agent-based, field-based, recursive, or selection-based.
+Combine at least two emergence rules into one small world. The rules can be grid-based, agent-based, or field-based.
 
 Deliverables:
 

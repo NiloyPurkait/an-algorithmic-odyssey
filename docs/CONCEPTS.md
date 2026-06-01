@@ -47,7 +47,7 @@ Spatial partitioning turns a continuous plane into discrete regions, neighbors, 
 - [Voronoi and Delaunay](../02-spatial-graphs/04-voronoi-delaunay/voronoi-delaunay.ipynb): closest-site territories and natural-neighbor triangles.
 - [A*](../02-spatial-graphs/03-a-star/a-star.ipynb): grid coordinates become a searchable route space.
 - [k-means](../04-statistical-optimization/03-kmeans-cluster/kmeans-cluster.ipynb): points inherit cluster regions from nearest centers.
-- [Perlin Noise](../03-natural-emergence/05-perlin-noise/perlin-noise.ipynb): coordinates sample smooth procedural fields.
+- [Perlin Noise](../04-statistical-optimization/07-perlin-noise/perlin-noise.ipynb): coordinates sample smooth procedural fields.
 
 ## Local Rules and Emergence
 
@@ -58,8 +58,6 @@ Simple local interactions can produce global structure that is hard to predict f
 - [Spatial Prisoner's Dilemma](../03-natural-emergence/02-spatial-prisoners-dilemma/spatial-prisoners-dilemma.ipynb): repeated local play lets cooperator clusters emerge among defectors.
 - [Boids](../03-natural-emergence/03-boids/boids.ipynb): separation, alignment, and cohesion create flocking from autonomous vector agents.
 - [Turing Patterns](../03-natural-emergence/04-turing-patterns/turing-patterns.ipynb): reaction and diffusion create spots, bands, and waves.
-- [Perlin Noise](../03-natural-emergence/05-perlin-noise/perlin-noise.ipynb): local gradient structure creates smooth procedural terrain.
-- [Penrose Tiling](../03-natural-emergence/06-penrose-tiling/tiling.ipynb): recursive substitution creates non-repeating order.
 
 ## Social Emergence
 
@@ -112,7 +110,7 @@ Randomness can reduce memory, model uncertainty, or search spaces too large to e
 
 - [Bloom Filters](../04-statistical-optimization/00-bloom-filters/bloom-filters.ipynb)
 - [Markov Chains](../04-statistical-optimization/01-markov-chains/markov-chains.ipynb)
-- [Perlin Noise](../03-natural-emergence/05-perlin-noise/perlin-noise.ipynb)
+- [Perlin Noise](../04-statistical-optimization/07-perlin-noise/perlin-noise.ipynb)
 - [Monte Carlo Tree Search](../05-strategic-search/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
 - [Ant Colony Optimization](../05-strategic-search/02-ant-colony/ant-colony.ipynb)
 - [Genetic Algorithms](../05-strategic-search/02-ant-colony/genetic-algorithms.ipynb)
@@ -133,12 +131,13 @@ Trees appear as compression structures, search spaces, and recursive decompositi
 - [Huffman Coding](../01-foundations/04-huffman-coding/huffman-coding.ipynb)
 - [Minimax](../05-strategic-search/00-min-max/min-max.ipynb)
 - [Monte Carlo Tree Search](../05-strategic-search/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
-- [Penrose Tiling](../03-natural-emergence/06-penrose-tiling/tiling.ipynb)
+- [Penrose Tiling](../01-foundations/06-penrose-tiling/tiling.ipynb)
 
 ## Signals and Structure
 
 Some algorithms reveal hidden structure by changing representation.
 
 - [Fast Fourier Transform](../04-statistical-optimization/06-fast-fourier-transform/fft.ipynb): time samples become frequencies.
+- [Perlin Noise](../04-statistical-optimization/07-perlin-noise/perlin-noise.ipynb): octaves synthesize a signal by layering frequencies.
 - [Penrose Graphical Notation](../04-statistical-optimization/05-penrose-linear-algebra/graph-notation.ipynb): tensor operations become diagrams.
 - [Shor's Algorithm](../06-cryptography-and-quantum/02-shors-algorithm/shors-algorithm.ipynb): factoring becomes period finding.

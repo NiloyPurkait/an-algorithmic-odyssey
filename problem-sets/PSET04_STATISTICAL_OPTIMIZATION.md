@@ -68,6 +68,16 @@ Deliverables:
 - identification of peaks
 - aliasing example or warning
 
+### 7. Procedural Signal Synthesis
+
+Generate Perlin noise with one octave and with several octaves.
+
+Deliverables:
+
+- single-octave and multi-octave output images or one-dimensional plots
+- description of how persistence and frequency change the result
+- one sentence connecting octave layering to the frequency view from the FFT problem
+
 ## Reflection
 
 Name one answer in this module that is exact, one that is estimated, and one that is optimized.

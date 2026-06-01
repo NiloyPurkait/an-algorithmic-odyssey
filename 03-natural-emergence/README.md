@@ -1,10 +1,10 @@
 # Module 3: Emergence, Chaos, & Natural Simulations
 
-Small local rules can create large, surprising structure. This module uses visual systems to show how social patterns, motion, cooperation, terrain, and geometry can emerge from repeated mathematical rules.
+Small local rules can create large, surprising structure. This module uses visual systems to show how social patterns, motion, and cooperation can emerge from repeated local rules.
 
 ## Field
 
-Artificial life, sociology, evolutionary game theory, mathematical biology, procedural generation, geometry, and complex systems.
+Artificial life, sociology, evolutionary game theory, mathematical biology, and complex systems.
 
 ## Learning Arc
 
@@ -13,8 +13,6 @@ Artificial life, sociology, evolutionary game theory, mathematical biology, proc
 3. [Spatial Prisoner's Dilemma](02-spatial-prisoners-dilemma/spatial-prisoners-dilemma.ipynb) shows how cooperation can emerge among self-interested agents when interaction is repeated and local.
 4. [Boids](03-boids/boids.ipynb) turns local vector rules into flocking and swarm behavior.
 5. [Turing Patterns](04-turing-patterns/turing-patterns.ipynb) turns local interaction into reaction-diffusion patterns.
-6. [Perlin Noise](05-perlin-noise/perlin-noise.ipynb) generates smooth pseudo-random terrain for graphics and worlds.
-7. [Penrose Tiling](06-penrose-tiling/tiling.ipynb) shifts from pixels to recursive geometry and non-repeating order.
 
 ## Lesson Guide
 
@@ -25,13 +23,11 @@ Artificial life, sociology, evolutionary game theory, mathematical biology, proc
 | [Spatial Prisoner's Dilemma](02-spatial-prisoners-dilemma/spatial-prisoners-dilemma.ipynb) | 3/5 | 45 min | Evolutionary game on a grid |
 | [Boids](03-boids/boids.ipynb) | 3/5 | 45 min | Vector agents and swarm rules |
 | [Turing Patterns](04-turing-patterns/turing-patterns.ipynb) | 4/5 | 45 min | Reaction-diffusion fields |
-| [Perlin Noise](05-perlin-noise/perlin-noise.ipynb) | 3/5 | 40 min | Smooth noise terrain matrix |
-| [Penrose Tiling](06-penrose-tiling/tiling.ipynb) | 3/5 | 40 min | Recursive geometry |
 
 ## Why This Module Matters
 
-After graph rigor, students get visual feedback. The lesson is precise: complexity can emerge from simple rules in social grids, fields, agent motion, strategic interaction, or geometry.
+After graph rigor, students get visual feedback. The lesson is precise: complexity can emerge from simple local rules in cellular grids, social agents, strategic interaction, or reaction-diffusion fields.
 
 ## Checkpoint
 
-Create a small generated world, social grid, or organism set: use Perlin noise for terrain, Schelling or Prisoner's Dilemma agents for social pattern, or Game of Life rules for grid dynamics; then describe how one parameter change affects the visible pattern.
+Create a small social or biological simulation: use Schelling or Prisoner's Dilemma agents for social pattern, Boids for swarm motion, or Game of Life and Turing patterns for grid dynamics; then describe how one parameter change affects the visible pattern.

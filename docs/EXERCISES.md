@@ -10,6 +10,7 @@ For full course assignments with implementation, proof, visual traces, and rubri
 - Turn the Antikythera crank by 19 years and explain why the Moon phase nearly returns.
 - Use Levenshtein distance to rank three possible corrections for the same misspelled word.
 - Compress a different text sample with Huffman coding and identify which symbol saved the most bits.
+- Run one more Penrose deflation step and count how the tile total grows with depth.
 - Checkpoint: build a tiny spelling helper that combines edit distance with frequency or compression statistics, then compare its symbolic computation with the Antikythera notebook's physical ratio computation.
 
 ## Module 2: Spatial Graphs
@@ -28,9 +29,7 @@ For full course assignments with implementation, proof, visual traces, and rubri
 - Seed the Prisoner's Dilemma grid with all three strategies and find the generation where defectors peak before Tit-for-Tat clusters take over.
 - Tune Boids separation, alignment, or cohesion and describe how the flock changes.
 - Adjust reaction-diffusion parameters and describe the visible pattern shift.
-- Change Perlin noise octaves or persistence and compare smooth terrain against rough terrain.
-- Run one more Penrose deflation step and describe what stays ordered despite never repeating.
-- Checkpoint: create a small generated world, social grid, or organism set from one compact rule system, then explain whether structure comes from local interaction, movement, recursion, or selection.
+- Checkpoint: create a small social grid or simulation from one compact rule system, then explain whether structure comes from local interaction, movement, or strategy.
 
 ## Module 4: Statistical Optimization
 
@@ -39,6 +38,7 @@ For full course assignments with implementation, proof, visual traces, and rubri
 - Add a page to the PageRank graph and predict which ranks move.
 - Change the number of clusters in k-means and explain whether the grouping improves.
 - Change a gradient descent learning rate and compare convergence speed or instability.
+- Change Perlin noise octaves or persistence and compare smooth output against rough output.
 - Checkpoint: analyze a small dataset or network and state which answers are exact, estimated, or optimized.
 
 ## Module 5: Strategic Search and Metaheuristics
