@@ -11,7 +11,7 @@ Classical cryptography, public-key cryptography, interactive and zero-knowledge 
 1. [Enigma](00-turing-enigma/enigma.ipynb) models classical encryption as a stateful rotor machine, and shows how operational patterns leak structure.
 2. [RSA](01-rsa/rsa.ipynb) builds public-key cryptography from modular arithmetic, where security rests on factoring being hard.
 3. [Zero-Knowledge Proofs](02-zero-knowledge-proofs/zero-knowledge-proofs.ipynb) shift from hiding data to proving a statement true while revealing nothing, with soundness resting on repeated random challenges rather than on a hardness assumption.
-4. [Shor's Algorithm](03-shors-algorithm/shors-algorithm.ipynb) closes the course by reducing factoring to period finding, showing how quantum hardware threatens the assumption RSA depends on.
+4. [Shor's Algorithm](04-shors-algorithm/shors-algorithm.ipynb) closes the course by reducing factoring to period finding, showing how quantum hardware threatens the assumption RSA depends on.
 
 ## Lesson Guide
 
@@ -20,7 +20,7 @@ Classical cryptography, public-key cryptography, interactive and zero-knowledge 
 | [Enigma](00-turing-enigma/enigma.ipynb) | 3/5 | 40 min | Rotor state machine |
 | [RSA](01-rsa/rsa.ipynb) | 4/5 | 45 min | Modular arithmetic |
 | [Zero-Knowledge Proofs](02-zero-knowledge-proofs/zero-knowledge-proofs.ipynb) | 4/5 | 45 min | Interactive proof, probabilistic soundness |
-| [Shor's Algorithm](03-shors-algorithm/shors-algorithm.ipynb) | 5/5 | 60 min | Quantum period finding |
+| [Shor's Algorithm](04-shors-algorithm/shors-algorithm.ipynb) | 5/5 | 60 min | Quantum period finding |
 
 ## Why This Module Ends the Course
 
