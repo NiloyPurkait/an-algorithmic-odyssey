@@ -1,6 +1,6 @@
 # Algorithmic Notebook Curriculum
 
-This repository is organized as six sequential modules. Each module has a short README, a recommended path, and self-contained notebooks with runnable simulations. Treat it as less of a "course" and more of a digital memory palace of algorithms, across several disciplines of science. This also means you have no obligation to explore it sequentially, pick whatever interests you. 
+This repository is organized as six modules. Each module has a short README, a recommended path, and self-contained notebooks with runnable simulations. Treat it as less of a "course" and more of a digital memory palace of algorithms, across several disciplines of science. This also means you have no obligation to explore it sequentially, pick whatever interests you. 
 
 ## Modules
 
