@@ -102,7 +102,7 @@ Some algorithms encode structure as ratios, modular positions, or repeating cycl
 - [Markov Chains](../04-statistical-optimization/01-markov-chains/markov-chains.ipynb): probability mass cycles through states.
 - [Fast Fourier Transform](../04-statistical-optimization/06-fast-fourier-transform/fft.ipynb): signals become periodic frequency components.
 - [RSA](../06-cryptography-and-quantum/01-rsa/rsa.ipynb): modular exponentiation cycles through residues.
-- [Shor's Algorithm](../06-cryptography-and-quantum/02-shors-algorithm/shors-algorithm.ipynb): factoring becomes period finding.
+- [Shor's Algorithm](../06-cryptography-and-quantum/03-shors-algorithm/shors-algorithm.ipynb): factoring becomes period finding.
 
 ## Randomness and Sampling
 
@@ -114,6 +114,7 @@ Randomness can reduce memory, model uncertainty, or search spaces too large to e
 - [Monte Carlo Tree Search](../05-strategic-search/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
 - [Ant Colony Optimization](../05-strategic-search/02-ant-colony/ant-colony.ipynb)
 - [Genetic Algorithms](../05-strategic-search/03-genetic-algorithms/genetic-algorithms.ipynb)
+- [Zero-Knowledge Proofs](../06-cryptography-and-quantum/02-zero-knowledge-proofs/zero-knowledge-proofs.ipynb): repeated random challenges drive a cheating prover's success toward zero, the same one-sided error as a Bloom filter.
 
 ## Optimization
 
@@ -140,4 +141,4 @@ Some algorithms reveal hidden structure by changing representation.
 - [Fast Fourier Transform](../04-statistical-optimization/06-fast-fourier-transform/fft.ipynb): time samples become frequencies.
 - [Perlin Noise](../04-statistical-optimization/07-perlin-noise/perlin-noise.ipynb): octaves synthesize a signal by layering frequencies.
 - [Penrose Graphical Notation](../04-statistical-optimization/05-penrose-linear-algebra/graph-notation.ipynb): tensor operations become diagrams.
-- [Shor's Algorithm](../06-cryptography-and-quantum/02-shors-algorithm/shors-algorithm.ipynb): factoring becomes period finding.
+- [Shor's Algorithm](../06-cryptography-and-quantum/03-shors-algorithm/shors-algorithm.ipynb): factoring becomes period finding.

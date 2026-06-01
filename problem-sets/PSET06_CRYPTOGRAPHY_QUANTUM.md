@@ -2,7 +2,7 @@
 
 ## Goals
 
-Students should be able to model classical encryption as state, build public-key cryptography from modular arithmetic, explain why its security rests on a hardness assumption, and show how quantum period finding threatens that assumption.
+Students should be able to model classical encryption as state, build public-key cryptography from modular arithmetic and explain why its security rests on a hardness assumption, prove a statement without revealing it and bound a cheating prover's success, and show how quantum period finding threatens the hardness assumption.
 
 ## Problems
 
@@ -26,7 +26,18 @@ Deliverables:
 - repeated-squaring trace for encryption or decryption
 - explanation of why tiny RSA is insecure
 
-### 3. Shor's Period-Finding Bridge
+### 3. Zero-Knowledge Soundness
+
+Simulate the Ali Baba cave (or the graph 3-coloring protocol) for an honest prover and a cheating prover across a range of round counts `k`.
+
+Deliverables:
+
+- acceptance rate for the honest prover (completeness) and the cheating prover (soundness) versus `k`
+- the measured cheat rate compared with the bound `(1/2)^k` for the cave, or `(1 - 1/|E|)^k` for the coloring graph
+- the smallest `k` that pushes the cheat below one in a million
+- a predictable-challenge run showing the cheat now passes every round, and one sentence on why independent randomness is what makes the proof sound
+
+### 4. Shor's Period-Finding Bridge
 
 For a small composite `N`, choose a base `a` with `gcd(a, N) = 1` and compute modular powers until a period appears.
 

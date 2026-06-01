@@ -511,7 +511,7 @@
     <aside>
       <div class="brand">
         <h1>Algorithm Lab</h1>
-        <p>Thirty-seven course topics, each shown as state changing over time.</p>
+        <p>Thirty-eight course topics, each shown as state changing over time.</p>
       </div>
       <div class="filters">
         <input id="search" class="search" type="search" placeholder="Search algorithms">
@@ -648,6 +648,7 @@
       lesson("biomorphs", "frontiers", "Dawkins' Biomorphs", "biomorphs", "Artificial selection over genomes", "Small integer mutations become complex recursive forms when selection is cumulative.", "Every child is a bounded mutation of its parent and draws deterministically from its genes.", "Drawing is O(2^d) in recursion depth d, capped by the depth gene.", "Too much mutation breaks continuity; too little mutation stagnates.", "Which child would you promote as the next parent?", "draw parent from genes\nmake eight mutated children\nstudent selects a child\npromote child to parent\nrepeat generations"),
       lesson("enigma", "crypto", "Enigma", "enigma", "Rotor state machine", "A letter path changes because the rotor state steps after each character.", "For a fixed state, wiring is reversible.", "O(message length) encryption; brute force scales with key space.", "Repeated settings and procedures leak structure.", "Why does the same input letter produce a new output?", "step rotor\npass signal through rotors\nreflect\npass back through rotors\nemit ciphertext"),
       lesson("rsa", "crypto", "RSA", "rsa", "Modular exponentiation and keys", "Repeated squaring turns a huge exponent into a small sequence of modular steps.", "Public and private exponents are modular inverses.", "Modular exponentiation is polynomial in bit length; factoring is the hard classical step.", "Tiny primes and bad padding break real security.", "Which squaring step contributes to the result?", "choose primes p, q\nn = p*q\nchoose e and d\ncipher = message^e mod n"),
+      lesson("zkp", "crypto", "Zero-Knowledge Proofs", "zkp", "Prove a fact, reveal nothing", "Each random challenge a cheat can dodge with probability one half, so the verifier's doubt falls as (1/2)^k.", "An honest prover passes every challenge; a false claim survives each round with probability at most one half.", "k rounds of O(1) work; soundness error shrinks as (1/2)^k.", "Predictable challenges let a cheat pre-position and pass every round.", "How many rounds until a faker's odds fall below one in a million?", "repeat k times:\n  prover commits\n  verifier issues a random challenge\n  prover answers\n  reject on any failure"),
       lesson("shor", "crypto", "Shor's Algorithm", "period", "Factoring through period finding", "Modular powers repeat; the period can reveal a factor.", "A usable even period gives gcd(a^(r/2)-1, n).", "Quantum period finding is polynomial; the classical baseline is not known polynomial.", "Some bases give unusable periods.", "When does the modular cycle repeat?", "choose random base a\nfind period r of a^x mod n\nif r usable:\n  compute gcd factors")
     ];
 
@@ -880,6 +881,7 @@
         genetic: buildGenetic,
         enigma: buildEnigma,
         rsa: buildRsa,
+        zkp: buildZkp,
         period: buildPeriod
       };
       return builders[lesson.kind](mode);
@@ -1325,6 +1327,38 @@
       return frames;
     }
 
+    function buildZkp(mode) {
+      const total = mode === "stress" ? 20 : 12;
+      const predictable = mode === "failure";
+      let seed = 20240611;
+      const flip = () => {
+        seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+        return seed / 0x7fffffff < 0.5 ? 0 : 1;
+      };
+      const oddsStr = (v) => (v >= 0.01 ? `${(v * 100).toFixed(1)}%` : v.toExponential(1));
+      const frames = [];
+      for (let k = 1; k <= total; k++) {
+        const challenge = predictable ? 1 : flip();
+        const survive = predictable ? 1 : Math.pow(0.5, k);
+        frames.push(frame(
+          `round ${k}`,
+          predictable
+            ? "Predictable challenge: a cheat pre-positions on the side it knows will be asked and passes every round, so the proof proves nothing."
+            : "The honest prover emerges from whichever side the verifier demands; the chance a faker could match this run halves every round.",
+          { round: k, total, challenge, survive, mode },
+          predictable
+            ? { round: k, cheatOdds: "100%", soundness: "broken" }
+            : { round: k, cheatOdds: oddsStr(survive), target: "1e-6" },
+          [
+            { color: C.lime, label: "honest prover emerges" },
+            { color: C.amber, label: "locked door (needs secret)" },
+            { color: C.rose, label: "a cheat's surviving odds" }
+          ]
+        ));
+      }
+      return frames;
+    }
+
     function buildBoids(mode) {
       const bounds = { x: 110, y: 86, w: 1060, h: 565 };
       const count = mode === "stress" ? 120 : 90;
@@ -1664,6 +1698,7 @@
         genetic: drawGenetic,
         enigma: drawEnigma,
         rsa: drawRsa,
+        zkp: drawZkp,
         period: drawPeriod
       };
       clearCanvas();
@@ -1968,6 +2003,82 @@
         }
       }
       label(x0 + grid.length * cell / 2, y0 + grid.length * cell + 34, "repeated local play -> cooperation survives in clusters", C.muted);
+    }
+
+    function drawZkp(s) {
+      const leftX = 250, rightX = 430, topY = 250, botY = 470;
+      const midX = (leftX + rightX) / 2;
+      const R = (rightX - leftX) / 2;
+      ctx.strokeStyle = C.line;
+      ctx.lineWidth = 9;
+      ctx.lineCap = "round";
+      line(leftX, botY, leftX, topY);
+      line(rightX, botY, rightX, topY);
+      ctx.beginPath();
+      ctx.arc(midX, topY, R, Math.PI, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fillStyle = C.amber;
+      rect(midX - 15, topY - 16, 30, 32);
+      label(midX, topY - 28, "locked door", C.muted);
+      label(leftX, botY + 32, "A", C.text);
+      label(rightX, botY + 32, "B", C.text);
+      label(midX, botY + 60, "entrance", C.muted);
+
+      const px = s.challenge === 0 ? leftX : rightX;
+      const proverColor = s.mode === "failure" ? C.rose : C.lime;
+      ctx.fillStyle = "rgba(0,0,0,0.34)";
+      circle(px + 2, botY - 16, 17);
+      ctx.fillStyle = proverColor;
+      circle(px, botY - 18, 16);
+      const side = s.challenge === 0 ? "A" : "B";
+      label(midX, botY + 92, s.mode === "failure"
+        ? `verifier always shouts "${side}" - the cheat knew it`
+        : `verifier shouts "come out ${side}" -> prover emerges`, C.text);
+
+      const ox = 720, oy = 520, w = 440, h = 300;
+      const yMin = Math.log10(Math.pow(0.5, s.total));
+      const plotY = (v) => oy - (Math.log10(v) - yMin) / (0 - yMin) * h;
+      const plotX = (k) => ox + (k / s.total) * w;
+      const curveVal = (k) => (s.mode === "failure" ? 1 : Math.pow(0.5, k));
+      ctx.strokeStyle = C.line;
+      ctx.lineWidth = 2;
+      line(ox, oy, ox + w, oy);
+      line(ox, oy, ox, oy - h);
+      if (-6 > yMin) {
+        ctx.save();
+        ctx.setLineDash([7, 7]);
+        ctx.strokeStyle = C.lime;
+        ctx.lineWidth = 2;
+        line(ox, plotY(1e-6), ox + w, plotY(1e-6));
+        ctx.restore();
+        label(ox + w - 64, plotY(1e-6) - 10, "1 in a million", C.lime);
+      }
+      ctx.strokeStyle = "rgba(155,168,181,0.55)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let k = 0; k <= s.total; k++) {
+        const X = plotX(k), Y = plotY(curveVal(k));
+        if (k === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y);
+      }
+      ctx.stroke();
+      ctx.strokeStyle = C.rose;
+      ctx.lineWidth = 3.5;
+      ctx.beginPath();
+      for (let k = 0; k <= s.round; k++) {
+        const X = plotX(k), Y = plotY(curveVal(k));
+        if (k === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y);
+      }
+      ctx.stroke();
+      ctx.fillStyle = C.rose;
+      circle(plotX(s.round), plotY(s.survive), 7);
+      label(ox + w / 2, oy + 34, "rounds passed", C.muted);
+      const readout = s.mode === "failure"
+        ? "doubt never drops: a cheat is still accepted"
+        : `a cheat's odds after ${s.round}: ${s.survive >= 0.01 ? (s.survive * 100).toFixed(1) + "%" : s.survive.toExponential(1)}`;
+      ctx.fillStyle = C.text;
+      ctx.font = "700 18px sans-serif";
+      ctx.textAlign = "left";
+      ctx.fillText(readout, ox, oy - h - 24);
     }
 
     function drawBoids(s) {
