@@ -511,7 +511,7 @@
     <aside>
       <div class="brand">
         <h1>Algorithm Lab</h1>
-        <p>Forty course topics, each shown as state changing over time.</p>
+        <p>Forty-one course topics, each shown as state changing over time.</p>
       </div>
       <div class="filters">
         <input id="search" class="search" type="search" placeholder="Search algorithms">
@@ -629,6 +629,7 @@
       lesson("schelling", "emergence", "Schelling Segregation", "schelling", "Micro-motives and macro-patterns", "Mild local satisfaction rules can amplify into large spatial clusters.", "Moves preserve the counts of red agents, blue agents, and empty cells.", "A naive round is O(n^2) for an n by n grid with constant neighbor checks.", "Thresholds, vacancies, and movement rules can change the macro-pattern.", "How can tolerant local rules still produce strong clustering?", "initialize red/blue/empty grid\nfor each round:\n  find unsatisfied agents\n  move them to empty cells\n  measure same-neighbor ratio"),
       lesson("ipd", "emergence", "Spatial Prisoner's Dilemma", "ipd", "Cooperation among neighbors", "Tit-for-Tat clusters out-earn defectors at their boundary and stop shrinking.", "The next grid depends only on the current neighborhood scores (synchronous update).", "O(generations * cells * neighbors); pairing scores precomputed in a 3x3 table.", "One-shot games remove the shadow of the future, so cooperation collapses.", "Why do defectors win at first, then starve?", "for each cell: score against neighbors, then copy the best-scoring neighbor strategy"),
       lesson("boids", "emergence", "Boids", "boids", "Flocking from vector agents", "Separation, alignment, and cohesion turn individual steering into group motion.", "Every agent reads the current flock before the next motion step is applied.", "Naive neighbor search is O(agents^2) per frame; grids or trees can accelerate it.", "Overweighting one rule can scatter, freeze, or collapse the flock.", "Which local rule dominates the flock in this frame?", "for each boid:\n  find nearby flockmates\n  steer away from crowding\n  steer toward average heading\n  steer toward average position\n  limit speed and update position"),
+      lesson("wator", "emergence", "Spatial Predator-Prey", "wator", "Cyclic grass-rabbit-fox automaton", "Rabbits eat grass, foxes eat rabbits, and a fox with no prey starves back to grass; the cycle self-organizes into rotating spiral waves.", "Each cell becomes its cyclic successor only when enough neighbors are it, so every cell is exactly one species.", "O(generations * cells * neighbors).", "Well-mixing the grid stops spirals forming, so a species goes extinct and the cycle collapses.", "Which species is chasing which around the spiral arms?", "for each cell s:\n  successor = (s + 1) % 3\n  if enough neighbors are the successor:\n    become the successor"),
       lesson("turing-patterns", "emergence", "Turing Patterns", "field", "Reaction-diffusion fields", "Activator and inhibitor fields interact into spots, bands, or waves.", "The same local stencil updates every cell.", "O(steps * rows * columns).", "Unstable parameters produce numerical artifacts.", "Which parameter regime creates spots instead of bands?", "for each cell:\n  diffuse activator/inhibitor\n  apply reaction terms\n  clamp or normalize field"),
 
       lesson("bloom", "stats", "Bloom Filters", "bloom", "Compact probabilistic membership", "Hash functions set bits; queries must see every required bit.", "Inserted items never become false negatives if bits are not cleared.", "O(k) insert and lookup.", "False positives rise as the bit array saturates.", "Which query is a false positive?", "insert(x): set k hash positions\nquery(x): check all k positions\nif all set: maybe present\nelse: absent"),
@@ -865,6 +866,7 @@
         schelling: buildSchelling,
         ipd: buildIpd,
         boids: buildBoids,
+        wator: buildWator,
         biomorphs: buildBiomorphs,
         field: buildField,
         terrain: buildTerrain,
@@ -1427,6 +1429,62 @@
       return frames;
     }
 
+    function buildWator(mode) {
+      const n = 60, gens = 60;
+      const wellMixed = mode === "failure";
+      let seed = 12345;
+      const rnd = () => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; };
+      const OFF = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
+      let grid = Array.from({ length: n }, () => Array.from({ length: n }, () => Math.floor(rnd() * 3)));
+      const frac = (g) => {
+        const c = [0, 0, 0];
+        for (const row of g) for (const v of row) c[v]++;
+        const t = n * n;
+        return [c[0] / t, c[1] / t, c[2] / t];
+      };
+      const stepGrid = (g) => {
+        const out = g.map((r) => r.slice());
+        for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+          const succ = (g[i][j] + 1) % 3;
+          let cnt = 0;
+          for (const [di, dj] of OFF) if (g[(i + di + n) % n][(j + dj + n) % n] === succ) cnt++;
+          if (cnt >= 3) out[i][j] = succ;
+        }
+        return out;
+      };
+      const shuffle = (g) => {
+        const flat = [];
+        for (const row of g) for (const v of row) flat.push(v);
+        for (let k = flat.length - 1; k > 0; k--) {
+          const m = Math.floor(rnd() * (k + 1));
+          [flat[k], flat[m]] = [flat[m], flat[k]];
+        }
+        const out = [];
+        for (let i = 0; i < n; i++) out.push(flat.slice(i * n, i * n + n));
+        return out;
+      };
+      const frames = [];
+      for (let gen = 0; gen <= gens; gen++) {
+        const fr = frac(grid);
+        frames.push(frame(
+          `generation ${gen}`,
+          wellMixed
+            ? "Well-mixed: spiral waves cannot form, the cycle drifts, and a species dies out."
+            : "A local grass-rabbit-fox cycle organizes into rotating spiral waves; all three coexist.",
+          { grid: grid.map((r) => r.slice()), fr, mode },
+          { generation: gen, grass: `${Math.round(fr[0] * 100)}%`, rabbit: `${Math.round(fr[1] * 100)}%`, fox: `${Math.round(fr[2] * 100)}%` },
+          [
+            { color: "#4d9e5a", label: "grass" },
+            { color: "#d9cfa3", label: "rabbit" },
+            { color: "#ef6a4a", label: "fox" }
+          ]
+        ));
+        if (wellMixed) grid = shuffle(grid);
+        grid = stepGrid(grid);
+      }
+      return frames;
+    }
+
     function buildBoids(mode) {
       const bounds = { x: 110, y: 86, w: 1060, h: 565 };
       const count = mode === "stress" ? 120 : 90;
@@ -1748,6 +1806,7 @@
         schelling: drawSchelling,
         ipd: drawIpd,
         boids: drawBoids,
+        wator: drawWator,
         biomorphs: drawBiomorphs,
         field: drawField,
         terrain: drawTerrain,
@@ -2240,6 +2299,18 @@
           ? `QBER ${Math.round(s.qber * 100)}% — ${s.qber > 0.11 ? "eavesdropper detected" : "sampling for errors"}`
           : "QBER 0% — channel secure";
       ctx.fillText(status, 120, 120);
+    }
+
+    function drawWator(s) {
+      const g = s.grid, n = g.length;
+      const cell = Math.min(9, 540 / n);
+      const x0 = 380, y0 = 96;
+      const colors = ["#4d9e5a", "#d9cfa3", "#ef6a4a"];
+      for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+        ctx.fillStyle = colors[g[i][j]];
+        rect(x0 + j * cell, y0 + i * cell, cell, cell);
+      }
+      label(x0 + n * cell / 2, y0 + n * cell + 34, "cyclic dominance + space -> rotating spiral waves", C.muted);
     }
 
     function drawBoids(s) {

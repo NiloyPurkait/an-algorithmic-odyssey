@@ -51,7 +51,18 @@ Deliverables:
 - one metric such as alignment score or mean nearest-neighbor distance
 - explanation of how local steering rules produce the observed group motion
 
-### 5. Reaction-Diffusion Parameter Sweep
+### 5. Spatial Predator-Prey
+
+Run the cyclic grass-rabbit-fox grid to a steady spiral regime, then run it again well-mixed (shuffle the grid each generation).
+
+Deliverables:
+
+- a spatial snapshot showing spiral waves and the three-species population curve
+- the well-mixed population curve and which species goes extinct first
+- explanation of why spatial structure sustains coexistence that well-mixing destroys
+- the mean-field equations, or a one-line note on how they relate to the Lotka-Volterra model
+
+### 6. Reaction-Diffusion Parameter Sweep
 
 Choose two Turing-pattern parameter settings.
 
@@ -62,7 +73,7 @@ Deliverables:
 - explanation of which parameter changed
 - note about numerical stability, boundary conditions, or time-step sensitivity
 
-### 6. Generated World Mini-Project
+### 7. Generated World Mini-Project
 
 Combine at least two emergence rules into one small world. The rules can be grid-based, agent-based, or field-based.
 

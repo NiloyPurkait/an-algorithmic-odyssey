@@ -28,6 +28,7 @@ For full course assignments with implementation, proof, visual traces, and rubri
 - Change Schelling's satisfaction threshold and compare the final same-neighbor ratio.
 - Seed the Prisoner's Dilemma grid with all three strategies and find the generation where defectors peak before Tit-for-Tat clusters take over.
 - Tune Boids separation, alignment, or cohesion and describe how the flock changes.
+- Run the predator-prey grid, then well-mix it (shuffle each step) and explain why coexistence collapses without space.
 - Adjust reaction-diffusion parameters and describe the visible pattern shift.
 - Checkpoint: create a small social grid or simulation from one compact rule system, then explain whether structure comes from local interaction, movement, or strategy.
 

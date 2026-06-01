@@ -57,7 +57,8 @@ Simple local interactions can produce global structure that is hard to predict f
 - [Schelling's Model of Segregation](../03-natural-emergence/01-schelling-segregation/schelling-segregation.ipynb): mild local preferences can amplify into global clustering.
 - [Spatial Prisoner's Dilemma](../03-natural-emergence/02-spatial-prisoners-dilemma/spatial-prisoners-dilemma.ipynb): repeated local play lets cooperator clusters emerge among defectors.
 - [Boids](../03-natural-emergence/03-boids/boids.ipynb): separation, alignment, and cohesion create flocking from autonomous vector agents.
-- [Turing Patterns](../03-natural-emergence/04-turing-patterns/turing-patterns.ipynb): reaction and diffusion create spots, bands, and waves.
+- [Spatial Predator-Prey](../03-natural-emergence/04-predator-prey/predator-prey.ipynb): a cyclic grass-rabbit-fox rule organizes into rotating spiral waves that keep all three species coexisting.
+- [Turing Patterns](../03-natural-emergence/05-turing-patterns/turing-patterns.ipynb): reaction and diffusion create spots, bands, and waves.
 
 ## Social Emergence
 
