@@ -1,6 +1,6 @@
 # Learning Map
 
-This course is a sequence of mental tools. Each module adds one new way to model a problem, then reuses earlier ideas in a richer setting.
+This course is a sequence of modeling tools. Each module adds a way to represent problems, then reuses earlier ideas in a new setting.
 
 ## Module Path
 
@@ -10,7 +10,7 @@ This course is a sequence of mental tools. Each module adds one new way to model
 | 2. Spatial Graphs | Nodes, edges, weights, regions, capacity | Choose the right traversal, partitioning, or optimization strategy | Compare dependency order, nearest region, shortest path, spanning tree, and max flow |
 | 3. Natural Emergence | Grids, social agents, fields, swarms, genomes, geometry | See how compact rules create global structure | Modify a rule, threshold, gene, or parameter and describe the pattern change |
 | 4. Statistical Optimization | Probability, vectors, matrices, signals | Work with uncertainty, approximation, and high-dimensional data | Explain what is exact, what is estimated, and what is optimized |
-| 5. Strategic and Quantum Frontiers | Game trees, metaheuristics, cryptography, quantum periods | Combine search, probability, number theory, and adversarial reasoning | Compare classical limits with heuristic or quantum alternatives |
+| 5. Strategic Search and Quantum Frontiers | Game trees, metaheuristics, cryptography, quantum periods | Combine search, probability, number theory, and adversarial reasoning | Compare classical limits with heuristic or quantum alternatives |
 
 ## Suggested Pace
 
@@ -30,7 +30,7 @@ For each notebook:
 4. Predict what should happen.
 5. Rerun and write one sentence about what changed.
 
-The course works best when students treat every notebook as a small experiment, not a static reading assignment.
+Treat each notebook as a small experiment: change one thing, rerun, and explain the difference.
 
 ## Higher-Rigor Track
 

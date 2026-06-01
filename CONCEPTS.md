@@ -25,7 +25,7 @@ Graphs model connected systems: routes, dependencies, links, capacities, and inf
 - [Topological Sort](02-spatial-graphs/00-topological-sort/topological-sort.ipynb)
 - [Minimum Spanning Tree](02-spatial-graphs/01-minimum-spanning-tree/minimum-spanning-tree.ipynb)
 - [Dijkstra](02-spatial-graphs/02-dijkstra/dijkstra.ipynb)
-- [A Star](02-spatial-graphs/03-a-star/a-star.ipynb)
+- [A*](02-spatial-graphs/03-a-star/a-star.ipynb)
 - [Voronoi and Delaunay](02-spatial-graphs/04-voronoi-delaunay/voronoi-delaunay.ipynb): turn coordinate geometry into a natural-neighbor graph.
 - [Edmonds-Karp](02-spatial-graphs/06-edmonds-karp/edmonds-karp.ipynb)
 - [PageRank](04-statistical-optimization/02-pagerank/pagerank.ipynb)
@@ -45,8 +45,8 @@ Matrices make relationships visible as tables of numbers.
 Spatial partitioning turns a continuous plane into discrete regions, neighbors, and queries.
 
 - [Voronoi and Delaunay](02-spatial-graphs/04-voronoi-delaunay/voronoi-delaunay.ipynb): closest-site territories and natural-neighbor triangles.
-- [A Star](02-spatial-graphs/03-a-star/a-star.ipynb): grid coordinates become a searchable route space.
-- [K-Means](04-statistical-optimization/03-kmeans-cluster/kmeans-cluster.ipynb): points inherit cluster regions from nearest centers.
+- [A*](02-spatial-graphs/03-a-star/a-star.ipynb): grid coordinates become a searchable route space.
+- [k-means](04-statistical-optimization/03-kmeans-cluster/kmeans-cluster.ipynb): points inherit cluster regions from nearest centers.
 - [Perlin Noise](03-natural-emergence/05-perlin-noise/perlin-noise.ipynb): coordinates sample smooth procedural fields.
 
 ## Local Rules and Emergence
@@ -111,7 +111,7 @@ Randomness can reduce memory, model uncertainty, or search spaces too large to e
 
 Optimization searches for better choices under a cost, score, or constraint.
 
-- [K-Means](04-statistical-optimization/03-kmeans-cluster/kmeans-cluster.ipynb): improve cluster centers.
+- [k-means](04-statistical-optimization/03-kmeans-cluster/kmeans-cluster.ipynb): improve cluster centers.
 - [Gradient Descent](04-statistical-optimization/04-gradient-descent/gradient-descent.ipynb): reduce loss by following a slope.
 - [Ant Colony Optimization](05-adversarial-and-quantum/02-ant-colony/ant-colony.ipynb): reinforce useful paths.
 - [Genetic Algorithms](05-adversarial-and-quantum/02-ant-colony/genetic-algorithms.ipynb): evolve better candidates.

@@ -4,7 +4,7 @@ Choose one capstone. Each option should include a notebook, written report, visu
 
 ## 1. Algorithm Animation Studio
 
-Build a polished visual player for three algorithms from different modules.
+Build a visual player for three algorithms from different modules.
 
 Required:
 
@@ -16,7 +16,7 @@ Required:
 
 ## 2. City Systems Lab
 
-Model a small city with roads, delivery routes, bottlenecks, and demand.
+Model a small city or service area with roads, delivery routes, bottlenecks, and demand.
 
 Required:
 
@@ -44,9 +44,9 @@ Analyze a small network, dataset, or signal.
 Required:
 
 - PageRank or Markov model
-- K-Means or gradient descent
+- k-means or gradient descent
 - exact/estimated/optimized distinction
-- visual story of the result
+- plots or diagrams that explain the result
 
 ## 5. Search Under Pressure
 
@@ -68,4 +68,4 @@ Required:
 - key generation trace
 - modular exponentiation trace
 - period-finding table for a small number
-- explanation of why real RSA needs large keys and padding
+- explanation of why deployed RSA needs large keys and padding, and why Shor's algorithm matters only with scalable fault-tolerant quantum hardware

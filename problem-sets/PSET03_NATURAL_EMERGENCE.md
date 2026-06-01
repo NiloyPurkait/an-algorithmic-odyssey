@@ -26,19 +26,19 @@ Deliverables:
 - initial and final grid snapshots for each threshold
 - happy fraction over time
 - mean same-neighbor ratio or cluster-size metric
-- explanation of why individual tolerance does not guarantee integrated macro-patterns
+- explanation of why a local tolerance threshold does not determine global mixing by itself
 - short note about what the model omits about real segregation
 
 ### 3. Flocking and Swarm Behavior
 
-Run the Boids simulation with at least two parameter settings: one balanced flock and one intentionally unstable or scattered flock.
+Run the Boids simulation with at least two parameter settings: one coherent flock and one unstable or scattered flock.
 
 Deliverables:
 
 - animation or three time snapshots
 - a short table of separation, alignment, and cohesion weights
 - one metric such as alignment score or mean nearest-neighbor distance
-- explanation of how local steering rules create global flock behavior
+- explanation of how local steering rules produce the observed group motion
 
 ### 4. Artificial Selection Lineage
 
@@ -60,7 +60,7 @@ Deliverables:
 - side-by-side final fields
 - one animation or sequence of frames
 - explanation of which parameter changed
-- note about numerical stability or time-step sensitivity
+- note about numerical stability, boundary conditions, or time-step sensitivity
 
 ### 6. Terrain from Noise
 
@@ -95,4 +95,4 @@ Deliverables:
 
 ## Reflection
 
-Where else in the course do simple repeated rules produce surprisingly complex behavior?
+Where else in the course do repeated local rules produce behavior that is hard to predict from one step alone?

@@ -16,7 +16,7 @@ For full course assignments with implementation, proof, visual traces, and rubri
 
 - Add one dependency to the topological-sort graph and predict how the order changes.
 - Add one expensive edge to Dijkstra, then compare the chosen path before and after.
-- Run A Star with a weaker heuristic and note whether it explores more nodes.
+- Run A* with a weaker heuristic and note whether it explores more nodes.
 - Move a user point through a Voronoi diagram and identify where cell ownership changes.
 - Lower one capacity in Edmonds-Karp and identify the new bottleneck.
 - Checkpoint: design a delivery network and explain which graph or geometry algorithm answers each planning question.
@@ -37,7 +37,7 @@ For full course assignments with implementation, proof, visual traces, and rubri
 - Tune a Bloom filter to use less memory and measure the false-positive tradeoff.
 - Change a Markov transition probability and describe the new long-run behavior.
 - Add a page to the PageRank graph and predict which ranks move.
-- Change the number of clusters in K-Means and explain whether the grouping improves.
+- Change the number of clusters in k-means and explain whether the grouping improves.
 - Change a gradient descent learning rate and compare convergence speed or instability.
 - Checkpoint: analyze a small dataset or network and state which answers are exact, estimated, or optimized.
 

@@ -9,8 +9,8 @@ The sequence moves from deterministic mechanics to graph structure, natural emer
 1. [Foundational Mechanics & Deterministic Logic](01-foundations/README.md)
 2. [Spatial Navigation & Graph Traversal](02-spatial-graphs/README.md)
 3. [Emergence, Chaos, & Natural Simulations](03-natural-emergence/README.md)
-4. [Statistical Sampling & Modern Data Science](04-statistical-optimization/README.md)
-5. [Strategic Intelligence, Secrets, & Quantum Frontiers](05-adversarial-and-quantum/README.md)
+4. [Statistical Sampling & Optimization](04-statistical-optimization/README.md)
+5. [Strategic Search, Cryptography, & Quantum Frontiers](05-adversarial-and-quantum/README.md)
 
 ## Course Guides
 
@@ -24,6 +24,6 @@ The sequence moves from deterministic mechanics to graph structure, natural emer
 
 ## How to Use This Course
 
-Start with the README inside each module, then work through the notebooks in order. Run the examples first, then change the playground cells. The goal is not memorization; it is to build intuition by watching algorithms behave.
+Start with the README inside each module, then skim the short README inside each lesson folder before opening its notebook. Run the examples first, then change the playground cells. The course is designed around observation: predict, run, inspect, and revise.
 
 For a higher-rigor path, pair each module with its problem set. Every notebook now ends with a `Visual Trace + Rigor Studio` section that names the animation target, invariant, complexity handle, failure mode, and studio task for that topic.

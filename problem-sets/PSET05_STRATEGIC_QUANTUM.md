@@ -19,7 +19,7 @@ Deliverables:
 
 ### 2. MCTS Stability
 
-Run Monte Carlo Tree Search with three playout budgets.
+Run Monte Carlo Tree Search with three playout budgets. Use fixed random seeds or repeat each budget enough times to compare stability.
 
 Deliverables:
 
@@ -30,7 +30,7 @@ Deliverables:
 
 ### 3. Metaheuristic Comparison
 
-Use ant colony optimization or a genetic algorithm on a small route, scheduling, or string-matching problem.
+Use ant colony optimization or a genetic algorithm on a small route, scheduling, or string-matching problem. Keep the scoring function fixed across runs.
 
 Deliverables:
 
@@ -50,7 +50,7 @@ Deliverables:
 
 ### 5. RSA and the Factoring Assumption
 
-Generate a tiny RSA keypair and encrypt a short number message.
+Generate a tiny RSA keypair and encrypt a number message `m` with `0 <= m < n`.
 
 Deliverables:
 
@@ -60,7 +60,7 @@ Deliverables:
 
 ### 6. Shor's Period-Finding Bridge
 
-For a small composite n, choose a base a and compute modular powers until a period appears.
+For a small composite `N`, choose a base `a` with `gcd(a, N) = 1` and compute modular powers until a period appears.
 
 Deliverables:
 

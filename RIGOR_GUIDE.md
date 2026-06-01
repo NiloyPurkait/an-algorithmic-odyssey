@@ -1,10 +1,10 @@
 # Rigor Guide
 
-The course is intuition-first, but each lesson should also leave students with a formal handle. Use this guide to add proof sketches, complexity arguments, and failure analysis without turning the notebooks into dry reference pages.
+The course is intuition-first, but each lesson should leave students with a formal handle. Use this guide to add proof sketches, complexity arguments, and failure analysis without turning the notebooks into reference notes.
 
 ## The Four-Part Rigor Block
 
-Every algorithm should eventually answer:
+Every algorithm should answer:
 
 1. **Model.** What input, state, and operations are allowed?
 2. **Invariant.** What remains true after every step?
@@ -30,7 +30,7 @@ Use concrete parameters before using asymptotic notation:
 - `E`: edges
 - `S`: sites or spatial samples
 - `k`: clusters, hash functions, choices, or symbols
-- `d`: depth, dimensions, or edit distance context
+- `d`: depth, dimension, or edit-distance limit
 - `T`: iterations, generations, samples, or playouts
 - `g`: genes in a genome
 
@@ -56,12 +56,12 @@ Each notebook should include one assumption-breaking test:
 - topological sort with a cycle
 - Bloom filter near saturation
 - gradient descent with too-large learning rate
-- K-Means with poor initialization
+- k-means with poor initialization
 - Enigma with repeated settings
 - RSA with tiny primes
 - Shor with a base that gives an unusable period
 
-The goal is not only to show what works, but to teach students how algorithms fail.
+Students should see both the successful case and the assumption that makes it fail.
 
 ## Grading Rigor
 

@@ -14,7 +14,7 @@ Deliverables:
 
 - false-positive rate table
 - bit-saturation plot
-- explanation of why false negatives do not occur
+- explanation of why false negatives do not occur in an insert-only Bloom filter with the same hash functions
 
 ### 2. Markov Chain Long Run
 
@@ -24,12 +24,12 @@ Deliverables:
 
 - transition matrix
 - probability-vector animation or table over time
-- long-run distribution
+- long-run distribution, or an explanation of why the chain does not settle
 - one modified transition and observed effect
 
 ### 3. PageRank Perturbation
 
-Run PageRank on a small directed graph, then add one node or link.
+Run PageRank on a small directed graph with damping, then add one node or link.
 
 Deliverables:
 
@@ -37,9 +37,9 @@ Deliverables:
 - explanation of damping
 - identification of the largest rank movement
 
-### 4. K-Means Initialization Study
+### 4. k-means Initialization Study
 
-Run K-Means on the same points from three initializations.
+Run k-means on the same points from three initializations.
 
 Deliverables:
 
@@ -49,7 +49,7 @@ Deliverables:
 
 ### 5. Fitting by Descent and Linear Algebra
 
-Fit a simple line or curve using gradient descent and either least squares or the pseudoinverse.
+Fit a simple line or curve using gradient descent and either least squares or the Moore-Penrose pseudoinverse.
 
 Deliverables:
 
@@ -59,7 +59,7 @@ Deliverables:
 
 ### 6. Frequency Decomposition
 
-Build a signal from at least two sine waves and run the FFT.
+Build a sampled signal from at least two sine waves and run the FFT.
 
 Deliverables:
 

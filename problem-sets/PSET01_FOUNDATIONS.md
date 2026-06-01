@@ -8,13 +8,13 @@ By the end, students should be able to trace deterministic state, reason about g
 
 ### 1. Growth by Measurement and Model
 
-Run two sorting methods on at least five input sizes. For each, collect operation counts or timings.
+Run two sorting methods on at least five input sizes. For each method, collect operation counts or timings under the same hardware and input-generation procedure.
 
 Deliverables:
 
 - a plot of size versus cost
 - one paragraph explaining the expected asymptotic shape
-- one paragraph explaining where measurement noise appears
+- one paragraph explaining where timing noise or input-order effects appear
 
 ### 2. Sorting Trace
 
@@ -28,13 +28,13 @@ Deliverables:
 
 ### 3. Antikythera Gear Ratios
 
-Use the Antikythera notebook to study the ratio `64/38 * 48/24 * 127/32`.
+Use the Antikythera notebook to study the lunar gearing ratio `64/38 * 48/24 * 127/32`.
 
 Deliverables:
 
 - exact fraction calculation
 - explanation of why `254/19 - 1 = 235/19`
-- visual crank output for 1 year, 19 years, and 1 Saros cycle
+- visual crank output for 1 year, 19 years, and 223 lunar months
 - one changed tooth count and the accumulated phase error after 19 years
 
 ### 4. Edit Distance as a Table Proof
@@ -45,11 +45,11 @@ Deliverables:
 
 - the filled matrix for each candidate
 - the best correction under edit distance
-- one case where edit distance alone might choose the wrong semantic correction
+- one case where edit distance alone might choose the wrong correction because meaning or word frequency is missing
 
 ### 5. Huffman Exchange Argument
 
-Compress two text samples: one skewed and one close to uniform.
+Compress two text samples with the same alphabet size: one skewed and one close to uniform.
 
 Deliverables:
 
@@ -59,7 +59,7 @@ Deliverables:
 
 ### 6. Turing Machine Micro-Lab
 
-Design a tiny Turing machine with at most four states.
+Design a tiny Turing machine with at most four non-halting states.
 
 Deliverables:
 

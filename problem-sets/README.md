@@ -1,6 +1,6 @@
 # Problem Sets
 
-These problem sets turn the notebook curriculum into a higher-rigor course. Each set mixes implementation, visual explanation, proof, and transfer.
+These problem sets add implementation, visual explanation, proof, and transfer work to the notebooks.
 
 ## Submission Standard
 
@@ -10,7 +10,7 @@ Each problem set submission should include:
 - runnable code or notebook cells for implementation questions
 - at least one visual trace or animation
 - one failure-mode experiment
-- a final reflection connecting the module to another module
+- a final reflection that connects the module to another module
 
 ## Sequence
 

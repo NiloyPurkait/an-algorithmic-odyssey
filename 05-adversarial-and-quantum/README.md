@@ -1,4 +1,4 @@
-# Module 5: Strategic Intelligence, Secrets, & Quantum Frontiers
+# Module 5: Strategic Search, Cryptography, & Quantum Frontiers
 
 This module studies computation under pressure: opponents, impossible search spaces, encryption, and quantum speedups. It is the end of the arc because it asks students to combine state, trees, probability, optimization, and number theory.
 

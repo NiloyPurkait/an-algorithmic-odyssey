@@ -30,14 +30,14 @@ Deliverables:
 
 ### 3. Shortest Path Duel
 
-Run Dijkstra and A* on the same map.
+Run Dijkstra and A* on the same map with nonnegative edge costs.
 
 Deliverables:
 
 - trace of settled or expanded nodes
 - final path and cost
 - comparison of node expansions
-- explanation of what makes the A* heuristic admissible
+- explanation of what makes the A* heuristic admissible for this map
 
 ### 4. Spatial Territories and Natural Neighbors
 
@@ -48,7 +48,7 @@ Deliverables:
 - plotted Voronoi territories
 - Delaunay natural-neighbor graph
 - three user points with nearest-site assignments
-- one explanation of where the nearest-site model is useful and where it is too simple
+- one explanation of where the nearest-site model is useful and one assumption it ignores
 
 ### 5. Matrix All-Pairs Reasoning
 
@@ -58,11 +58,11 @@ Deliverables:
 
 - one intermediate matrix snapshot
 - final distance matrix
-- explanation of the phase-k invariant
+- explanation of the phase-`k` invariant
 
 ### 6. Flow and Bottlenecks
 
-Design a small shipping, bandwidth, or evacuation network.
+Design a small directed shipping, bandwidth, or evacuation network with nonnegative capacities.
 
 Deliverables:
 

@@ -30,7 +30,7 @@ Artificial life, sociology, evolutionary biology, mathematical biology, procedur
 
 ## Why This Module Matters
 
-After graph rigor, students get visual feedback. The lesson is precise: complexity does not always require complex rules. It can appear in social grids, fields, agent motion, selected lineages, or geometry.
+After graph rigor, students get visual feedback. The lesson is precise: complexity can emerge from simple rules in social grids, fields, agent motion, selected lineages, or geometry.
 
 ## Checkpoint
 

@@ -1,6 +1,6 @@
 # Visual Trace Standard
 
-This course should make computation visible. Each major notebook should expose the algorithm as a sequence of trace steps, then let students play, pause, step, and inspect the changing state.
+This course should make computation visible. Each major notebook should expose the algorithm as a sequence of trace steps, then let students pause, step, and inspect the changing state.
 
 ## Minimum Standard
 
@@ -71,4 +71,4 @@ Each notebook now ends with a `Visual Trace + Rigor Studio` section. That sectio
 - test the failure mode
 - complete the studio task
 
-The shared `courseware.visual_tracing` module includes ready-to-run examples for bubble sort, Levenshtein distance, Dijkstra, Game of Life, K-Means, and gradient descent. Other notebooks should follow the same trace-shape.
+The shared `courseware.visual_tracing` module includes examples for bubble sort, Levenshtein distance, Dijkstra, Game of Life, k-means, and gradient descent. Other notebooks should follow the same trace shape.
