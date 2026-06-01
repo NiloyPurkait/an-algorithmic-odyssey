@@ -1,6 +1,6 @@
 # Minimum Spanning Tree
 
-A minimum spanning tree connects every vertex with no cycles and minimum total edge weight. Kruskal's algorithm builds it by scanning edges from cheapest to most expensive.
+A minimum spanning tree connects every vertex with no cycles and minimum total edge weight. Kruskal's algorithm builds it by scanning edges from cheapest to most expensive. It carries the greedy idea from Huffman into networks, where every accepted edge needs a reason it is globally safe.
 
 ## Open
 

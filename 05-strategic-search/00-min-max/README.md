@@ -1,6 +1,6 @@
 # Minimax and Alpha-Beta Pruning
 
-Minimax evaluates a game tree from the leaves upward. Alpha-beta pruning keeps the minimax answer while skipping branches that cannot change it.
+Minimax evaluates a game tree from the leaves upward. Alpha-beta pruning keeps the minimax answer while skipping branches that cannot change it. This opens strategic search with a direct adversary: every move is evaluated against someone trying to undo your plan.
 
 ## Open
 

@@ -1,6 +1,6 @@
 # Huffman Coding
 
-Huffman coding builds a prefix-free binary code from symbol frequencies. Frequent symbols move closer to the root; rare symbols receive longer bit strings.
+Huffman coding builds a prefix-free binary code from symbol frequencies. Frequent symbols move closer to the root; rare symbols receive longer bit strings. It links greedy choice to representation, showing how a data distribution can become a code tree.
 
 ## Open
 

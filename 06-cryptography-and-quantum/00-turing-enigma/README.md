@@ -1,6 +1,6 @@
 # Enigma and the Bombe
 
-The Enigma machine encrypts by composing rotor, reflector, and plugboard permutations. The Bombe searched machine settings by exploiting known plaintext and contradictions.
+The Enigma machine encrypts by composing rotor, reflector, and plugboard permutations. The Bombe searched machine settings by exploiting known plaintext and contradictions. It starts the final module by bringing computation back into hardware, but now the state machine is an object of secrecy and attack.
 
 ## Open
 

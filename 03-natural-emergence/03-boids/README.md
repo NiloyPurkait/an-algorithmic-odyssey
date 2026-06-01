@@ -1,6 +1,6 @@
 # Boids
 
-Boids are autonomous agents that steer using local information. Reynolds' original model used separation, alignment, and cohesion to produce flock-like motion.
+Boids are autonomous agents that steer using local information. Reynolds' original model used separation, alignment, and cohesion to produce flock-like motion. The lesson moves the local-rule idea from cells to bodies in motion, so emergence becomes a question of vectors, neighborhoods, and time.
 
 ## Open
 

@@ -1,6 +1,6 @@
 # Gale-Shapley Stable Matching
 
-Stable matching studies markets where two sides rank each other and the goal is to avoid a blocking pair: two participants who would rather match with each other than keep their assigned partners.
+Stable matching studies markets where two sides rank each other and the goal is to avoid a blocking pair: two participants who would rather match with each other than keep their assigned partners. It adds a new kind of guarantee: an algorithm can converge to an arrangement that certifies its own stability.
 
 ## Open
 

@@ -1,6 +1,6 @@
 # Universal Turing Machine
 
-A Turing machine reduces computation to a tape, a head, a finite state, and a transition table. Universality appears when one machine can interpret the description of another.
+A Turing machine reduces computation to a tape, a head, a finite state, and a transition table. Universality appears when one machine can interpret the description of another. This closes Foundations by separating the rule from the machine that runs it, the hinge between mechanical computation and programmable abstraction.
 
 ## Open
 

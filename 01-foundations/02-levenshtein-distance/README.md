@@ -1,6 +1,6 @@
 # Levenshtein Distance
 
-Levenshtein distance counts the cheapest sequence of insertions, deletions, and substitutions needed to turn one string into another.
+Levenshtein distance counts the cheapest sequence of insertions, deletions, and substitutions needed to turn one string into another. It is the first dynamic-programming table in the course: small local edits become a reusable map of the whole problem.
 
 ## Open
 

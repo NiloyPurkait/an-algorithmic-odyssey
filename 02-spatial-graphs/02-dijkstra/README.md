@@ -1,6 +1,6 @@
 # Dijkstra's Algorithm
 
-Dijkstra's algorithm finds shortest paths from one source in a graph with nonnegative edge weights. Certainty expands outward from the start node.
+Dijkstra's algorithm finds shortest paths from one source in a graph with nonnegative edge weights. Certainty expands outward from the start node. This introduces the frontier view that returns in A*, flow, and game search: keep the boundary organized, then advance it with proof.
 
 ## Open
 

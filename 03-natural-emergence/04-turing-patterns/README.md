@@ -1,6 +1,6 @@
 # Turing Patterns
 
-Turing patterns come from reaction-diffusion systems: chemicals or fields react locally while diffusion spreads them through space.
+Turing patterns come from reaction-diffusion systems: chemicals or fields react locally while diffusion spreads them through space. They close the module by replacing agents with continuous fields, showing that emergence can live in equations as well as grids.
 
 ## Open
 

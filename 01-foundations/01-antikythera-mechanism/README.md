@@ -1,6 +1,6 @@
 # Antikythera Mechanism
 
-The Antikythera Mechanism is useful here because it computes without software in the usual sense. Gear teeth encode ratios, and turning the crank advances a deterministic astronomical model.
+The Antikythera Mechanism is useful here because it computes without software in the usual sense. Gear teeth encode ratios, and turning the crank advances a deterministic astronomical model. It gives the course its first answer to "what is a computer?": a physical system whose parts preserve relationships as state changes.
 
 ## Open
 

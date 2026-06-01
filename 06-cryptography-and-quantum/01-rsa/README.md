@@ -1,6 +1,6 @@
 # RSA
 
-RSA is a public-key cryptosystem based on modular exponentiation and the difficulty of factoring large composite numbers.
+RSA is a public-key cryptosystem based on modular exponentiation and the difficulty of factoring large composite numbers. It shifts secrecy from hidden machine settings to mathematical asymmetry: easy to compute in one direction, hard to reverse without extra information.
 
 ## Open
 

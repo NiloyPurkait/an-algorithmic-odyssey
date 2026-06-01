@@ -1,6 +1,6 @@
 # Ant Colony Optimization
 
-Ant colony optimization solves hard combinatorial problems by letting many simple agents explore routes and leave pheromone behind. Good tours get reinforced, evaporation keeps weak paths from dominating, and over many iterations the colony concentrates on short routes without any agent seeing the whole problem.
+Ant colony optimization solves hard combinatorial problems by letting many simple agents explore routes and leave pheromone behind. Good tours get reinforced, evaporation keeps weak paths from dominating, and over many iterations the colony concentrates on short routes without any agent seeing the whole problem. It ties the emergence module to search: collective behavior becomes an optimizer.
 
 ## Open
 

@@ -1,6 +1,6 @@
 # PageRank
 
-PageRank scores pages by modeling a random surfer on a directed link graph. A page receives rank from pages that link to it, weighted by their own rank.
+PageRank scores pages by modeling a random surfer on a directed link graph. A page receives rank from pages that link to it, weighted by their own rank. It joins the graph and probability arcs: long-run movement through a network becomes a ranking.
 
 ## Open
 

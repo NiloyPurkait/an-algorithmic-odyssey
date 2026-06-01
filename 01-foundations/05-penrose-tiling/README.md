@@ -1,6 +1,6 @@
 # Penrose Tiling
 
-Penrose tilings are non-periodic tilings with long-range order, built by a deterministic recursive rule: deflation replaces each tile with smaller tiles. It sits in Foundations as a study of recursion and self-similar structure, where one rule applied repeatedly drives exponential growth in the tile count.
+Penrose tilings are non-periodic tilings with long-range order, built by a deterministic recursive rule: deflation replaces each tile with smaller tiles. It sits in Foundations as a study of recursion and self-similar structure, where one rule applied repeatedly drives exponential growth in the tile count. Placed beside string tables and matching markets, it gives the module a geometric counterpoint: one local rule, repeated carefully, builds global order.
 
 ## Open
 

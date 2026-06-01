@@ -1,6 +1,6 @@
 # Markov Chains
 
-A Markov chain moves among states according to transition probabilities. The next-state distribution depends on the current state.
+A Markov chain moves among states according to transition probabilities. The next-state distribution depends on the current state. Here uncertainty becomes dynamic, so the object of study is not one random event but a distribution moving through time.
 
 ## Open
 

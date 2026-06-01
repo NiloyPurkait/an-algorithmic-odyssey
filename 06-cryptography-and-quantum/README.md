@@ -26,7 +26,7 @@ Classical cryptography, public-key cryptography, interactive and zero-knowledge 
 
 ## Why This Module Ends the Course
 
-It combines the whole toolkit at a single dramatic point: state machines (Enigma), modular ratio and cycle thinking (RSA), interactive proofs that convince without revealing (zero-knowledge), quantum interference that amplifies a marked answer (Grover), and representation change (Shor turning factoring into period finding). The arc ends on the tension between cryptographic hardness and quantum speedup.
+It combines the whole toolkit at a focused endpoint: state machines (Enigma), modular ratio and cycle thinking (RSA), interactive proofs that convince without revealing (zero-knowledge), quantum interference that amplifies a marked answer (Grover), and representation change (Shor turning factoring into period finding). The arc ends on the tension between cryptographic hardness and quantum speedup.
 
 ## Checkpoint
 

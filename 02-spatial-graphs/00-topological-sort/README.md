@@ -1,6 +1,6 @@
 # Topological Sort
 
-Topological sorting turns prerequisites into a legal order. If no such order exists, the dependency graph contains a directed cycle.
+Topological sorting turns prerequisites into a legal order. If no such order exists, the dependency graph contains a directed cycle. The graph module starts here because it turns structure into constraint: before optimizing a network, you first ask what orders are even possible.
 
 ## Open
 
