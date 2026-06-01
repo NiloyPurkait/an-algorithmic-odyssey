@@ -511,7 +511,7 @@
     <aside>
       <div class="brand">
         <h1>Algorithm Lab</h1>
-        <p>Thirty-three course topics, each shown as state changing over time.</p>
+        <p>Thirty-five course topics, each shown as state changing over time.</p>
       </div>
       <div class="filters">
         <input id="search" class="search" type="search" placeholder="Search algorithms">
@@ -619,11 +619,13 @@
       lesson("mst", "graphs", "Minimum Spanning Tree", "mst", "Safe edges and cycle rejection", "Edges are considered by cost; unsafe cycle-forming edges are skipped.", "The cut property protects every accepted safe edge.", "Kruskal is O(E log E).", "A disconnected graph gives a forest, not one spanning tree.", "Why was the highlighted edge accepted or rejected?", "sort edges by weight\nfor edge in edges:\n  if endpoints disconnected:\n    accept edge\n    union components"),
       lesson("dijkstra", "graphs", "Dijkstra", "dijkstra", "Relaxation from a settled frontier", "Tentative distances improve until the nearest unsettled node becomes final.", "A settled node has its final shortest-path distance.", "O((V + E) log V) with a heap.", "Negative edges break the settled-node invariant.", "Which edge relaxation improved a distance?", "dist[source] = 0\nwhile frontier remains:\n  settle nearest node\n  relax outgoing edges"),
       lesson("astar", "graphs", "A Star", "astar", "Heuristic search toward a target", "The heuristic bends exploration toward the goal while preserving optimality if admissible.", "With a consistent heuristic, the first popped goal is optimal.", "Worst case can still be exponential; good heuristics reduce expansions.", "An overestimating heuristic can skip the true best path.", "How does the heuristic reshape the frontier?", "open = {start}\nchoose lowest g+h\nexpand neighbors\nstop when goal is popped"),
+      lesson("voronoi", "graphs", "Voronoi and Delaunay", "voronoi", "Territories and natural neighbors", "Closest-site regions turn continuous coordinates into a searchable spatial graph.", "Every sampled location belongs to the nearest site by squared distance.", "Naive coloring is O(samples * sites); efficient construction is O(n log n).", "Duplicate, collinear, or unbounded edge cells can produce degenerate geometry.", "Which site owns the user point right now?", "scatter sites\nfor each sampled location:\n  assign nearest site\nconnect sites whose cells touch\nquery user by nearest site"),
       lesson("floyd", "graphs", "Floyd-Warshall", "floyd", "All-pairs shortest paths", "The matrix improves as each intermediate node becomes allowed.", "After phase k, paths may use only the first k intermediates.", "O(V^3) time and O(V^2) space.", "Negative cycles make shortest paths undefined.", "Which intermediate node caused the active update?", "for k in nodes:\n  for i in nodes:\n    for j in nodes:\n      d[i,j] = min(d[i,j], d[i,k]+d[k,j])"),
       lesson("flow", "graphs", "Edmonds-Karp", "flow", "BFS augmenting paths and residual capacity", "Each augmentation pushes flow through the current shortest residual path.", "Flow conservation holds at every internal node.", "O(VE^2).", "Ignoring residual back edges hides how earlier choices can be undone.", "What is the bottleneck on this path?", "while path exists in residual graph:\n  find BFS path\n  push bottleneck flow\n  update residual edges"),
 
       lesson("life", "emergence", "Game of Life", "life", "Local neighbor rules on a grid", "Complex motion emerges from synchronous local updates.", "The next board depends only on the current board.", "O(generations * rows * columns).", "In-place updates contaminate a generation.", "Classify the pattern: death, oscillator, stable, or moving.", "for each generation:\n  count neighbors\n  apply birth/survival rules\n  replace board synchronously"),
       lesson("boids", "emergence", "Boids", "boids", "Flocking from vector agents", "Separation, alignment, and cohesion turn individual steering into group motion.", "Every agent reads the current flock before the next motion step is applied.", "Naive neighbor search is O(agents^2) per frame; grids or trees can accelerate it.", "Overweighting one rule can scatter, freeze, or collapse the flock.", "Which local rule dominates the flock in this frame?", "for each boid:\n  find nearby flockmates\n  steer away from crowding\n  steer toward average heading\n  steer toward average position\n  limit speed and update position"),
+      lesson("biomorphs", "emergence", "Dawkins' Biomorphs", "biomorphs", "Artificial selection over genomes", "Small integer mutations become complex recursive forms when selection is cumulative.", "Every child is a bounded mutation of its parent and draws deterministically from its genes.", "Drawing is O(2^d) in recursion depth d, capped by the depth gene.", "Too much mutation breaks continuity; too little mutation stagnates.", "Which child would you promote as the next parent?", "draw parent from genes\nmake eight mutated children\nstudent selects a child\npromote child to parent\nrepeat generations"),
       lesson("turing-patterns", "emergence", "Turing Patterns", "field", "Reaction-diffusion fields", "Activator and inhibitor fields interact into spots, bands, or waves.", "The same local stencil updates every cell.", "O(steps * rows * columns).", "Unstable parameters produce numerical artifacts.", "Which parameter regime creates spots instead of bands?", "for each cell:\n  diffuse activator/inhibitor\n  apply reaction terms\n  clamp or normalize field"),
       lesson("perlin", "emergence", "Perlin Noise", "terrain", "Smooth pseudo-random terrain", "Layered octaves add detail without losing continuity.", "Nearby samples are correlated by shared gradients.", "O(samples * octaves).", "Too many high-frequency octaves can erase smoothness.", "Which octave adds the visible roughness?", "noise = 0\nfor octave in octaves:\n  noise += amplitude * smooth_noise(freq*x)\n  freq *= 2\n  amplitude *= persistence"),
       lesson("penrose", "emergence", "Penrose Tiling", "tiling", "Recursive non-repeating order", "Deflation creates more tiles while preserving global non-periodic structure.", "Substitution preserves local matching constraints.", "Tile count grows exponentially with depth.", "Floating-point drift can create visual cracks.", "What stays ordered even though the pattern never repeats?", "start with seed tiles\nfor each deflation:\n  replace every tile by smaller tiles\n  preserve matching rules"),
@@ -850,10 +852,12 @@
         mst: buildMst,
         dijkstra: buildDijkstra,
         astar: buildAstar,
+        voronoi: buildVoronoi,
         floyd: buildFloyd,
         flow: buildFlow,
         life: buildLife,
         boids: buildBoids,
+        biomorphs: buildBiomorphs,
         field: buildField,
         terrain: buildTerrain,
         tiling: buildTiling,
@@ -1101,6 +1105,46 @@
       return frames;
     }
 
+    function buildVoronoi(mode) {
+      const sites = sampleVoronoiSites(mode);
+      const frames = [];
+      frames.push(frame(
+        "scatter sites",
+        "Each site is a possible owner for nearby locations.",
+        { sites, phase: "sites", user: null, mode },
+        { sites: sites.length }
+      ));
+      frames.push(frame(
+        "nearest territories",
+        "Color every sampled location by the site with minimum squared distance.",
+        { sites, phase: "cells", user: null, mode },
+        { sites: sites.length, rule: "nearest" }
+      ));
+      frames.push(frame(
+        "dual graph",
+        "Sites whose sampled cells touch become natural neighbors.",
+        { sites, phase: "delaunay", user: null, mode },
+        { sites: sites.length, graph: "dual" }
+      ));
+
+      const steps = mode === "stress" ? 22 : 18;
+      for (let i = 0; i < steps; i++) {
+        const t = i / Math.max(1, steps - 1);
+        const user = {
+          x: 145 + 980 * t,
+          y: mode === "failure" ? 380 : 380 + Math.sin(t * Math.PI * 2) * 190
+        };
+        const owner = nearestSiteIndex(user, sites);
+        frames.push(frame(
+          `query ${i + 1}`,
+          "The user point belongs to whichever site is closest right now.",
+          { sites, phase: "query", user, owner, mode },
+          { owner, distance: Math.round(pointDistance(user, sites[owner])) }
+        ));
+      }
+      return frames;
+    }
+
     function buildFloyd(mode) {
       const inf = 99;
       const matrix = mode === "stress" ? [[0,3,8,inf],[inf,0,2,5],[inf,inf,0,1],[2,inf,inf,0]] : [[0,4,inf,8],[inf,0,2,inf],[5,inf,0,1],[2,inf,inf,0]];
@@ -1201,6 +1245,36 @@
           ));
         }
         boids = boidStep(boids, bounds, perception, avoidDistance, maxSpeed, maxForce, weights, predator);
+      }
+      return frames;
+    }
+
+    function buildBiomorphs(mode) {
+      let parent = mode === "failure"
+        ? [1, 0, 2, 2, 0, 0, 0, 0, 3]
+        : [1, 0, 2, 2, 0, 0, 0, 0, 5];
+      const mutationCount = mode === "stress" ? 3 : mode === "failure" ? 0 : 1;
+      const generations = mode === "stress" ? 12 : 10;
+      const frames = [];
+      for (let gen = 0; gen <= generations; gen++) {
+        const children = biomorphChildren(parent, gen + 11, mutationCount);
+        const scores = children.map((child) => biomorphScore(child));
+        const chosen = scores.indexOf(Math.max(...scores));
+        frames.push(frame(
+          `generation ${gen}`,
+          mutationCount === 0
+            ? "With no mutation, every child repeats the parent and selection stalls."
+            : "Small mutations create nearby children; selection promotes one as the next parent.",
+          { parent: parent.slice(), children, chosen, generation: gen, mode },
+          { generation: gen, selected: chosen, score: Math.round(biomorphScore(parent)) },
+          [
+            { color: C.amber, label: "selected child" },
+            { color: C.teal, label: "mutant child" },
+            { color: C.text, label: "parent" },
+            { color: C.rose, label: "stagnation / drift risk" }
+          ]
+        ));
+        parent = children[chosen].slice();
       }
       return frames;
     }
@@ -1428,10 +1502,12 @@
         mst: drawGraph,
         dijkstra: drawGraph,
         astar: drawAstar,
+        voronoi: drawVoronoi,
         floyd: drawMatrix,
         flow: drawFlow,
         life: drawGrid,
         boids: drawBoids,
+        biomorphs: drawBiomorphs,
         field: drawField,
         terrain: drawTerrain,
         tiling: drawTiling,
@@ -1639,6 +1715,60 @@
       }
     }
 
+    function drawVoronoi(s) {
+      const bounds = { x: 120, y: 86, w: 1040, h: 560 };
+      const sample = sampleVoronoiGrid(s.sites, bounds, 56, 36);
+      const cellW = bounds.w / sample.cols;
+      const cellH = bounds.h / sample.rows;
+
+      if (s.phase !== "sites") {
+        for (let r = 0; r < sample.rows; r++) {
+          for (let c = 0; c < sample.cols; c++) {
+            const owner = sample.labels[r * sample.cols + c];
+            ctx.fillStyle = voronoiColor(owner, 0.48);
+            rect(bounds.x + c * cellW, bounds.y + r * cellH, cellW + 1, cellH + 1);
+          }
+        }
+      }
+
+      ctx.strokeStyle = C.line;
+      ctx.lineWidth = 2;
+      strokeRect(bounds.x, bounds.y, bounds.w, bounds.h);
+
+      if (s.phase === "delaunay" || s.phase === "query") {
+        sample.edges.forEach((key) => {
+          const [a, b] = key.split("-").map(Number);
+          edge([s.sites[a].x, s.sites[a].y], [s.sites[b].x, s.sites[b].y], "rgba(98,167,255,0.62)", 2);
+        });
+      }
+
+      if (s.user) {
+        const owner = s.owner ?? nearestSiteIndex(s.user, s.sites);
+        const site = s.sites[owner];
+        ctx.fillStyle = "rgba(249,115,22,0.14)";
+        circle(s.user.x, s.user.y, Math.max(28, pointDistance(s.user, site)));
+        edge([s.user.x, s.user.y], [site.x, site.y], C.amber, 4);
+        ctx.fillStyle = C.amber;
+        circle(s.user.x, s.user.y, 13);
+        ctx.strokeStyle = C.amber;
+        ctx.lineWidth = 4;
+        circle(site.x, site.y, 22);
+        label(s.user.x, s.user.y - 24, `site ${owner}`, C.text);
+      }
+
+      s.sites.forEach((site, i) => {
+        const owner = s.user && i === (s.owner ?? nearestSiteIndex(s.user, s.sites));
+        ctx.fillStyle = owner ? C.amber : C.text;
+        circle(site.x, site.y, owner ? 8 : 6);
+        ctx.fillStyle = owner ? C.amber : C.muted;
+        ctx.font = "11px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(i, site.x, site.y + 19);
+      });
+
+      label(bounds.x + bounds.w / 2, bounds.y + bounds.h + 36, "Voronoi cells: nearest territory | Delaunay edges: cells that touch", C.muted);
+    }
+
     function drawFlow(s) {
       s.edges.forEach((e) => {
         const onPath = s.path.slice(0, -1).some((p, i) => p === e[0] && s.path[i + 1] === e[1]);
@@ -1702,6 +1832,37 @@
       });
 
       label(s.bounds.x + s.bounds.w / 2, s.bounds.y + s.bounds.h + 38, "separation + alignment + cohesion = emergent flocking", C.muted);
+    }
+
+    function drawBiomorphs(s) {
+      const panels = [
+        [260, 170], [640, 150], [1020, 170],
+        [260, 380],             [1020, 380],
+        [260, 590], [640, 610], [1020, 590]
+      ];
+      panels.forEach((p, i) => {
+        const selected = i === s.chosen;
+        ctx.fillStyle = selected ? "rgba(242,184,75,0.13)" : "rgba(98,167,255,0.07)";
+        rounded(p[0] - 105, p[1] - 86, 210, 172, 8);
+        ctx.strokeStyle = selected ? C.amber : C.line;
+        ctx.lineWidth = selected ? 3 : 1;
+        strokeRect(p[0] - 105, p[1] - 86, 210, 172);
+        drawBiomorphGlyph(s.children[i], p[0], p[1] + 5, selected ? C.amber : C.teal, 72);
+        label(p[0], p[1] + 95, `child ${i}`, selected ? C.amber : C.muted);
+      });
+
+      ctx.fillStyle = "rgba(238,243,248,0.08)";
+      rounded(520, 290, 240, 180, 8);
+      ctx.strokeStyle = C.text;
+      ctx.lineWidth = 2;
+      strokeRect(520, 290, 240, 180);
+      drawBiomorphGlyph(s.parent, 640, 380, C.text, 78);
+      label(640, 485, `parent gen ${s.generation}`, C.text);
+      label(640, 522, `genes [${s.parent.join(", ")}]`, C.muted);
+
+      const selectedPanel = panels[s.chosen];
+      edge([selectedPanel[0], selectedPanel[1]], [640, 380], C.amber, 3);
+      label(640, 675, "mutation is random; selection is the repeated choice of which child becomes parent", C.muted);
     }
 
     function drawField(s) {
@@ -1909,6 +2070,157 @@
         edge(a, b, C.amber, 4);
       }
       label(cx, cy + 310, `${s.a}^x mod ${s.n}`, C.text);
+    }
+
+    function sampleVoronoiSites(mode) {
+      const count = mode === "stress" ? 24 : mode === "failure" ? 13 : 18;
+      const sites = [];
+      for (let i = 0; i < count; i++) {
+        if (mode === "failure") {
+          const x = 160 + i * (920 / Math.max(1, count - 1));
+          const y = 370 + Math.sin(i * 1.7) * 18;
+          sites.push({ x, y });
+        } else {
+          const angle = i * 2.3999632297;
+          const radius = 34 * Math.sqrt(i + 1) * (mode === "stress" ? 1.02 : 0.92);
+          const wobble = Math.sin(i * 3.1) * 18;
+          sites.push({
+            x: 640 + Math.cos(angle) * radius + wobble,
+            y: 360 + Math.sin(angle) * radius * 0.72 + Math.cos(i * 2.4) * 20
+          });
+        }
+      }
+      return sites.map((site) => ({
+        x: Math.max(145, Math.min(1135, site.x)),
+        y: Math.max(105, Math.min(620, site.y))
+      }));
+    }
+
+    function sampleVoronoiGrid(sites, bounds, cols, rows) {
+      const labels = [];
+      const edges = new Set();
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const point = {
+            x: bounds.x + (c + 0.5) * bounds.w / cols,
+            y: bounds.y + (r + 0.5) * bounds.h / rows
+          };
+          labels.push(nearestSiteIndex(point, sites));
+        }
+      }
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const here = labels[r * cols + c];
+          if (c + 1 < cols) addVoronoiEdge(edges, here, labels[r * cols + c + 1]);
+          if (r + 1 < rows) addVoronoiEdge(edges, here, labels[(r + 1) * cols + c]);
+        }
+      }
+      return { labels, edges, cols, rows };
+    }
+
+    function addVoronoiEdge(edges, a, b) {
+      if (a === b) return;
+      edges.add(a < b ? `${a}-${b}` : `${b}-${a}`);
+    }
+
+    function nearestSiteIndex(point, sites) {
+      let best = 0;
+      let bestDistance = Infinity;
+      sites.forEach((site, i) => {
+        const d = pointDistance(point, site);
+        if (d < bestDistance) {
+          bestDistance = d;
+          best = i;
+        }
+      });
+      return best;
+    }
+
+    function pointDistance(a, b) {
+      return Math.hypot(a.x - b.x, a.y - b.y);
+    }
+
+    function voronoiColor(i, alpha = 1) {
+      const colors = [
+        [64, 199, 185],
+        [242, 184, 75],
+        [98, 167, 255],
+        [181, 148, 255],
+        [155, 212, 106],
+        [239, 106, 122],
+        [88, 207, 160],
+        [232, 148, 77],
+        [91, 144, 230],
+        [204, 119, 209]
+      ];
+      const color = colors[i % colors.length];
+      return `rgba(${color[0]},${color[1]},${color[2]},${alpha})`;
+    }
+
+    function biomorphChildren(parent, seed, mutationCount) {
+      const children = [];
+      for (let child = 0; child < 8; child++) {
+        const genes = parent.slice();
+        for (let m = 0; m < mutationCount; m++) {
+          const gene = Math.abs(Math.floor(Math.sin((seed + 1) * (child + 3) * (m + 5)) * 10000)) % 9;
+          const direction = Math.sin((seed + 7) * (child + 1) * (m + 2)) > 0 ? 1 : -1;
+          genes[gene] = clampGene(gene, genes[gene] + direction);
+        }
+        children.push(genes);
+      }
+      return children;
+    }
+
+    function clampGene(index, value) {
+      const min = index === 8 ? 1 : -9;
+      const max = index === 8 ? 8 : 9;
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function biomorphScore(genes) {
+      return (
+        genes[8] * 42 +
+        Math.abs(genes[0]) * 4 +
+        Math.abs(genes[2] - genes[3]) * 6 +
+        Math.abs(genes[4]) * 5 +
+        Math.abs(genes[6]) * 7 +
+        Math.abs(genes[7]) * 4
+      );
+    }
+
+    function biomorphParams(genes) {
+      return {
+        base: 19 + genes[0] * 1.4,
+        decay: Math.max(0.48, Math.min(0.82, 0.66 + genes[1] * 0.018)),
+        left: (28 + genes[2] * 3.2) * Math.PI / 180,
+        right: (28 + genes[3] * 3.2) * Math.PI / 180,
+        bend: genes[4] * 1.8 * Math.PI / 180,
+        asym: genes[5] * 0.025,
+        fan: 1 + genes[6] * 0.035,
+        twig: genes[7] * 2.4 * Math.PI / 180,
+        depth: genes[8]
+      };
+    }
+
+    function drawBiomorphGlyph(genes, cx, cy, color, scale) {
+      const params = biomorphParams(genes);
+      const length = Math.max(8, params.base * scale / 36);
+
+      function grow(x, y, angle, branchLength, depth, side) {
+        if (depth <= 0 || branchLength < 1.5) return;
+        const x2 = x + Math.cos(angle) * branchLength;
+        const y2 = y + Math.sin(angle) * branchLength;
+        ctx.strokeStyle = color;
+        ctx.lineWidth = Math.max(0.7, depth * 0.32);
+        line(x, y, x2, y2);
+        const next = branchLength * params.decay;
+        const skew = 1 + side * params.asym;
+        grow(x2, y2, angle + side * params.left * params.fan + params.bend + params.twig, next * Math.max(0.35, skew), depth - 1, side);
+        grow(x2, y2, angle - side * params.right * params.fan + params.bend - params.twig, next * Math.max(0.35, 2 - skew), depth - 1, side);
+      }
+
+      grow(cx, cy, -Math.PI / 2, length, params.depth, 1);
+      grow(cx, cy, Math.PI / 2, length * 0.9, params.depth, -1);
     }
 
     function sampleDag(withCycle) {

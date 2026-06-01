@@ -16,7 +16,7 @@ A greedy algorithm makes the best local move available, then commits to it.
 Dynamic programming stores smaller answers so larger answers can reuse them.
 
 - [Levenshtein Distance](01-foundations/02-levenshtein-distance/levenshtein-distance.ipynb): prefix-to-prefix string edits.
-- [Floyd-Warshall](02-spatial-graphs/04-floyd-warshall/floyd-warshall.ipynb): all-pairs shortest paths through intermediate nodes.
+- [Floyd-Warshall](02-spatial-graphs/05-floyd-warshall/floyd-warshall.ipynb): all-pairs shortest paths through intermediate nodes.
 
 ## Graph Thinking
 
@@ -26,7 +26,8 @@ Graphs model connected systems: routes, dependencies, links, capacities, and inf
 - [Minimum Spanning Tree](02-spatial-graphs/01-minimum-spanning-tree/minimum-spanning-tree.ipynb)
 - [Dijkstra](02-spatial-graphs/02-dijkstra/dijkstra.ipynb)
 - [A Star](02-spatial-graphs/03-a-star/a-star.ipynb)
-- [Edmonds-Karp](02-spatial-graphs/05-edmonds-karp/edmonds-karp.ipynb)
+- [Voronoi and Delaunay](02-spatial-graphs/04-voronoi-delaunay/voronoi-delaunay.ipynb): turn coordinate geometry into a natural-neighbor graph.
+- [Edmonds-Karp](02-spatial-graphs/06-edmonds-karp/edmonds-karp.ipynb)
 - [PageRank](04-statistical-optimization/02-pagerank/pagerank.ipynb)
 
 ## Matrix Thinking
@@ -34,10 +35,19 @@ Graphs model connected systems: routes, dependencies, links, capacities, and inf
 Matrices make relationships visible as tables of numbers.
 
 - [Levenshtein Distance](01-foundations/02-levenshtein-distance/levenshtein-distance.ipynb): edit costs across prefixes.
-- [Floyd-Warshall](02-spatial-graphs/04-floyd-warshall/floyd-warshall.ipynb): path costs across every pair of nodes.
+- [Floyd-Warshall](02-spatial-graphs/05-floyd-warshall/floyd-warshall.ipynb): path costs across every pair of nodes.
 - [Game of Life](03-natural-emergence/00-game-of-life/game-of-life.ipynb): cell states across a grid.
 - [PageRank](04-statistical-optimization/02-pagerank/pagerank.ipynb): probability flowing through a network.
 - [Moore-Penrose Pseudoinverse](04-statistical-optimization/05-penrose-linear-algebra/pseudoinverse.ipynb): best-fit solutions in linear systems.
+
+## Spatial Partitioning
+
+Spatial partitioning turns a continuous plane into discrete regions, neighbors, and queries.
+
+- [Voronoi and Delaunay](02-spatial-graphs/04-voronoi-delaunay/voronoi-delaunay.ipynb): closest-site territories and natural-neighbor triangles.
+- [A Star](02-spatial-graphs/03-a-star/a-star.ipynb): grid coordinates become a searchable route space.
+- [K-Means](04-statistical-optimization/03-kmeans-cluster/kmeans-cluster.ipynb): points inherit cluster regions from nearest centers.
+- [Perlin Noise](03-natural-emergence/04-perlin-noise/perlin-noise.ipynb): coordinates sample smooth procedural fields.
 
 ## Local Rules and Emergence
 
@@ -45,9 +55,18 @@ Simple local interactions can produce global structure that is hard to predict f
 
 - [Game of Life](03-natural-emergence/00-game-of-life/game-of-life.ipynb): synchronous neighbor rules create stable, oscillating, and moving patterns.
 - [Boids](03-natural-emergence/01-boids/boids.ipynb): separation, alignment, and cohesion create flocking from autonomous vector agents.
-- [Turing Patterns](03-natural-emergence/02-turing-patterns/turing-patterns.ipynb): reaction and diffusion create spots, bands, and waves.
-- [Perlin Noise](03-natural-emergence/03-perlin-noise/perlin-noise.ipynb): local gradient structure creates smooth procedural terrain.
-- [Penrose Tiling](03-natural-emergence/04-penrose-tiling/tiling.ipynb): recursive substitution creates non-repeating order.
+- [Dawkins' Biomorphs](03-natural-emergence/02-biomorphs/biomorphs.ipynb): mutation plus artificial selection walks through a space of recursive forms.
+- [Turing Patterns](03-natural-emergence/03-turing-patterns/turing-patterns.ipynb): reaction and diffusion create spots, bands, and waves.
+- [Perlin Noise](03-natural-emergence/04-perlin-noise/perlin-noise.ipynb): local gradient structure creates smooth procedural terrain.
+- [Penrose Tiling](03-natural-emergence/05-penrose-tiling/tiling.ipynb): recursive substitution creates non-repeating order.
+
+## Evolutionary Search
+
+Evolutionary systems generate variation and preserve selected structure over repeated generations.
+
+- [Dawkins' Biomorphs](03-natural-emergence/02-biomorphs/biomorphs.ipynb): artificial selection chooses among small integer-gene mutations.
+- [Genetic Algorithms](05-adversarial-and-quantum/02-ant-colony/genetic-algorithms.ipynb): selection, crossover, and mutation optimize candidate solutions.
+- [Ant Colony Optimization](05-adversarial-and-quantum/02-ant-colony/ant-colony.ipynb): successful paths reinforce future search behavior.
 
 ## State Machines
 
@@ -74,7 +93,7 @@ Randomness can reduce memory, model uncertainty, or search spaces too large to e
 
 - [Bloom Filters](04-statistical-optimization/00-bloom-filters/bloom-filters.ipynb)
 - [Markov Chains](04-statistical-optimization/01-markov-chains/markov-chains.ipynb)
-- [Perlin Noise](03-natural-emergence/03-perlin-noise/perlin-noise.ipynb)
+- [Perlin Noise](03-natural-emergence/04-perlin-noise/perlin-noise.ipynb)
 - [Monte Carlo Tree Search](05-adversarial-and-quantum/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
 - [Ant Colony Optimization](05-adversarial-and-quantum/02-ant-colony/ant-colony.ipynb)
 - [Genetic Algorithms](05-adversarial-and-quantum/02-ant-colony/genetic-algorithms.ipynb)
@@ -95,7 +114,7 @@ Trees appear as compression structures, search spaces, and recursive decompositi
 - [Huffman Coding](01-foundations/04-huffman-coding/huffman-coding.ipynb)
 - [Minimax](05-adversarial-and-quantum/00-min-max/min-max.ipynb)
 - [Monte Carlo Tree Search](05-adversarial-and-quantum/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
-- [Penrose Tiling](03-natural-emergence/04-penrose-tiling/tiling.ipynb)
+- [Penrose Tiling](03-natural-emergence/05-penrose-tiling/tiling.ipynb)
 
 ## Signals and Structure
 

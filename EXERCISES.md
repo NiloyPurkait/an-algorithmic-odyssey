@@ -17,17 +17,19 @@ For full course assignments with implementation, proof, visual traces, and rubri
 - Add one dependency to the topological-sort graph and predict how the order changes.
 - Add one expensive edge to Dijkstra, then compare the chosen path before and after.
 - Run A Star with a weaker heuristic and note whether it explores more nodes.
+- Move a user point through a Voronoi diagram and identify where cell ownership changes.
 - Lower one capacity in Edmonds-Karp and identify the new bottleneck.
-- Checkpoint: design a delivery network and explain which graph algorithm answers each planning question.
+- Checkpoint: design a delivery network and explain which graph or geometry algorithm answers each planning question.
 
 ## Module 3: Natural Emergence
 
 - Change a Game of Life starting pattern and track whether it dies, stabilizes, or moves.
 - Tune Boids separation, alignment, or cohesion and describe how the flock changes.
+- Select Biomorph children for 10 generations and describe which visual traits accumulate.
 - Adjust reaction-diffusion parameters and describe the visible pattern shift.
 - Change Perlin noise octaves or persistence and compare smooth terrain against rough terrain.
 - Run one more Penrose deflation step and describe what stays ordered despite never repeating.
-- Checkpoint: create a small generated world from one terrain rule and one local interaction rule, then explain whether the interaction is grid-based or agent-based.
+- Checkpoint: create a small generated world or organism set from one compact rule system, then explain whether structure comes from local interaction, recursion, or selection.
 
 ## Module 4: Statistical Optimization
 

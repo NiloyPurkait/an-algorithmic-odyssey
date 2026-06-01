@@ -102,7 +102,16 @@ TOPICS = {
         "studio": "Weaken and strengthen the heuristic, then compare the number of expanded nodes.",
         "demo": "trace_template",
     },
-    "02-spatial-graphs/04-floyd-warshall/floyd-warshall.ipynb": {
+    "02-spatial-graphs/04-voronoi-delaunay/voronoi-delaunay.ipynb": {
+        "problem": "Turn scattered coordinate points into nearest-site regions and natural-neighbor graph edges.",
+        "visual": "Animate sampled Voronoi territories, Delaunay edges, and a moving user point that changes ownership.",
+        "invariant": "Each sampled location belongs to the site with minimum squared Euclidean distance.",
+        "complexity": "Naive territory coloring is O(samples * sites); efficient planar Voronoi construction is O(n log n).",
+        "failure": "Duplicate, nearly collinear, or edge-heavy point sets can create degenerate or unbounded geometry.",
+        "studio": "Move three user points, identify their nearest sites, and explain one Delaunay edge as a shared Voronoi boundary.",
+        "demo": "trace_template",
+    },
+    "02-spatial-graphs/05-floyd-warshall/floyd-warshall.ipynb": {
         "problem": "Find every shortest path between every pair of nodes.",
         "visual": "Animate the distance matrix as each intermediate node becomes allowed.",
         "invariant": "After phase k, each entry is optimal using only the first k nodes as intermediates.",
@@ -111,7 +120,7 @@ TOPICS = {
         "studio": "Choose one matrix cell and narrate the exact intermediate node that improves it.",
         "demo": "trace_template",
     },
-    "02-spatial-graphs/05-edmonds-karp/edmonds-karp.ipynb": {
+    "02-spatial-graphs/06-edmonds-karp/edmonds-karp.ipynb": {
         "problem": "Move as much flow as possible from source to sink under capacity constraints.",
         "visual": "Animate BFS augmenting paths, bottleneck capacities, residual edges, and the final cut.",
         "invariant": "Flow conservation holds at every non-source and non-sink node after each augmentation.",
@@ -138,7 +147,16 @@ TOPICS = {
         "studio": "Compare balanced, scattered, and predator-driven flocks, then connect one metric to what the animation shows.",
         "demo": "trace_template",
     },
-    "03-natural-emergence/02-turing-patterns/turing-patterns.ipynb": {
+    "03-natural-emergence/02-biomorphs/biomorphs.ipynb": {
+        "problem": "Show cumulative artificial selection over a compact integer genome.",
+        "visual": "Animate a parent biomorph surrounded by eight mutated children, then promote the selected child.",
+        "invariant": "Every child is a bounded integer mutation of its parent, and every drawing is deterministic from its genes.",
+        "complexity": "Drawing a binary recursive biomorph is O(2^d) in depth d, capped by the depth gene.",
+        "failure": "Too little mutation stagnates; too much mutation breaks parent-child continuity; high depth explodes branch count.",
+        "studio": "Record a 10-generation lineage and distinguish random mutation from non-random selection.",
+        "demo": "trace_template",
+    },
+    "03-natural-emergence/03-turing-patterns/turing-patterns.ipynb": {
         "problem": "Generate pattern from interacting chemical fields.",
         "visual": "Animate activator and inhibitor fields beside sliders for diffusion and reaction rates.",
         "invariant": "Each step applies the same local update rule to every cell in the field.",
@@ -147,7 +165,7 @@ TOPICS = {
         "studio": "Move one parameter across a threshold and describe the pattern transition.",
         "demo": "trace_template",
     },
-    "03-natural-emergence/03-perlin-noise/perlin-noise.ipynb": {
+    "03-natural-emergence/04-perlin-noise/perlin-noise.ipynb": {
         "problem": "Create smooth pseudo-random structure for terrain and texture.",
         "visual": "Animate octaves accumulating into a final terrain map.",
         "invariant": "Nearby points share related gradients, which makes the output smooth rather than white noise.",
@@ -156,7 +174,7 @@ TOPICS = {
         "studio": "Compare one-octave terrain with multi-octave terrain and name the visual tradeoff.",
         "demo": "trace_template",
     },
-    "03-natural-emergence/04-penrose-tiling/tiling.ipynb": {
+    "03-natural-emergence/05-penrose-tiling/tiling.ipynb": {
         "problem": "Create non-repeating order through recursive geometric substitution.",
         "visual": "Animate deflation steps, color tile types, and preserve matching constraints.",
         "invariant": "Each substitution preserves the local matching rules that prevent periodic repetition.",

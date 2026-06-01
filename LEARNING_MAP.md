@@ -7,16 +7,16 @@ This course is a sequence of mental tools. Each module adds one new way to model
 | Module | Main Model | Core Skill | Checkpoint |
 | --- | --- | --- | --- |
 | 1. Foundations | Arrays, gears, strings, trees, state | Trace deterministic rules and reason about cost | Explain how a gear train, table, tree, or tape stores progress |
-| 2. Spatial Graphs | Nodes, edges, weights, capacity | Choose the right traversal or optimization strategy | Compare dependency order, shortest path, spanning tree, and max flow |
-| 3. Natural Emergence | Grids, fields, agents, geometry | See how local rules create global structure | Modify a rule or parameter and describe the pattern change |
+| 2. Spatial Graphs | Nodes, edges, weights, regions, capacity | Choose the right traversal, partitioning, or optimization strategy | Compare dependency order, nearest region, shortest path, spanning tree, and max flow |
+| 3. Natural Emergence | Grids, fields, agents, genomes, geometry | See how compact rules create global structure | Modify a rule, gene, or parameter and describe the pattern change |
 | 4. Statistical Optimization | Probability, vectors, matrices, signals | Work with uncertainty, approximation, and high-dimensional data | Explain what is exact, what is estimated, and what is optimized |
 | 5. Strategic and Quantum Frontiers | Game trees, metaheuristics, cryptography, quantum periods | Combine search, probability, number theory, and adversarial reasoning | Compare classical limits with heuristic or quantum alternatives |
 
 ## Suggested Pace
 
 - Module 1: build fluency with state, loops, ratios, and tables.
-- Module 2: turn those mechanics into paths and networks.
-- Module 3: use visual systems and autonomous agents to understand emergence.
+- Module 2: turn those mechanics into paths, territories, and networks.
+- Module 3: use visual systems, autonomous agents, and selected lineages to understand emergence.
 - Module 4: move from exact procedures to data-driven approximation.
 - Module 5: apply the full toolkit to strategy, secrecy, and computational limits.
 

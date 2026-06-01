@@ -20,6 +20,7 @@ Model a small city with roads, delivery routes, bottlenecks, and demand.
 
 Required:
 
+- Voronoi service regions for depots, towers, hospitals, or shelters
 - shortest path
 - minimum spanning structure
 - max flow or capacity analysis
@@ -27,12 +28,12 @@ Required:
 
 ## 3. Generated World
 
-Create a small world using terrain generation and a local interaction rule.
+Create a small world or artificial-life system using terrain generation, local interaction, or selected morphology.
 
 Required:
 
-- Perlin or related noise
-- grid-based local dynamics
+- Perlin or related noise, or Biomorph-style genome-to-phenotype generation
+- grid-based local dynamics, agent rules, or artificial selection
 - at least two parameter regimes
 - written explanation of emergent behavior
 

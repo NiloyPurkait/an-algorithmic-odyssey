@@ -28,7 +28,18 @@ Deliverables:
 - one metric such as alignment score or mean nearest-neighbor distance
 - explanation of how local steering rules create global flock behavior
 
-### 3. Reaction-Diffusion Parameter Sweep
+### 3. Artificial Selection Lineage
+
+Run the Biomorphs artificial-selection playground for at least 10 generations.
+
+Deliverables:
+
+- starting genome and final genome
+- visual lineage snapshots
+- description of the selection criterion used by the student or scoring function
+- explanation of why mutation is random but selection is not
+
+### 4. Reaction-Diffusion Parameter Sweep
 
 Choose two Turing-pattern parameter settings.
 
@@ -39,7 +50,7 @@ Deliverables:
 - explanation of which parameter changed
 - note about numerical stability or time-step sensitivity
 
-### 4. Terrain from Noise
+### 5. Terrain from Noise
 
 Generate terrain using one octave and multiple octaves of Perlin noise.
 
@@ -49,7 +60,7 @@ Deliverables:
 - roughness metric or qualitative comparison
 - explanation of persistence and frequency
 
-### 5. Recursive Geometry
+### 6. Recursive Geometry
 
 Run Penrose tiling for at least three deflation depths.
 
@@ -59,9 +70,9 @@ Deliverables:
 - visual comparison
 - one sentence about non-periodic order
 
-### 6. Generated World Mini-Project
+### 7. Generated World Mini-Project
 
-Combine one terrain field with one local interaction rule. The local rule can be grid-based, agent-based, or field-based.
+Combine one terrain field, organism generator, or local interaction rule. The rule can be grid-based, agent-based, field-based, recursive, or selection-based.
 
 Deliverables:
 

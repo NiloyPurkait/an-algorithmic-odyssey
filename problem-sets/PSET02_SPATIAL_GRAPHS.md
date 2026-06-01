@@ -39,7 +39,18 @@ Deliverables:
 - comparison of node expansions
 - explanation of what makes the A* heuristic admissible
 
-### 4. Matrix All-Pairs Reasoning
+### 4. Spatial Territories and Natural Neighbors
+
+Create at least 12 two-dimensional sites and compute their Voronoi diagram and Delaunay triangulation.
+
+Deliverables:
+
+- plotted Voronoi territories
+- Delaunay natural-neighbor graph
+- three user points with nearest-site assignments
+- one explanation of where the nearest-site model is useful and where it is too simple
+
+### 5. Matrix All-Pairs Reasoning
 
 Run Floyd-Warshall on a graph with at least five nodes.
 
@@ -49,7 +60,7 @@ Deliverables:
 - final distance matrix
 - explanation of the phase-k invariant
 
-### 5. Flow and Bottlenecks
+### 6. Flow and Bottlenecks
 
 Design a small shipping, bandwidth, or evacuation network.
 
@@ -62,4 +73,4 @@ Deliverables:
 
 ## Reflection
 
-Explain the difference between a dependency graph, a route graph, a similarity graph, and a flow network.
+Explain the difference between a dependency graph, a route graph, a geometric-neighbor graph, a similarity graph, and a flow network.
