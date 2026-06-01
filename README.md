@@ -10,7 +10,8 @@ The sequence moves from deterministic mechanics to graph structure, natural emer
 2. [Spatial Navigation & Graph Traversal](02-spatial-graphs/README.md)
 3. [Emergence, Chaos, & Natural Simulations](03-natural-emergence/README.md)
 4. [Statistical Sampling & Optimization](04-statistical-optimization/README.md)
-5. [Strategic Search, Cryptography, & Quantum Frontiers](05-adversarial-and-quantum/README.md)
+5. [Strategic Search & Metaheuristics](05-strategic-search/README.md)
+6. [Cryptography & Quantum Frontiers](06-cryptography-and-quantum/README.md)
 
 ## Course Guides
 

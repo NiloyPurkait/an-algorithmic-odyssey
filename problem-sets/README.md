@@ -18,6 +18,7 @@ Each problem set submission should include:
 2. [Problem Set 2: Spatial Graphs](PSET02_SPATIAL_GRAPHS.md)
 3. [Problem Set 3: Natural Emergence](PSET03_NATURAL_EMERGENCE.md)
 4. [Problem Set 4: Statistical Optimization](PSET04_STATISTICAL_OPTIMIZATION.md)
-5. [Problem Set 5: Strategic Intelligence and Quantum Frontiers](PSET05_STRATEGIC_QUANTUM.md)
+5. [Problem Set 5: Strategic Search and Metaheuristics](PSET05_STRATEGIC_SEARCH.md)
+6. [Problem Set 6: Cryptography and Quantum Frontiers](PSET06_CRYPTOGRAPHY_QUANTUM.md)
 
 Use the [rubric](RUBRIC.md) for grading and the [capstone menu](CAPSTONES.md) for final projects.

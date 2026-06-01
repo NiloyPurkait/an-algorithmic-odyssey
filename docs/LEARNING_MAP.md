@@ -10,7 +10,8 @@ This course is a sequence of modeling tools. Each module adds a way to represent
 | 2. Spatial Graphs | Nodes, edges, weights, regions, capacity | Choose the right traversal, partitioning, or optimization strategy | Compare dependency order, nearest region, shortest path, spanning tree, and max flow |
 | 3. Natural Emergence | Grids, social agents, fields, swarms, genomes, geometry | See how compact rules create global structure | Modify a rule, threshold, gene, or parameter and describe the pattern change |
 | 4. Statistical Optimization | Probability, vectors, matrices, signals | Work with uncertainty, approximation, and high-dimensional data | Explain what is exact, what is estimated, and what is optimized |
-| 5. Strategic Search and Quantum Frontiers | Game trees, metaheuristics, cryptography, quantum periods | Combine search, probability, number theory, and adversarial reasoning | Compare classical limits with heuristic or quantum alternatives |
+| 5. Strategic Search & Metaheuristics | Game trees, pheromone trails, genomes | Search and optimize when brute force is too large | Compare exhaustive search, sampling, and evolutionary search |
+| 6. Cryptography & Quantum Frontiers | Rotor machines, modular arithmetic, quantum periods | Reason about secrecy, hardness, and quantum speedups | Connect RSA's factoring assumption to Shor's period-finding attack |
 
 ## Suggested Pace
 
@@ -18,7 +19,8 @@ This course is a sequence of modeling tools. Each module adds a way to represent
 - Module 2: turn those mechanics into paths, territories, and networks.
 - Module 3: use visual systems, social agents, autonomous swarms, and selected lineages to understand emergence.
 - Module 4: move from exact procedures to data-driven approximation.
-- Module 5: apply the full toolkit to strategy, secrecy, and computational limits.
+- Module 5: search and optimize under pressure with game trees and metaheuristics.
+- Module 6: apply number theory to secrecy, then see where quantum computing breaks it.
 
 ## Student Rhythm
 

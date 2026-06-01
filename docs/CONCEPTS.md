@@ -74,8 +74,8 @@ Social simulations can reveal how individual rules and institutional constraints
 Evolutionary systems generate variation and preserve selected structure over repeated generations.
 
 - [Dawkins' Biomorphs](../03-natural-emergence/03-biomorphs/biomorphs.ipynb): artificial selection chooses among small integer-gene mutations.
-- [Genetic Algorithms](../05-adversarial-and-quantum/02-ant-colony/genetic-algorithms.ipynb): selection, crossover, and mutation optimize candidate solutions.
-- [Ant Colony Optimization](../05-adversarial-and-quantum/02-ant-colony/ant-colony.ipynb): successful paths reinforce future search behavior.
+- [Genetic Algorithms](../05-strategic-search/02-ant-colony/genetic-algorithms.ipynb): selection, crossover, and mutation optimize candidate solutions.
+- [Ant Colony Optimization](../05-strategic-search/02-ant-colony/ant-colony.ipynb): successful paths reinforce future search behavior.
 
 ## State Machines
 
@@ -84,7 +84,7 @@ A state machine changes behavior based on its current state and input.
 - [Antikythera Mechanism](../01-foundations/01-antikythera-mechanism/antikythera-mechanism.ipynb): crank position determines every connected dial.
 - [Universal Turing Machine](../01-foundations/05-turing-universal-machine/universal-turing-machine.ipynb)
 - [Markov Chains](../04-statistical-optimization/01-markov-chains/markov-chains.ipynb)
-- [Enigma](../05-adversarial-and-quantum/03-turing-enigma/enigma.ipynb)
+- [Enigma](../06-cryptography-and-quantum/00-turing-enigma/enigma.ipynb)
 
 ## Ratio and Cycle Thinking
 
@@ -93,8 +93,8 @@ Some algorithms encode structure as ratios, modular positions, or repeating cycl
 - [Antikythera Mechanism](../01-foundations/01-antikythera-mechanism/antikythera-mechanism.ipynb): gear ratios approximate lunar and solar cycles.
 - [Markov Chains](../04-statistical-optimization/01-markov-chains/markov-chains.ipynb): probability mass cycles through states.
 - [Fast Fourier Transform](../04-statistical-optimization/06-fast-fourier-transform/fft.ipynb): signals become periodic frequency components.
-- [RSA](../05-adversarial-and-quantum/04-rsa/rsa.ipynb): modular exponentiation cycles through residues.
-- [Shor's Algorithm](../05-adversarial-and-quantum/05-shors-algorithm/shors-algorithm.ipynb): factoring becomes period finding.
+- [RSA](../06-cryptography-and-quantum/01-rsa/rsa.ipynb): modular exponentiation cycles through residues.
+- [Shor's Algorithm](../06-cryptography-and-quantum/02-shors-algorithm/shors-algorithm.ipynb): factoring becomes period finding.
 
 ## Randomness and Sampling
 
@@ -103,9 +103,9 @@ Randomness can reduce memory, model uncertainty, or search spaces too large to e
 - [Bloom Filters](../04-statistical-optimization/00-bloom-filters/bloom-filters.ipynb)
 - [Markov Chains](../04-statistical-optimization/01-markov-chains/markov-chains.ipynb)
 - [Perlin Noise](../03-natural-emergence/05-perlin-noise/perlin-noise.ipynb)
-- [Monte Carlo Tree Search](../05-adversarial-and-quantum/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
-- [Ant Colony Optimization](../05-adversarial-and-quantum/02-ant-colony/ant-colony.ipynb)
-- [Genetic Algorithms](../05-adversarial-and-quantum/02-ant-colony/genetic-algorithms.ipynb)
+- [Monte Carlo Tree Search](../05-strategic-search/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
+- [Ant Colony Optimization](../05-strategic-search/02-ant-colony/ant-colony.ipynb)
+- [Genetic Algorithms](../05-strategic-search/02-ant-colony/genetic-algorithms.ipynb)
 
 ## Optimization
 
@@ -113,16 +113,16 @@ Optimization searches for better choices under a cost, score, or constraint.
 
 - [k-means](../04-statistical-optimization/03-kmeans-cluster/kmeans-cluster.ipynb): improve cluster centers.
 - [Gradient Descent](../04-statistical-optimization/04-gradient-descent/gradient-descent.ipynb): reduce loss by following a slope.
-- [Ant Colony Optimization](../05-adversarial-and-quantum/02-ant-colony/ant-colony.ipynb): reinforce useful paths.
-- [Genetic Algorithms](../05-adversarial-and-quantum/02-ant-colony/genetic-algorithms.ipynb): evolve better candidates.
+- [Ant Colony Optimization](../05-strategic-search/02-ant-colony/ant-colony.ipynb): reinforce useful paths.
+- [Genetic Algorithms](../05-strategic-search/02-ant-colony/genetic-algorithms.ipynb): evolve better candidates.
 
 ## Trees
 
 Trees appear as compression structures, search spaces, and recursive decompositions.
 
 - [Huffman Coding](../01-foundations/04-huffman-coding/huffman-coding.ipynb)
-- [Minimax](../05-adversarial-and-quantum/00-min-max/min-max.ipynb)
-- [Monte Carlo Tree Search](../05-adversarial-and-quantum/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
+- [Minimax](../05-strategic-search/00-min-max/min-max.ipynb)
+- [Monte Carlo Tree Search](../05-strategic-search/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
 - [Penrose Tiling](../03-natural-emergence/06-penrose-tiling/tiling.ipynb)
 
 ## Signals and Structure
@@ -131,4 +131,4 @@ Some algorithms reveal hidden structure by changing representation.
 
 - [Fast Fourier Transform](../04-statistical-optimization/06-fast-fourier-transform/fft.ipynb): time samples become frequencies.
 - [Penrose Graphical Notation](../04-statistical-optimization/05-penrose-linear-algebra/graph-notation.ipynb): tensor operations become diagrams.
-- [Shor's Algorithm](../05-adversarial-and-quantum/05-shors-algorithm/shors-algorithm.ipynb): factoring becomes period finding.
+- [Shor's Algorithm](../06-cryptography-and-quantum/02-shors-algorithm/shors-algorithm.ipynb): factoring becomes period finding.

@@ -41,14 +41,19 @@ For full course assignments with implementation, proof, visual traces, and rubri
 - Change a gradient descent learning rate and compare convergence speed or instability.
 - Checkpoint: analyze a small dataset or network and state which answers are exact, estimated, or optimized.
 
-## Module 5: Strategic Intelligence and Quantum Frontiers
+## Module 5: Strategic Search and Metaheuristics
 
 - Change a Minimax board position and explain the best move.
 - Increase MCTS playouts and compare whether the recommended move becomes more stable.
 - Change Ant Colony or Genetic Algorithm parameters and compare solution quality.
+- Checkpoint: take one hard search problem and compare how exhaustive search, sampling (MCTS), and a metaheuristic each scale.
+
+## Module 6: Cryptography and Quantum Frontiers
+
 - Encrypt a new message with Enigma and trace how rotor state changes the output.
-- Generate a small RSA keypair, encrypt a short message, then explain what Shor's algorithm threatens.
-- Checkpoint: compare where exhaustive search, random sampling, and quantum period finding each change what is practical.
+- Generate a small RSA keypair, encrypt a short message, then explain why factoring `n` would break it.
+- Build a modular-power table for a small composite and find the period, the way Shor's algorithm relies on.
+- Checkpoint: connect RSA's factoring assumption to Shor's period finding and explain what changes what is practical.
 
 ## Response Standard
 
