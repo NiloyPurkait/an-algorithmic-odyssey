@@ -17,7 +17,19 @@ Deliverables:
 - classification of each pattern
 - explanation of synchronous update
 
-### 2. Flocking and Swarm Behavior
+### 2. Social Emergence and Segregation
+
+Run Schelling's segregation model with at least three satisfaction thresholds.
+
+Deliverables:
+
+- initial and final grid snapshots for each threshold
+- happy fraction over time
+- mean same-neighbor ratio or cluster-size metric
+- explanation of why individual tolerance does not guarantee integrated macro-patterns
+- short note about what the model omits about real segregation
+
+### 3. Flocking and Swarm Behavior
 
 Run the Boids simulation with at least two parameter settings: one balanced flock and one intentionally unstable or scattered flock.
 
@@ -28,7 +40,7 @@ Deliverables:
 - one metric such as alignment score or mean nearest-neighbor distance
 - explanation of how local steering rules create global flock behavior
 
-### 3. Artificial Selection Lineage
+### 4. Artificial Selection Lineage
 
 Run the Biomorphs artificial-selection playground for at least 10 generations.
 
@@ -39,7 +51,7 @@ Deliverables:
 - description of the selection criterion used by the student or scoring function
 - explanation of why mutation is random but selection is not
 
-### 4. Reaction-Diffusion Parameter Sweep
+### 5. Reaction-Diffusion Parameter Sweep
 
 Choose two Turing-pattern parameter settings.
 
@@ -50,7 +62,7 @@ Deliverables:
 - explanation of which parameter changed
 - note about numerical stability or time-step sensitivity
 
-### 5. Terrain from Noise
+### 6. Terrain from Noise
 
 Generate terrain using one octave and multiple octaves of Perlin noise.
 
@@ -60,7 +72,7 @@ Deliverables:
 - roughness metric or qualitative comparison
 - explanation of persistence and frequency
 
-### 6. Recursive Geometry
+### 7. Recursive Geometry
 
 Run Penrose tiling for at least three deflation depths.
 
@@ -70,7 +82,7 @@ Deliverables:
 - visual comparison
 - one sentence about non-periodic order
 
-### 7. Generated World Mini-Project
+### 8. Generated World Mini-Project
 
 Combine one terrain field, organism generator, or local interaction rule. The rule can be grid-based, agent-based, field-based, recursive, or selection-based.
 

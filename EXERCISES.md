@@ -24,12 +24,13 @@ For full course assignments with implementation, proof, visual traces, and rubri
 ## Module 3: Natural Emergence
 
 - Change a Game of Life starting pattern and track whether it dies, stabilizes, or moves.
+- Change Schelling's satisfaction threshold and compare the final same-neighbor ratio.
 - Tune Boids separation, alignment, or cohesion and describe how the flock changes.
 - Select Biomorph children for 10 generations and describe which visual traits accumulate.
 - Adjust reaction-diffusion parameters and describe the visible pattern shift.
 - Change Perlin noise octaves or persistence and compare smooth terrain against rough terrain.
 - Run one more Penrose deflation step and describe what stays ordered despite never repeating.
-- Checkpoint: create a small generated world or organism set from one compact rule system, then explain whether structure comes from local interaction, recursion, or selection.
+- Checkpoint: create a small generated world, social grid, or organism set from one compact rule system, then explain whether structure comes from local interaction, movement, recursion, or selection.
 
 ## Module 4: Statistical Optimization
 

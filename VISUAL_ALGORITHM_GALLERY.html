@@ -511,7 +511,7 @@
     <aside>
       <div class="brand">
         <h1>Algorithm Lab</h1>
-        <p>Thirty-five course topics, each shown as state changing over time.</p>
+        <p>Thirty-six course topics, each shown as state changing over time.</p>
       </div>
       <div class="filters">
         <input id="search" class="search" type="search" placeholder="Search algorithms">
@@ -624,6 +624,7 @@
       lesson("flow", "graphs", "Edmonds-Karp", "flow", "BFS augmenting paths and residual capacity", "Each augmentation pushes flow through the current shortest residual path.", "Flow conservation holds at every internal node.", "O(VE^2).", "Ignoring residual back edges hides how earlier choices can be undone.", "What is the bottleneck on this path?", "while path exists in residual graph:\n  find BFS path\n  push bottleneck flow\n  update residual edges"),
 
       lesson("life", "emergence", "Game of Life", "life", "Local neighbor rules on a grid", "Complex motion emerges from synchronous local updates.", "The next board depends only on the current board.", "O(generations * rows * columns).", "In-place updates contaminate a generation.", "Classify the pattern: death, oscillator, stable, or moving.", "for each generation:\n  count neighbors\n  apply birth/survival rules\n  replace board synchronously"),
+      lesson("schelling", "emergence", "Schelling Segregation", "schelling", "Micro-motives and macro-patterns", "Mild local satisfaction rules can amplify into large spatial clusters.", "Moves preserve the counts of red agents, blue agents, and empty cells.", "A naive round is O(n^2) for an n by n grid with constant neighbor checks.", "Thresholds, vacancies, and movement rules can change the macro-pattern.", "How can tolerant local rules still produce strong clustering?", "initialize red/blue/empty grid\nfor each round:\n  find unsatisfied agents\n  move them to empty cells\n  measure same-neighbor ratio"),
       lesson("boids", "emergence", "Boids", "boids", "Flocking from vector agents", "Separation, alignment, and cohesion turn individual steering into group motion.", "Every agent reads the current flock before the next motion step is applied.", "Naive neighbor search is O(agents^2) per frame; grids or trees can accelerate it.", "Overweighting one rule can scatter, freeze, or collapse the flock.", "Which local rule dominates the flock in this frame?", "for each boid:\n  find nearby flockmates\n  steer away from crowding\n  steer toward average heading\n  steer toward average position\n  limit speed and update position"),
       lesson("biomorphs", "emergence", "Dawkins' Biomorphs", "biomorphs", "Artificial selection over genomes", "Small integer mutations become complex recursive forms when selection is cumulative.", "Every child is a bounded mutation of its parent and draws deterministically from its genes.", "Drawing is O(2^d) in recursion depth d, capped by the depth gene.", "Too much mutation breaks continuity; too little mutation stagnates.", "Which child would you promote as the next parent?", "draw parent from genes\nmake eight mutated children\nstudent selects a child\npromote child to parent\nrepeat generations"),
       lesson("turing-patterns", "emergence", "Turing Patterns", "field", "Reaction-diffusion fields", "Activator and inhibitor fields interact into spots, bands, or waves.", "The same local stencil updates every cell.", "O(steps * rows * columns).", "Unstable parameters produce numerical artifacts.", "Which parameter regime creates spots instead of bands?", "for each cell:\n  diffuse activator/inhibitor\n  apply reaction terms\n  clamp or normalize field"),
@@ -856,6 +857,7 @@
         floyd: buildFloyd,
         flow: buildFlow,
         life: buildLife,
+        schelling: buildSchelling,
         boids: buildBoids,
         biomorphs: buildBiomorphs,
         field: buildField,
@@ -1188,6 +1190,37 @@
       return frames;
     }
 
+    function buildSchelling(mode) {
+      const size = 32;
+      const threshold = mode === "stress" ? 0.55 : mode === "failure" ? 0.05 : 0.30;
+      let grid = initialSchellingGrid(size, mode);
+      const frames = [];
+      const rounds = mode === "stress" ? 34 : 30;
+      for (let round = 0; round <= rounds; round++) {
+        const metrics = schellingMetrics(grid, threshold);
+        frames.push(frame(
+          `round ${round}`,
+          mode === "failure"
+            ? "At a very low threshold, almost everyone is already satisfied and movement stalls."
+            : "Unsatisfied agents move to empty cells; local preferences reshape the global pattern.",
+          { grid: clone(grid), threshold, round, mode },
+          {
+            threshold: threshold.toFixed(2),
+            happy: `${Math.round(metrics.happy * 100)}%`,
+            same: `${Math.round(metrics.same * 100)}%`
+          },
+          [
+            { color: C.rose, label: "red agent" },
+            { color: C.blue, label: "blue agent" },
+            { color: C.dark, label: "empty cell" },
+            { color: C.amber, label: "unhappy / moved" }
+          ]
+        ));
+        grid = schellingStep(grid, threshold, round + 3);
+      }
+      return frames;
+    }
+
     function buildBoids(mode) {
       const bounds = { x: 110, y: 86, w: 1060, h: 565 };
       const count = mode === "stress" ? 120 : 90;
@@ -1506,6 +1539,7 @@
         floyd: drawMatrix,
         flow: drawFlow,
         life: drawGrid,
+        schelling: drawSchelling,
         boids: drawBoids,
         biomorphs: drawBiomorphs,
         field: drawField,
@@ -1789,6 +1823,32 @@
           rect(x0 + c * size, y0 + r * size, size - 3, size - 3);
         }
       }
+    }
+
+    function drawSchelling(s) {
+      const grid = s.grid;
+      const cell = Math.min(16, 560 / grid.length);
+      const x0 = 370, y0 = 96;
+      const unhappy = new Set();
+      for (let r = 0; r < grid.length; r++) {
+        for (let c = 0; c < grid[0].length; c++) {
+          if (grid[r][c] && !schellingHappy(grid, r, c, s.threshold).happy) unhappy.add(`${r},${c}`);
+        }
+      }
+      for (let r = 0; r < grid.length; r++) {
+        for (let c = 0; c < grid[0].length; c++) {
+          const value = grid[r][c];
+          const key = `${r},${c}`;
+          ctx.fillStyle = value === 1 ? C.rose : value === 2 ? C.blue : "rgba(255,255,255,0.045)";
+          rect(x0 + c * cell, y0 + r * cell, cell - 1, cell - 1);
+          if (unhappy.has(key)) {
+            ctx.strokeStyle = C.amber;
+            ctx.lineWidth = 1.5;
+            strokeRect(x0 + c * cell + 1, y0 + r * cell + 1, cell - 3, cell - 3);
+          }
+        }
+      }
+      label(x0 + grid.length * cell / 2, y0 + grid.length * cell + 34, "local satisfaction threshold -> macro-level clustering", C.muted);
     }
 
     function drawBoids(s) {
@@ -2426,6 +2486,93 @@
         }
       }
       return next;
+    }
+
+    function initialSchellingGrid(size, mode) {
+      const total = size * size;
+      const empty = Math.round(total * (mode === "stress" ? 0.13 : 0.10));
+      const occupied = total - empty;
+      const red = Math.floor(occupied / 2);
+      const blue = occupied - red;
+      const cells = [
+        ...Array(red).fill(1),
+        ...Array(blue).fill(2),
+        ...Array(empty).fill(0)
+      ];
+      return Array.from({ length: size }, (_, r) =>
+        Array.from({ length: size }, (_, c) => {
+          const i = r * size + c;
+          const j = Math.abs(Math.floor(Math.sin((i + 1) * 12.9898 + 78.233) * 43758.5453)) % cells.length;
+          const value = cells.splice(j, 1)[0];
+          return value;
+        })
+      );
+    }
+
+    function schellingHappy(grid, r, c, threshold) {
+      const agent = grid[r][c];
+      if (!agent) return { happy: true, ratio: NaN };
+      let same = 0;
+      let occupied = 0;
+      for (let dr = -1; dr <= 1; dr++) {
+        for (let dc = -1; dc <= 1; dc++) {
+          if (!dr && !dc) continue;
+          const value = grid[(r + dr + grid.length) % grid.length][(c + dc + grid[0].length) % grid[0].length];
+          if (value) {
+            occupied++;
+            if (value === agent) same++;
+          }
+        }
+      }
+      const ratio = occupied ? same / occupied : 1;
+      return { happy: ratio >= threshold, ratio };
+    }
+
+    function schellingStep(grid, threshold, seed) {
+      const next = grid.map((row) => row.slice());
+      const unhappy = [];
+      const empty = [];
+      for (let r = 0; r < grid.length; r++) {
+        for (let c = 0; c < grid[0].length; c++) {
+          if (!grid[r][c]) empty.push([r, c]);
+          else if (!schellingHappy(grid, r, c, threshold).happy) unhappy.push([r, c]);
+        }
+      }
+      shuffleBySeed(unhappy, seed + 17);
+      shuffleBySeed(empty, seed + 31);
+      while (unhappy.length && empty.length) {
+        const source = unhappy.pop();
+        const target = empty.pop();
+        if (!next[source[0]][source[1]]) continue;
+        next[target[0]][target[1]] = next[source[0]][source[1]];
+        next[source[0]][source[1]] = 0;
+        empty.push(source);
+      }
+      return next;
+    }
+
+    function schellingMetrics(grid, threshold) {
+      let agents = 0;
+      let happy = 0;
+      let same = 0;
+      for (let r = 0; r < grid.length; r++) {
+        for (let c = 0; c < grid[0].length; c++) {
+          if (!grid[r][c]) continue;
+          const result = schellingHappy(grid, r, c, threshold);
+          agents++;
+          happy += result.happy ? 1 : 0;
+          same += result.ratio;
+        }
+      }
+      return { happy: agents ? happy / agents : 1, same: agents ? same / agents : 0 };
+    }
+
+    function shuffleBySeed(items, seed) {
+      items.sort((a, b) => seededNoise(a[0], a[1], seed) - seededNoise(b[0], b[1], seed));
+    }
+
+    function seededNoise(a, b, seed) {
+      return Math.sin((a + 1) * 127.1 + (b + 1) * 311.7 + seed * 74.7);
     }
 
     function boidStep(boids, bounds, perception, avoidDistance, maxSpeed, maxForce, weights, predator) {

@@ -47,24 +47,33 @@ Spatial partitioning turns a continuous plane into discrete regions, neighbors, 
 - [Voronoi and Delaunay](02-spatial-graphs/04-voronoi-delaunay/voronoi-delaunay.ipynb): closest-site territories and natural-neighbor triangles.
 - [A Star](02-spatial-graphs/03-a-star/a-star.ipynb): grid coordinates become a searchable route space.
 - [K-Means](04-statistical-optimization/03-kmeans-cluster/kmeans-cluster.ipynb): points inherit cluster regions from nearest centers.
-- [Perlin Noise](03-natural-emergence/04-perlin-noise/perlin-noise.ipynb): coordinates sample smooth procedural fields.
+- [Perlin Noise](03-natural-emergence/05-perlin-noise/perlin-noise.ipynb): coordinates sample smooth procedural fields.
 
 ## Local Rules and Emergence
 
 Simple local interactions can produce global structure that is hard to predict from one rule alone.
 
 - [Game of Life](03-natural-emergence/00-game-of-life/game-of-life.ipynb): synchronous neighbor rules create stable, oscillating, and moving patterns.
-- [Boids](03-natural-emergence/01-boids/boids.ipynb): separation, alignment, and cohesion create flocking from autonomous vector agents.
-- [Dawkins' Biomorphs](03-natural-emergence/02-biomorphs/biomorphs.ipynb): mutation plus artificial selection walks through a space of recursive forms.
-- [Turing Patterns](03-natural-emergence/03-turing-patterns/turing-patterns.ipynb): reaction and diffusion create spots, bands, and waves.
-- [Perlin Noise](03-natural-emergence/04-perlin-noise/perlin-noise.ipynb): local gradient structure creates smooth procedural terrain.
-- [Penrose Tiling](03-natural-emergence/05-penrose-tiling/tiling.ipynb): recursive substitution creates non-repeating order.
+- [Schelling's Model of Segregation](03-natural-emergence/01-schelling-segregation/schelling-segregation.ipynb): mild local preferences can amplify into global clustering.
+- [Boids](03-natural-emergence/02-boids/boids.ipynb): separation, alignment, and cohesion create flocking from autonomous vector agents.
+- [Dawkins' Biomorphs](03-natural-emergence/03-biomorphs/biomorphs.ipynb): mutation plus artificial selection walks through a space of recursive forms.
+- [Turing Patterns](03-natural-emergence/04-turing-patterns/turing-patterns.ipynb): reaction and diffusion create spots, bands, and waves.
+- [Perlin Noise](03-natural-emergence/05-perlin-noise/perlin-noise.ipynb): local gradient structure creates smooth procedural terrain.
+- [Penrose Tiling](03-natural-emergence/06-penrose-tiling/tiling.ipynb): recursive substitution creates non-repeating order.
+
+## Social Emergence
+
+Social simulations can reveal how individual rules and institutional constraints create group-level patterns.
+
+- [Schelling's Model of Segregation](03-natural-emergence/01-schelling-segregation/schelling-segregation.ipynb): micro-level satisfaction rules produce macro-level spatial clustering.
+- [Game of Life](03-natural-emergence/00-game-of-life/game-of-life.ipynb): local neighbor rules create larger grid dynamics.
+- [Boids](03-natural-emergence/02-boids/boids.ipynb): agent-level rules create collective motion.
 
 ## Evolutionary Search
 
 Evolutionary systems generate variation and preserve selected structure over repeated generations.
 
-- [Dawkins' Biomorphs](03-natural-emergence/02-biomorphs/biomorphs.ipynb): artificial selection chooses among small integer-gene mutations.
+- [Dawkins' Biomorphs](03-natural-emergence/03-biomorphs/biomorphs.ipynb): artificial selection chooses among small integer-gene mutations.
 - [Genetic Algorithms](05-adversarial-and-quantum/02-ant-colony/genetic-algorithms.ipynb): selection, crossover, and mutation optimize candidate solutions.
 - [Ant Colony Optimization](05-adversarial-and-quantum/02-ant-colony/ant-colony.ipynb): successful paths reinforce future search behavior.
 
@@ -93,7 +102,7 @@ Randomness can reduce memory, model uncertainty, or search spaces too large to e
 
 - [Bloom Filters](04-statistical-optimization/00-bloom-filters/bloom-filters.ipynb)
 - [Markov Chains](04-statistical-optimization/01-markov-chains/markov-chains.ipynb)
-- [Perlin Noise](03-natural-emergence/04-perlin-noise/perlin-noise.ipynb)
+- [Perlin Noise](03-natural-emergence/05-perlin-noise/perlin-noise.ipynb)
 - [Monte Carlo Tree Search](05-adversarial-and-quantum/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
 - [Ant Colony Optimization](05-adversarial-and-quantum/02-ant-colony/ant-colony.ipynb)
 - [Genetic Algorithms](05-adversarial-and-quantum/02-ant-colony/genetic-algorithms.ipynb)
@@ -114,7 +123,7 @@ Trees appear as compression structures, search spaces, and recursive decompositi
 - [Huffman Coding](01-foundations/04-huffman-coding/huffman-coding.ipynb)
 - [Minimax](05-adversarial-and-quantum/00-min-max/min-max.ipynb)
 - [Monte Carlo Tree Search](05-adversarial-and-quantum/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
-- [Penrose Tiling](03-natural-emergence/05-penrose-tiling/tiling.ipynb)
+- [Penrose Tiling](03-natural-emergence/06-penrose-tiling/tiling.ipynb)
 
 ## Signals and Structure
 

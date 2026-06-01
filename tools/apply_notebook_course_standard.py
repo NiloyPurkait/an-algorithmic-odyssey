@@ -138,7 +138,16 @@ TOPICS = {
         "studio": "Trace a glider and one random seed; classify death, stability, oscillator, or movement.",
         "demo": "game_of_life",
     },
-    "03-natural-emergence/01-boids/boids.ipynb": {
+    "03-natural-emergence/01-schelling-segregation/schelling-segregation.ipynb": {
+        "problem": "Show how local satisfaction rules can amplify into macro-level segregation.",
+        "visual": "Animate a red/blue/empty grid through movement rounds with threshold and vacancy controls.",
+        "invariant": "Each move preserves the counts of red agents, blue agents, and empty cells.",
+        "complexity": "A naive round is O(n^2) for an n by n grid, with constant-size neighbor checks.",
+        "failure": "Threshold, vacancy, boundary, or movement-rule changes can substantially change the macro-pattern.",
+        "studio": "Run three thresholds and compare final same-neighbor ratio while naming what the model omits.",
+        "demo": "trace_template",
+    },
+    "03-natural-emergence/02-boids/boids.ipynb": {
         "problem": "Model flocking as local steering among autonomous agents.",
         "visual": "Animate positions, velocity arrows, neighborhoods, alignment, cohesion, separation, and predator avoidance.",
         "invariant": "Each agent updates from the current snapshot of nearby agents before the next positions are accepted.",
@@ -147,7 +156,7 @@ TOPICS = {
         "studio": "Compare balanced, scattered, and predator-driven flocks, then connect one metric to what the animation shows.",
         "demo": "trace_template",
     },
-    "03-natural-emergence/02-biomorphs/biomorphs.ipynb": {
+    "03-natural-emergence/03-biomorphs/biomorphs.ipynb": {
         "problem": "Show cumulative artificial selection over a compact integer genome.",
         "visual": "Animate a parent biomorph surrounded by eight mutated children, then promote the selected child.",
         "invariant": "Every child is a bounded integer mutation of its parent, and every drawing is deterministic from its genes.",
@@ -156,7 +165,7 @@ TOPICS = {
         "studio": "Record a 10-generation lineage and distinguish random mutation from non-random selection.",
         "demo": "trace_template",
     },
-    "03-natural-emergence/03-turing-patterns/turing-patterns.ipynb": {
+    "03-natural-emergence/04-turing-patterns/turing-patterns.ipynb": {
         "problem": "Generate pattern from interacting chemical fields.",
         "visual": "Animate activator and inhibitor fields beside sliders for diffusion and reaction rates.",
         "invariant": "Each step applies the same local update rule to every cell in the field.",
@@ -165,7 +174,7 @@ TOPICS = {
         "studio": "Move one parameter across a threshold and describe the pattern transition.",
         "demo": "trace_template",
     },
-    "03-natural-emergence/04-perlin-noise/perlin-noise.ipynb": {
+    "03-natural-emergence/05-perlin-noise/perlin-noise.ipynb": {
         "problem": "Create smooth pseudo-random structure for terrain and texture.",
         "visual": "Animate octaves accumulating into a final terrain map.",
         "invariant": "Nearby points share related gradients, which makes the output smooth rather than white noise.",
@@ -174,7 +183,7 @@ TOPICS = {
         "studio": "Compare one-octave terrain with multi-octave terrain and name the visual tradeoff.",
         "demo": "trace_template",
     },
-    "03-natural-emergence/05-penrose-tiling/tiling.ipynb": {
+    "03-natural-emergence/06-penrose-tiling/tiling.ipynb": {
         "problem": "Create non-repeating order through recursive geometric substitution.",
         "visual": "Animate deflation steps, color tile types, and preserve matching constraints.",
         "invariant": "Each substitution preserves the local matching rules that prevent periodic repetition.",

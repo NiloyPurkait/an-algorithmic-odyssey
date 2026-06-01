@@ -28,12 +28,12 @@ Required:
 
 ## 3. Generated World
 
-Create a small world or artificial-life system using terrain generation, local interaction, or selected morphology.
+Create a small world, social simulation, or artificial-life system using terrain generation, local interaction, movement rules, or selected morphology.
 
 Required:
 
 - Perlin or related noise, or Biomorph-style genome-to-phenotype generation
-- grid-based local dynamics, agent rules, or artificial selection
+- grid-based local dynamics, social-agent movement rules, swarm rules, or artificial selection
 - at least two parameter regimes
 - written explanation of emergent behavior
 

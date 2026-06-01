@@ -17,7 +17,7 @@ Every algorithm should eventually answer:
 | --- | --- | --- |
 | Foundations | loop invariants, induction, exchange arguments | Why does the table/tree/state machine produce the intended result? |
 | Spatial Graphs | cut properties, nearest-neighbor invariants, relaxation invariants, residual reasoning | Why is this region/path/tree/flow globally valid after local decisions? |
-| Natural Emergence | local rule analysis, genotype-phenotype mapping, stability, numerical assumptions | Which patterns come from the rule, the genome, the selection pressure, or the implementation? |
+| Natural Emergence | local rule analysis, social-agent assumptions, genotype-phenotype mapping, stability, numerical assumptions | Which patterns come from the rule, the threshold, the genome, the selection pressure, or the implementation? |
 | Statistical Optimization | expectation, convergence, approximation, objective monotonicity | What is exact, what is estimated, and what is optimized? |
 | Strategic and Quantum | minimax induction, sampling error, number theory, period finding | Which search spaces are tractable, heuristic, adversarial, or quantum-sensitive? |
 
@@ -51,6 +51,7 @@ Each notebook should include one assumption-breaking test:
 - Dijkstra with a negative edge
 - A* with an inadmissible heuristic
 - Voronoi with duplicate, nearly collinear, or edge-heavy sites
+- Schelling segregation with threshold, vacancy, or movement-rule changes
 - Biomorphs with mutation too small, mutation too large, or recursion depth too high
 - topological sort with a cycle
 - Bloom filter near saturation
