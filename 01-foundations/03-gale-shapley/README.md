@@ -1,6 +1,6 @@
 # Gale-Shapley Stable Matching
 
-Stable matching studies markets where two sides rank each other and the goal is to avoid a blocking pair: two participants who would rather match with each other than keep their assigned partners. It adds a new kind of guarantee: an algorithm can converge to an arrangement that certifies its own stability.
+Stable matching studies markets where two sides rank each other and the goal is to avoid a blocking pair, meaning two participants who would rather match with each other than keep their assigned partners. A new kind of guarantee appears here. The algorithm converges to an arrangement that certifies its own stability.
 
 ## Open
 
@@ -9,7 +9,7 @@ Stable matching studies markets where two sides rank each other and the goal is 
 ## What To Watch
 
 - Deferred acceptance terminates because no proposal is repeated.
-- Stability is weaker than fairness; the proposing side gets a systematic advantage.
+- Stability is weaker than fairness. The proposing side gets a systematic advantage.
 - The guarantee depends on fixed preference lists and the model's assumptions.
 
 ## Read Next

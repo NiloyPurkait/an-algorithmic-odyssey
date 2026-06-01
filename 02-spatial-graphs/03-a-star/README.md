@@ -1,6 +1,6 @@
 # A* Search
 
-A* ranks frontier nodes by `f(n) = g(n) + h(n)`: cost already paid plus an estimate of the cost still ahead. It shows how search changes when the algorithm has a disciplined guess about the world, not just a record of where it has been.
+A* ranks frontier nodes by `f(n) = g(n) + h(n)`, combining cost already paid with an estimate of the cost still ahead. Search changes when the algorithm has both a disciplined guess about the world and a record of where it has been.
 
 ## Open
 

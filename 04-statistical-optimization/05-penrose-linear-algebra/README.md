@@ -1,6 +1,6 @@
 # Penrose Linear Algebra
 
-This folder pairs diagrammatic linear algebra with the Moore-Penrose pseudoinverse. One notebook emphasizes structure; the other emphasizes least-squares computation. It gives the course a linear-algebra lens for two recurring moves: rewrite a system in a clearer representation, then solve the closest version you can.
+This folder pairs diagrammatic linear algebra with the Moore-Penrose pseudoinverse. One notebook emphasizes structure, and the other emphasizes least-squares computation. The shared move is to rewrite a system in a clearer representation, then solve the closest version available.
 
 ## Open
 

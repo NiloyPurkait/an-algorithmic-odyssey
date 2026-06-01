@@ -1,6 +1,6 @@
 # Dawkins' Biomorphs
 
-Biomorphs are recursive line drawings controlled by a small genome. Mutation creates nearby variants and the learner selects one, so cumulative selection searches a space of forms far too large to enumerate. They make this module's metaheuristics tactile: the same mutate-and-select engine as genetic algorithms, with a human standing in for the fitness function. The lesson also gives search a creative endpoint, where evaluation is visual preference rather than a numeric score.
+Biomorphs are recursive line drawings controlled by a small genome. Mutation creates nearby variants, and selection promotes one of them, so cumulative selection searches a space of forms far too large to enumerate. The same mutate-and-select engine used by genetic algorithms becomes tactile here, with visual preference standing in for a numeric fitness function.
 
 ## Open
 
@@ -10,7 +10,7 @@ Biomorphs are recursive line drawings controlled by a small genome. Mutation cre
 
 - Genotype means the stored parameters.
 - Phenotype means the drawing produced by those parameters.
-- Mutation explores nearby forms; selection decides which branch of the search continues.
+- Mutation explores nearby forms. Selection decides which branch of the search continues.
 - The exercise demonstrates cumulative selection in a toy design space, not biological development in full.
 
 ## Read Next

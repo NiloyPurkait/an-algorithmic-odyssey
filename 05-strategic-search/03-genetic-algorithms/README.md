@@ -8,7 +8,7 @@ A genetic algorithm searches a space too large to enumerate by evolving a popula
 
 ## What To Watch
 
-- Selection raises the share of fit candidates; mutation keeps diversity alive.
+- Selection raises the share of fit candidates. Mutation keeps diversity alive.
 - Crossover recombines useful structure from two parents into offspring.
 - Best fitness rises in steps as good building blocks spread through the population.
 - Low diversity causes premature convergence: the population collapses onto one mediocre solution and stops improving.

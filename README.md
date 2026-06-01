@@ -1,6 +1,6 @@
 # An Algorithmic Odyssey
 
-Many patterns that seem mysterious at first, from flocking birds, pheromone trails, ciphers, and quantum search, become clearer when you can run the procedure behind them. This collection of notebooks attempts to reconstruct those procedures and lets you experiment with them directly. Treat it less as a course and more as a non-exhaustive digital memory palace for computational ideas, across several disciplines of science. This also means you have no obligation to explore it sequentially, pick whatever interests you. 
+Many patterns that seem mysterious at first, from flocking birds, pheromone trails, ciphers, and quantum search, become clearer when the procedure behind them can be run directly. This collection of notebooks reconstructs those procedures for experimentation. Treat it less as a course and more as a non-exhaustive digital memory palace for computational ideas across several disciplines of science. There is no obligation to move through it sequentially. Start wherever curiosity points.
 
 
 

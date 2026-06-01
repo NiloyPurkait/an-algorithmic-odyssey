@@ -1,6 +1,6 @@
 # Zero-Knowledge Proofs
 
-A zero-knowledge proof lets a Prover convince a skeptical Verifier that a statement is true while revealing nothing beyond that truth: not the password, not the witness, and, in the interactive setting shown here, not a reusable certificate for someone else. The guarantee comes from interaction and randomness: the Verifier issues an unpredictable challenge each round, and a Prover who lacks the secret cannot prepare for every challenge at once. It adds proof to the cryptography story: knowledge can be demonstrated without being handed over.
+A zero-knowledge proof lets a Prover convince a skeptical Verifier that a statement is true while revealing nothing beyond that truth. The verifier does not receive the password, the witness, or, in the interactive setting shown here, a reusable certificate for someone else. The guarantee comes from interaction and randomness. The Verifier issues an unpredictable challenge each round, and a Prover who lacks the secret cannot prepare for every challenge at once. Knowledge can be demonstrated without being handed over.
 
 ## Open
 
@@ -11,7 +11,7 @@ A zero-knowledge proof lets a Prover convince a skeptical Verifier that a statem
 - Completeness, soundness, and zero-knowledge are the three properties every proof must satisfy.
 - In the Ali Baba cave a cheating Prover survives a single random challenge with probability one half, so soundness error falls as `(1/2)^k` over `k` rounds - 20 rounds clears one in a million.
 - Soundness rests on the challenge being unpredictable: a fixed or guessable challenge lets a cheat pass every round and proves nothing.
-- The graph 3-coloring protocol proves an NP-complete statement; a fresh color permutation each round is what keeps the revealed edge zero-knowledge.
+- The graph 3-coloring protocol proves an NP-complete statement. A fresh color permutation each round keeps the revealed edge zero-knowledge.
 
 ## Read Next
 

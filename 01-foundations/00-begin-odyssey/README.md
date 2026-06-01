@@ -9,7 +9,7 @@ These two notebooks set the working habits for the course: trace state, name the
 
 ## What To Watch
 
-- A loop is easier to understand when you can say what remains true after every iteration.
+- A useful loop has something that remains true after every iteration.
 - Sorting gives binary search its input contract: the data must already be ordered.
 - Runtime claims track growth as input size changes, independent of one lucky machine run.
 

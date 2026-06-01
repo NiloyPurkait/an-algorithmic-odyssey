@@ -1,6 +1,6 @@
 # Schelling's Model of Segregation
 
-Schelling's model places agents on a grid, gives each agent a local tolerance threshold, and moves agents who are unsatisfied with their neighborhood. It moves the grid idea into social science, where individual preferences can produce population-level patterns no individual explicitly chose.
+Schelling's model places agents on a grid, gives each agent a local tolerance threshold, and moves agents who are unsatisfied with their neighborhood. The grid idea moves into social science, where individual preferences can produce population-level patterns no individual explicitly chose.
 
 ## Open
 
@@ -8,7 +8,7 @@ Schelling's model places agents on a grid, gives each agent a local tolerance th
 
 ## What To Watch
 
-- The threshold is local; the measured clustering is global.
+- The threshold is local. The measured clustering is global.
 - Random relocation makes different runs vary, even with the same rule.
 - Mild preferences in the model can still produce visible clustering.
 - Treat the model as a stripped-down mechanism. Real segregation also involves law, housing markets, school policy, lending, wealth, geography, and discrimination.

@@ -2,7 +2,7 @@
 
 ## Goals
 
-Students should be able to reason about uncertainty, approximation, vector spaces, convergence, and objective functions.
+Practice reasoning about uncertainty, approximation, vector spaces, convergence, and objective functions.
 
 ## Problems
 

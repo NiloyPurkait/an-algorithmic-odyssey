@@ -2,7 +2,7 @@
 
 ## Goals
 
-Students should be able to compare exhaustive search, heuristic search, stochastic sampling, and metaheuristic optimization, and explain when each one is the right tool for a search space that is too large to enumerate.
+Practice comparing exhaustive search, heuristic search, stochastic sampling, and metaheuristic optimization. Explain when each one fits a search space that is too large to enumerate.
 
 ## Problems
 
@@ -51,4 +51,4 @@ Deliverables:
 
 ## Reflection
 
-Take one hard search problem and compare where exact search, stochastic sampling, and evolutionary search each change what is practical. Note which method you would reach for first and why.
+Take one hard search problem and compare where exact search, stochastic sampling, and evolutionary search each change what is practical. Name the method that fits first and explain why.

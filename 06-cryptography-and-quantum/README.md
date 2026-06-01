@@ -1,6 +1,6 @@
 # Module 6: Cryptography & Quantum Frontiers
 
-This module closes the course at the edge of what computation can protect and what it can break. Secrecy is built on problems that are easy one way and hard the other; one lesson shows how to prove a fact while revealing nothing about it, another introduces quantum search through interference, another shows how a quantum algorithm undermines the hardness that public-key cryptography depends on, and the last answers that threat with security guaranteed by physics rather than by hard math.
+The course closes at the edge of what computation can protect and what it can break. Secrecy begins with problems that are easy one way and hard the other. The arc then moves through proof without disclosure, quantum search by interference, quantum period finding against RSA, and key testing through measurement disturbance.
 
 ## Field
 
@@ -13,7 +13,7 @@ Classical cryptography, public-key cryptography, interactive and zero-knowledge 
 3. [Zero-Knowledge Proofs](02-zero-knowledge-proofs/zero-knowledge-proofs.ipynb) shift from hiding data to proving a statement true while revealing nothing, with soundness resting on repeated random challenges rather than on a hardness assumption.
 4. [Grover's Algorithm](03-grovers-algorithm/grovers-algorithm.ipynb) introduces quantum search, using superposition and interference to amplify a marked answer in about the square root of the classical number of steps.
 5. [Shor's Algorithm](04-shors-algorithm/shors-algorithm.ipynb) reduces factoring to period finding, showing how quantum hardware threatens the assumption RSA depends on.
-6. [Quantum Key Distribution](05-quantum-key-distribution/quantum-key-distribution.ipynb) answers that threat: the BB84 protocol secures a key with the laws of physics, so any eavesdropper is detected no matter how much computing power they hold.
+6. [Quantum Key Distribution](05-quantum-key-distribution/quantum-key-distribution.ipynb) answers that threat in a different way: ideal BB84 uses nonorthogonal quantum states, so intercept-resend eavesdropping creates errors that Alice and Bob can sample for.
 
 ## Lesson Guide
 
@@ -28,8 +28,8 @@ Classical cryptography, public-key cryptography, interactive and zero-knowledge 
 
 ## Why This Module Ends the Course
 
-It combines the whole toolkit at a focused endpoint: state machines (Enigma), modular ratio and cycle thinking (RSA), interactive proofs that convince without revealing (zero-knowledge), quantum interference that amplifies a marked answer (Grover), and representation change (Shor turning factoring into period finding). It then resolves the tension it raises: where Shor shows quantum computation breaking cryptographic hardness, BB84 shows physics restoring security that no amount of computing can strip away.
+The endpoint pulls several earlier ideas together. Enigma is a state machine. RSA uses modular cycles. Zero-knowledge proofs rely on randomized interaction. Grover amplifies a marked answer by interference. Shor turns factoring into period finding. BB84 changes the question again by making tampering show up as measurement disturbance.
 
 ## Checkpoint
 
-Connect the chain end to end: explain why RSA is considered secure (factoring is hard), then trace how Shor's algorithm reframes factoring as period finding. State exactly which assumption breaks and what scale of quantum hardware that would require. Separately, explain how a zero-knowledge proof reaches near-certainty from repeated random challenges, and why that confidence needs no hardness assumption at all. Then explain why Grover's search needs only about the square root of the classical number of steps, and what goes wrong if it runs past the optimal number of iterations. Finally, explain why BB84's security rests on no-cloning rather than on any hardness assumption, and what a 25% error rate tells Alice and Bob.
+Connect the chain end to end: explain why RSA is considered secure (factoring is hard), then trace how Shor's algorithm reframes factoring as period finding. State exactly which assumption breaks and what scale of quantum hardware that would require. Separately, explain how a zero-knowledge proof reaches near-certainty from repeated random challenges, and why that confidence needs no hardness assumption at all. Then explain why Grover's search needs only about the square root of the classical number of steps, and what goes wrong if it runs past the optimal number of iterations. Finally, explain why ideal BB84 uses no-cloning and measurement disturbance rather than a hardness assumption, and what an expected 25% error rate under intercept-resend tells Alice and Bob.

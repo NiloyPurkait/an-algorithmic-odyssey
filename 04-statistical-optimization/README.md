@@ -1,6 +1,6 @@
 # Module 4: Statistical Sampling & Optimization
 
-When exact answers are too slow, too large, or too rigid, computers lean on probability, vectors, matrices, and optimization. This module connects algorithmic thinking to data science.
+When exact answers are too slow, too large, or too rigid, computation leans on probability, vectors, matrices, and optimization. This is the bridge from exact procedures to data-shaped problems.
 
 ## Field
 
@@ -32,7 +32,7 @@ Artificial intelligence, quantitative modeling, linear algebra, and signal proce
 
 ## Why This Module Comes Here
 
-Students have seen exact structure. Now they learn the tools used when structure becomes noisy, high-dimensional, or too large to inspect directly.
+Exact structure gives way to noisy, high-dimensional, and hard-to-inspect systems. The recurring question becomes what is exact, what is estimated, and what is being optimized.
 
 ## Checkpoint
 

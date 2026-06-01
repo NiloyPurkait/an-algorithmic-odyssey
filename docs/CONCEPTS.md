@@ -57,7 +57,7 @@ Simple local interactions can produce global structure that is hard to predict f
 - [Schelling's Model of Segregation](../03-natural-emergence/01-schelling-segregation/schelling-segregation.ipynb): mild local preferences can amplify into global clustering.
 - [Spatial Prisoner's Dilemma](../03-natural-emergence/02-spatial-prisoners-dilemma/spatial-prisoners-dilemma.ipynb): repeated local play lets cooperator clusters emerge among defectors.
 - [Boids](../03-natural-emergence/03-boids/boids.ipynb): separation, alignment, and cohesion create flocking from autonomous vector agents.
-- [Spatial Predator-Prey](../03-natural-emergence/04-predator-prey/predator-prey.ipynb): a cyclic grass-rabbit-fox rule organizes into rotating spiral waves that keep all three species coexisting.
+- [Spatial Predator-Prey](../03-natural-emergence/04-predator-prey/predator-prey.ipynb): a cyclic grass-rabbit-fox rule organizes into rotating spiral waves that support long-lived coexistence.
 - [Turing Patterns](../03-natural-emergence/05-turing-patterns/turing-patterns.ipynb): reaction and diffusion create spots, bands, and waves.
 
 ## Social Emergence
@@ -71,7 +71,7 @@ Social simulations can reveal how individual rules and institutional constraints
 
 ## Game Theory and Strategy
 
-Players choose moves against other players; the payoff structure decides whether interests clash or align.
+Players choose moves against other players. The payoff structure decides whether interests clash or align.
 
 - [Minimax](../05-strategic-search/00-min-max/min-max.ipynb): zero-sum games where one player's gain is the other's loss.
 - [Monte Carlo Tree Search](../05-strategic-search/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb): sample a large game tree instead of searching all of it.
@@ -116,7 +116,7 @@ Randomness can reduce memory, model uncertainty, or search spaces too large to e
 - [Ant Colony Optimization](../05-strategic-search/02-ant-colony/ant-colony.ipynb)
 - [Genetic Algorithms](../05-strategic-search/03-genetic-algorithms/genetic-algorithms.ipynb)
 - [Zero-Knowledge Proofs](../06-cryptography-and-quantum/02-zero-knowledge-proofs/zero-knowledge-proofs.ipynb): repeated random challenges drive a cheating prover's success toward zero, the same one-sided error as a Bloom filter.
-- [Quantum Key Distribution](../06-cryptography-and-quantum/05-quantum-key-distribution/quantum-key-distribution.ipynb): random measurement bases and a sacrificed sample of sifted bits reveal any eavesdropper.
+- [Quantum Key Distribution](../06-cryptography-and-quantum/05-quantum-key-distribution/quantum-key-distribution.ipynb): random measurement bases and a sacrificed sample of sifted bits reveal intercept-resend eavesdropping statistically.
 
 ## Optimization
 

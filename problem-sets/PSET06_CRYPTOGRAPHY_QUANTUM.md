@@ -2,7 +2,7 @@
 
 ## Goals
 
-Students should be able to model classical encryption as state, build public-key cryptography from modular arithmetic and explain why its security rests on a hardness assumption, prove a statement without revealing it and bound a cheating prover's success, search an unstructured space with a quantum square-root speedup, show how quantum period finding threatens the hardness assumption, and distribute a key whose security rests on physics rather than computation.
+Practice modeling classical encryption as state, building public-key cryptography from modular arithmetic, proving a statement without revealing it, searching an unstructured space with a quantum square-root speedup, connecting period finding to factoring, and simulating a key-distribution protocol whose eavesdropping test rests on quantum measurement rather than computation.
 
 ## Problems
 
@@ -72,4 +72,4 @@ Deliverables:
 
 ## Reflection
 
-Trace the chain from secrecy to its weakness: explain why RSA is considered secure, then how Shor's algorithm reframes factoring as period finding. Contrast that with Grover, whose square-root speedup only weakens unstructured search and must stop at its optimal iteration count. State exactly which assumption breaks and what that implies about the role of large keys and future quantum hardware. Then explain how BB84 sidesteps that arms race by resting on no-cloning, and what a measured 25% error rate tells Alice and Bob.
+Trace the chain from secrecy to its weakness: explain why RSA is considered secure, then how Shor's algorithm reframes factoring as period finding. Contrast that with Grover, whose square-root speedup only weakens unstructured search and must stop at its optimal iteration count. State exactly which assumption breaks and what that implies about the role of large keys and future quantum hardware. Then explain how ideal BB84 sidesteps that arms race by using nonorthogonal quantum states, and what an expected 25% error rate under intercept-resend tells Alice and Bob.

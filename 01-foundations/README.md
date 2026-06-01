@@ -1,6 +1,6 @@
 # Module 1: Foundational Mechanics & Deterministic Logic
 
-Computers become less mysterious when their rules are visible. This module builds the baseline vocabulary: objects, arrays, loops, complexity, deterministic state, simple dynamic programming, greedy choice, trees, recursion, and formal machines.
+Computers become less mysterious when their rules are visible. Start here for the baseline vocabulary of objects, arrays, loops, complexity, deterministic state, dynamic programming, greedy choice, trees, recursion, and formal machines.
 
 ## Field
 
@@ -30,7 +30,7 @@ Classical computer science and discrete mathematics.
 
 ## Why This Module Comes First
 
-These lessons are predictable on purpose. Students learn to trust state, trace loops, read tables, reason about cost, and see computation as a physical or abstract rule system before the course opens into networks, probability, and adversarial systems.
+These lessons are predictable on purpose. First build trust in state, loops, tables, cost, and rule systems. Networks, probability, and adversarial systems make more sense once those mechanics are visible.
 
 ## Checkpoint
 

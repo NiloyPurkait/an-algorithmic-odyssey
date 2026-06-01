@@ -8,7 +8,7 @@ Dijkstra's algorithm finds shortest paths from one source in a graph with nonneg
 
 ## What To Watch
 
-- Tentative distances can improve; settled distances should not.
+- Tentative distances can improve. Settled distances should not.
 - The priority queue stores the frontier in order of current best distance.
 - Negative edge weights break the greedy argument.
 - With a binary heap, the common bound is `O((V + E) log V)`.

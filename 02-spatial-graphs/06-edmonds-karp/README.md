@@ -1,6 +1,6 @@
 # Edmonds-Karp Max Flow
 
-Edmonds-Karp solves maximum flow by repeatedly finding a shortest augmenting path in the residual network. It adds capacity, bottlenecks, and reversibility, so a graph can remember how earlier routing choices may be revised.
+Edmonds-Karp solves maximum flow by repeatedly finding a shortest augmenting path in the residual network. Capacity, bottlenecks, and reversibility let the graph remember how earlier routing choices may be revised.
 
 ## Open
 

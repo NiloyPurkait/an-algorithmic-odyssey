@@ -2,7 +2,7 @@
 
 ## Goals
 
-By the end, students should be able to trace deterministic state, reason about growth, use a dynamic-programming table, explain a greedy choice, and connect computation to formal machines.
+Practice tracing deterministic state, reasoning about growth, using a dynamic-programming table, explaining a greedy choice, and connecting computation to formal machines.
 
 ## Problems
 

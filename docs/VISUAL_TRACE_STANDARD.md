@@ -1,6 +1,6 @@
 # Visual Trace Standard
 
-This course should make computation visible. Each major notebook should expose the algorithm as a sequence of trace steps, then let students pause, step, and inspect the changing state.
+This course should make computation visible. Each major notebook should expose the algorithm as a sequence of trace steps that can be paused, stepped through, and inspected.
 
 ## Minimum Standard
 
@@ -11,7 +11,7 @@ Every visual trace should show:
 - the data structure that changed
 - the invariant that remains true
 - one or more counters such as comparisons, relaxations, iterations, flow, loss, or visits
-- a failure case students can test
+- a failure case to test
 
 ## Shared Pattern
 
@@ -29,7 +29,7 @@ trace = AlgorithmTrace(
 trace.append(
     "start",
     {"state_name": initial_state},
-    "What the learner should notice.",
+    "What to notice.",
     invariant="What is guaranteed to remain true.",
     operation="initialize",
 )

@@ -1,6 +1,6 @@
 # Shor's Algorithm
 
-Shor's algorithm reduces factoring to period finding. The quantum part estimates a period; classical post-processing turns that period into candidate factors. It closes the module by returning to RSA's hardness assumption and showing how a different representation can change what is computationally feasible.
+Shor's algorithm reduces factoring to period finding. The quantum part estimates a period, and classical post-processing turns that period into candidate factors. The module returns to RSA's hardness assumption and shows how a different representation can change what is computationally feasible.
 
 ## Open
 
@@ -11,7 +11,7 @@ Shor's algorithm reduces factoring to period finding. The quantum part estimates
 - The order of `a mod N` is the period being estimated.
 - The quantum Fourier transform is used to extract periodic structure from amplitudes.
 - Measurement gives samples, so the algorithm still needs classical arithmetic afterward.
-- Toy demonstrations factor small numbers; cryptographic-scale factoring would require fault-tolerant quantum hardware.
+- Toy demonstrations factor small numbers. Cryptographic-scale factoring would require fault-tolerant quantum hardware.
 
 ## Read Next
 

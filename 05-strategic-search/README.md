@@ -1,6 +1,6 @@
 # Module 5: Strategic Search & Metaheuristics
 
-This module is about searching when brute force is too expensive. An adversary or a combinatorial space makes the full tree impossible to expand, so the student learns to prune it, sample it, or let many simple agents explore it together.
+Search becomes harder when brute force is too expensive. An adversary or a large combinatorial space makes the full tree impossible to expand, so the practical choices are pruning, sampling, and population-based exploration.
 
 ## Field
 
@@ -26,7 +26,7 @@ Game theory, adversarial search, metaheuristic optimization, and evolutionary co
 
 ## Why This Module Comes Next
 
-The student now knows exact procedures and data-driven approximation. This module turns to spaces where exhaustive search fails: adversarial games and large combinatorial problems. The recurring move is to trade completeness for a disciplined estimate.
+Exact procedures and data-driven approximation meet spaces where exhaustive search fails. The recurring move is to trade completeness for a disciplined estimate.
 
 ## Checkpoint
 

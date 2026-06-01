@@ -1,6 +1,6 @@
 # Quantum Key Distribution
 
-The BB84 protocol shares a secret key over a fully public channel and detects any eavesdropper, with security resting on physics rather than on a computational hardness assumption. Alice encodes each bit in a photon's polarization using a random basis; Bob measures in a random basis; they keep the bits where their bases agree. Because an unknown quantum state cannot be measured without disturbance and cannot be copied at all, an eavesdropper who reads the photons leaves errors behind - a full interception injects an unmistakable 25% error rate. It closes the cryptography arc on a resolution: where Shor's algorithm breaks security built on hard math, BB84 builds security on laws of physics that no computer can strip away.
+The BB84 protocol shares a secret key over a public channel and detects intercept-resend eavesdropping statistically. Its test rests on quantum measurement rather than on a computational hardness assumption. Alice encodes each bit in a photon's polarization using a random basis. Bob measures in a random basis. They keep the bits where their bases agree. Because BB84 uses nonorthogonal states, an unknown photon cannot be copied and a wrong-basis measurement disturbs the state. A full intercept-resend attack produces an expected 25% error rate in the sifted key. After Shor breaks security built on hard math, BB84 asks whether the channel itself has been disturbed.
 
 ## Open
 
@@ -9,8 +9,8 @@ The BB84 protocol shares a secret key over a fully public channel and detects an
 ## What To Watch
 
 - Measuring a photon in the wrong basis gives a random result and destroys the original polarization, so bases must match for a bit to count.
-- Sifting keeps about half the photons; the rest are discarded when Alice and Bob chose different bases.
-- A full intercept-resend eavesdropper corrupts a sifted bit with probability one half times one half, leaving a 25% error rate; partial interception trades less information for less disturbance.
+- Sifting keeps about half the photons. The rest are discarded when Alice and Bob chose different bases.
+- A full intercept-resend eavesdropper corrupts a sifted bit with probability one half times one half, producing an expected 25% QBER. Partial interception trades less information for less disturbance.
 - The failure mode is classical, copyable bits: with no-cloning gone, Eve learns the whole key and injects no error, so the protocol's security depends entirely on the no-cloning theorem.
 
 ## Read Next

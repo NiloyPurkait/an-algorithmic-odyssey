@@ -2,7 +2,7 @@
 
 ## Goals
 
-Students should be able to choose the right graph model, trace graph state, prove why local choices are safe, and detect when assumptions fail.
+Practice choosing the right graph model, tracing graph state, proving why local choices are safe, and detecting when assumptions fail.
 
 ## Problems
 

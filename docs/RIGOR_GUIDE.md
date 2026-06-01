@@ -1,6 +1,6 @@
 # Rigor Guide
 
-The course is intuition-first, but each lesson should leave students with a formal handle. Use this guide to add proof sketches, complexity arguments, and failure analysis without turning the notebooks into reference notes.
+The course is intuition-first, but each lesson should leave behind a formal handle. Use this guide to add proof sketches, complexity arguments, and failure analysis without turning the notebooks into reference notes.
 
 ## The Four-Part Rigor Block
 
@@ -20,7 +20,7 @@ Every algorithm should answer:
 | Natural Emergence | local rule analysis, social-agent and payoff assumptions, stability, numerical assumptions | Which patterns come from the rule, the threshold, the interaction structure, or the implementation? |
 | Statistical Optimization | expectation, convergence, approximation, objective monotonicity | What is exact, what is estimated, and what is optimized? |
 | Strategic Search | minimax induction, sampling error, metaheuristic convergence | Which search spaces are tractable, heuristic, or adversarial? |
-| Cryptography and Quantum | number theory, modular structure, period finding, amplitude amplification, interactive soundness and zero-knowledge, no-cloning and measurement disturbance, probabilistic error bounds | What makes a cipher hard, how much a proof reveals, how many rounds a quantum search needs, which assumption does quantum period finding break, and what makes a key secure by physics? |
+| Cryptography and Quantum | number theory, modular structure, period finding, amplitude amplification, interactive soundness and zero-knowledge, no-cloning and measurement disturbance, probabilistic error bounds | What makes a cipher hard, how much a proof reveals, how many rounds a quantum search needs, which assumption does quantum period finding break, and what assumptions make quantum key distribution secure? |
 
 ## Complexity Standard
 
@@ -67,7 +67,7 @@ Each notebook should include one assumption-breaking test:
 - Shor with a base that gives an unusable period
 - BB84 run with classical, copyable bits, so an eavesdropper clones the key without introducing any detectable error
 
-Students should see both the successful case and the assumption that makes it fail.
+Show both the successful case and the assumption that makes it fail.
 
 ## Grading Rigor
 

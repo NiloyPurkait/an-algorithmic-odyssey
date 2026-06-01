@@ -1,6 +1,6 @@
 # Module 2: Spatial Navigation & Graph Traversal
 
-Graphs are how computers reason about connected things: maps, dependencies, networks, flows, regions, and routes. This module moves from simple directed structure to weighted paths, geometric neighborhoods, matrix-based reasoning, and capacity-constrained movement.
+Graphs turn connected things into structure. Maps, dependencies, networks, flows, regions, and routes become objects that can be traversed, optimized, or queried.
 
 ## Field
 
@@ -30,7 +30,7 @@ Network science, logistics, computational geometry, spatial data structures, and
 
 ## Why This Module Comes Next
 
-The student now knows loops and tables. This module gives those mechanics a spatial form: nodes, edges, territories, routes, and constraints.
+Loops and tables take on spatial form here. Nodes, edges, territories, routes, and constraints become the working vocabulary.
 
 ## Checkpoint
 

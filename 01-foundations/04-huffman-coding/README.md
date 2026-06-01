@@ -1,6 +1,6 @@
 # Huffman Coding
 
-Huffman coding builds a prefix-free binary code from symbol frequencies. Frequent symbols move closer to the root; rare symbols receive longer bit strings. It links greedy choice to representation, showing how a data distribution can become a code tree.
+Huffman coding builds a prefix-free binary code from symbol frequencies. Frequent symbols move closer to the root, while rare symbols receive longer bit strings. Greedy choice becomes representation here, turning a data distribution into a code tree.
 
 ## Open
 
@@ -11,7 +11,7 @@ Huffman coding builds a prefix-free binary code from symbol frequencies. Frequen
 - Prefix-free codes can be decoded without separators.
 - The greedy merge always combines the two least frequent remaining nodes.
 - Expected code length depends on the source distribution.
-- Entropy gives the lower bound to compare against; Huffman codes can land above it.
+- Entropy gives the lower bound to compare against. Huffman codes can land above it.
 
 ## Read Next
 

@@ -2,7 +2,7 @@
 
 ## Goals
 
-Students should be able to distinguish local rules from global patterns, design parameter experiments, and recognize numerical artifacts.
+Practice distinguishing local rules from global patterns, designing parameter experiments, and recognizing numerical artifacts.
 
 ## Problems
 
@@ -60,7 +60,7 @@ Deliverables:
 - a spatial snapshot showing spiral waves and the three-species population curve
 - the well-mixed population curve and which species goes extinct first
 - explanation of why spatial structure sustains coexistence that well-mixing destroys
-- the mean-field equations, or a one-line note on how they relate to the Lotka-Volterra model
+- the mean-field equations, or a one-line note on how they relate to the Lotka-Volterra family of population models
 
 ### 6. Reaction-Diffusion Parameter Sweep
 

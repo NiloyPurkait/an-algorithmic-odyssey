@@ -1,6 +1,6 @@
 # Conway's Game of Life
 
-The Game of Life is a two-state cellular automaton. Every cell follows the same neighbor-count rule, and the grid produces still lifes, oscillators, gliders, and larger constructions. It opens the emergence module as a small laboratory: no central planner, just local updates and visible consequences.
+The Game of Life is a two-state cellular automaton. Every cell follows the same neighbor-count rule, and the grid produces still lifes, oscillators, gliders, and larger constructions. The emergence module starts as a small laboratory with no central planner, only local updates and visible consequences.
 
 ## Open
 
