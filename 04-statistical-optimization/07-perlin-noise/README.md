@@ -1,6 +1,6 @@
 # Perlin Noise
 
-Perlin noise creates randomness with continuity, which is why it works for terrain, texture, and motion. Gradients on a lattice are interpolated smoothly, then layered across octaves for detail at multiple scales. Procedural noise becomes constructive signal synthesis.
+Ken Perlin developed gradient noise in the early 1980s for computer graphics, where purely random pixels looked harsh and artificial. Perlin noise creates randomness with continuity, so nearby coordinates have related values. Layered octaves turn that smooth noise into terrain, texture, and motion.
 
 ## Open
 

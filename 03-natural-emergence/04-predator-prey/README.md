@@ -1,6 +1,6 @@
 # Spatial Predator-Prey
 
-Cyclic predator-prey systems reveal why space matters in ecology. Grass, rabbits, and foxes invade one another in a local loop, and the grid organizes that loop into rotating spiral waves. Spatial coexistence contrasts with a well-mixed failure mode where stochastic drift can erase a species.
+Lotka and Volterra used differential equations in the 1920s to formalize predator-prey cycles. This lesson uses a spatial cellular cousin rather than the classical equations themselves. Grass, rabbits, and foxes invade one another in a local loop, and the resulting waves show why space can stabilize coexistence that may disappear in a well-mixed version.
 
 ## Open
 

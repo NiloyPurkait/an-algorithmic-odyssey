@@ -1,6 +1,6 @@
 # Bloom Filters
 
-A Bloom filter is built for membership tests when memory is scarce. It uses multiple hash functions to mark bits, which makes false negatives impossible for inserted items but allows false positives as the bit array fills. That memory-accuracy tradeoff becomes measurable.
+Burton Bloom introduced the Bloom filter in 1970 for membership tests under tight storage limits. The structure accepts a controlled kind of uncertainty, allowing false positives while preventing false negatives for inserted items. Multiple hash functions and a bit array make the memory-accuracy tradeoff measurable.
 
 ## Open
 

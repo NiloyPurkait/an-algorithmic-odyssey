@@ -1,6 +1,6 @@
 # Topological Sort
 
-Dependency problems come before optimization. Topological sort asks whether a directed graph has any legal order and exposes cycles when no such order exists. Tracing in-degree and ready nodes turns scheduling into a state process.
+Dependency ordering appears in build systems, prerequisite chains, project schedules, and compilers. Kahn's 1962 algorithm gave a clean way to repeatedly remove ready nodes from a directed acyclic graph. Topological sort exposes the difference between a constrained order and a cycle that makes any order impossible.
 
 ## Open
 

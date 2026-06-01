@@ -1,6 +1,6 @@
 # Shor's Algorithm
 
-Shor's algorithm connects factoring to period finding. Classical post-processing can turn a usable period into nontrivial factors, while the quantum subroutine supplies the period efficiently in principle. Small numbers make the RSA-breaking idea traceable.
+Peter Shor's 1994 algorithm changed the status of factoring by linking it to quantum period finding. Classical post-processing can turn a suitable period into nontrivial factors, while the quantum subroutine supplies that period efficiently in principle. Small numbers make the threat to RSA-style assumptions traceable.
 
 ## Open
 

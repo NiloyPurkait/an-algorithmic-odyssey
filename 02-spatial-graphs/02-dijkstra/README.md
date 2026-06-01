@@ -1,6 +1,6 @@
 # Dijkstra's Algorithm
 
-Shortest-path search becomes reliable when edge costs are nonnegative. Dijkstra's algorithm expands certainty outward from the source, settling the nearest unfinished node and relaxing its outgoing edges. The frontier order carries the proof.
+Edsger Dijkstra published his shortest-path algorithm in 1959, when routing, switching, and efficient network planning were becoming concrete computing problems. The method works when edge costs are nonnegative because the nearest unsettled node cannot later be improved. The lesson makes that expanding frontier of certainty visible.
 
 ## Open
 

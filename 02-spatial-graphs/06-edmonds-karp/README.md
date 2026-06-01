@@ -1,6 +1,6 @@
 # Edmonds-Karp Max Flow
 
-Flow problems ask how much can move through a capacitated network. Edmonds-Karp repeatedly finds a shortest augmenting path in the residual graph, pushes the bottleneck amount, and records the reverse choices that make later correction possible. Capacity, conservation, and residual reasoning become visible together.
+Max-flow problems grew out of questions about transportation, communication, and capacity in networks. Ford and Fulkerson described augmenting paths in the 1950s, and Edmonds-Karp later fixed the path choice to shortest residual paths to guarantee polynomial time. Capacity, bottlenecks, and reverse edges show how the network revises its own routing decisions.
 
 ## Open
 

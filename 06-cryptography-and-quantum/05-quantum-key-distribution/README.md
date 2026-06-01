@@ -1,6 +1,6 @@
 # Quantum Key Distribution
 
-BB84 changes the cryptography question from hard-to-compute to hard-to-measure-without-disturbance. Alice and Bob keep only matched-basis bits, then sample the sifted key for errors caused by intercept-resend eavesdropping. Ideal quantum key distribution depends on nonorthogonal states, no-cloning, and statistical detection.
+Charles Bennett and Gilles Brassard proposed BB84 in 1984, a decade before Shor's factoring result made quantum attacks on public-key cryptography widely discussed. Its security idea is different from RSA's. Unknown nonorthogonal quantum states cannot be copied perfectly, and wrong-basis measurement creates detectable errors in an ideal intercept-resend setting. Sampling the sifted key turns disturbance into a statistical warning.
 
 ## Open
 

@@ -1,6 +1,6 @@
 # RSA
 
-RSA is a classic public-key cryptosystem where different keys handle encryption and decryption. Modular exponentiation makes the main operations efficient, while reversing the system requires information tied to factoring a large composite number. Small examples keep the arithmetic traceable.
+RSA was introduced in 1977 by Ron Rivest, Adi Shamir, and Leonard Adleman, soon after public-key cryptography changed how secrecy could be organized. The system uses modular exponentiation for efficient public operations, while private recovery depends on information tied to factoring a large composite number. Small examples keep the arithmetic traceable without pretending real keys are small.
 
 ## Open
 

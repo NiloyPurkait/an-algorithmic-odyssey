@@ -1,6 +1,6 @@
 # Gradient Descent
 
-Gradient descent treats optimization as movement across a loss surface. Each step follows the negative gradient, and the learning rate decides whether the path is slow, stable, or unstable. Parameter fitting becomes visible as a trajectory.
+Steepest descent traces back at least to Augustin-Louis Cauchy's nineteenth-century work on numerical optimization. In modern machine learning, the same idea fits parameters by moving downhill on a loss surface. The lesson keeps the geometry visible, with learning rate deciding whether the path is cautious, efficient, or unstable.
 
 ## Open
 

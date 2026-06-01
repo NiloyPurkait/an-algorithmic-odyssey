@@ -1,6 +1,6 @@
 # Boids
 
-Boids turns flocking into three local vector rules. Each agent steers away from crowding, toward nearby headings, and toward nearby positions. Local motion rules create coordinated swarm behavior without a leader.
+Craig Reynolds introduced Boids in the late 1980s as an artificial-life model for coordinated animal motion. Instead of scripting a flock, each agent follows local steering rules for separation, alignment, and cohesion. Flocking becomes vector arithmetic, and neighborhood interactions produce leaderless motion.
 
 ## Open
 

@@ -1,6 +1,6 @@
 # Penrose Tiling
 
-Penrose tilings show order without periodic repetition. A deterministic deflation rule replaces tiles with smaller tiles, creating self-similar structure and exponential growth in the tile count. Recursion becomes geometry, linking local substitution rules to global non-periodic order.
+Roger Penrose's tilings from the 1970s showed that strict local matching rules can force order without periodic repetition. The idea became more than a geometric curiosity once non-periodic order entered the study of quasicrystals and mathematical structure. Deflation, replacing tiles with smaller tiles, makes recursion and self-similarity visible.
 
 ## Open
 

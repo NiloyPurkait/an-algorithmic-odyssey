@@ -1,6 +1,6 @@
 # Conway's Game of Life
 
-Conway's Game of Life is a minimal laboratory for emergence. Every cell follows the same neighbor-count rule, yet the grid produces still lifes, oscillators, gliders, and larger constructions. Synchronous local updates become visible global behavior.
+John Conway introduced the Game of Life publicly through Martin Gardner's Scientific American column in 1970. It became a compact way to ask how complexity can appear in a grid with no central controller. Every cell obeys one neighbor-count rule, yet the system supports still lifes, oscillators, gliders, and larger constructions.
 
 ## Open
 

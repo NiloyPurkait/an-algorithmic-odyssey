@@ -1,6 +1,6 @@
 # Fast Fourier Transform
 
-The Fourier transform rewrites a signal in terms of frequency. The FFT computes the same transform faster by exploiting symmetry in roots of unity. A change in representation turns an expensive calculation into a structured recursion.
+Fourier analysis turns signals into frequency components, a language used across physics, audio, imaging, and numerical computation. Cooley and Tukey's 1965 FFT paper made a fast divide-and-conquer transform central to digital computing, though related ideas are older. Symmetry in roots of unity reduces repeated work.
 
 ## Open
 

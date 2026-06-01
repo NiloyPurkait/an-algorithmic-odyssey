@@ -1,6 +1,6 @@
 # K-means Clustering
 
-K-means is a compact model of unsupervised clustering. Points are assigned to the nearest centroid, then each centroid moves to the mean of its assigned points. Geometry, iteration, and objective improvement meet in one loop.
+K-means sits at the meeting point of statistics, signal processing, and unsupervised learning. The familiar algorithm is closely related to Stuart Lloyd's work on least-squares quantization and James MacQueen's 1967 formulation of k-means. Alternating assignment and centroid updates make clustering a simple geometric optimization loop.
 
 ## Open
 

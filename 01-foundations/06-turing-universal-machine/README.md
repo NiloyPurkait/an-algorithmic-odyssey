@@ -1,6 +1,6 @@
 # Universal Turing Machine
 
-The Universal Turing Machine is the abstraction that separates a rule from the machine executing it. Tape symbols, head position, finite state, and a transition table are enough to describe computation step by step. Foundations closes by making programmability visible as interpretation.
+Alan Turing's 1936 model stripped computation down to symbols on a tape, a moving head, finite state, and a transition rule. The Universal Turing Machine added a deeper idea. One machine can read a description of another and simulate it. Foundations closes by making programmability visible as interpretation rather than machinery.
 
 ## Open
 

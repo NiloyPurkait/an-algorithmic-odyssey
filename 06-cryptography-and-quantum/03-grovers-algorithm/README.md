@@ -1,6 +1,6 @@
 # Grover's Algorithm
 
-Grover's algorithm gives the simplest visual entry into quantum speedup. An oracle marks one answer, diffusion reflects amplitudes about their mean, and repeated rotations concentrate probability on the target. The square-root query advantage appears alongside the over-rotation failure mode.
+Lov Grover introduced his search algorithm in 1996, giving a concise example of quantum speedup. The problem is deliberately unstructured, so a classical search has no useful pattern to exploit. Grover's oracle and diffusion steps rotate amplitude toward the marked answer, producing a square-root query advantage with an important over-rotation limit.
 
 ## Open
 

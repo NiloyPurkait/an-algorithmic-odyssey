@@ -1,6 +1,6 @@
 # Minimax and Alpha-Beta Pruning
 
-Adversarial search starts with a game tree. Minimax backs up leaf values through alternating max and min choices, while alpha-beta pruning skips branches that cannot affect the final decision. Optimal play becomes a recursive value calculation.
+Minimax has roots in John von Neumann's work on game theory, where rational play was studied under direct opposition. In game-tree search, each move is evaluated against the best reply available to the opponent. Alpha-beta pruning keeps the same minimax value while skipping branches that cannot change the decision.
 
 ## Open
 

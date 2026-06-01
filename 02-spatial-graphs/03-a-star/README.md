@@ -1,6 +1,6 @@
 # A* Search
 
-A* adds a map-informed estimate to shortest-path search. It ranks each frontier node by cost already paid plus a heuristic estimate of cost still ahead. A good heuristic narrows exploration while preserving optimality under the right assumptions.
+A* came from late-1960s AI work by Peter Hart, Nils Nilsson, and Bertram Raphael at Stanford Research Institute, where heuristic search was tied to robot planning. The algorithm combines cost already paid with an admissible estimate of cost still ahead. An informed guess can reduce search without giving up optimality under the right conditions.
 
 ## Open
 

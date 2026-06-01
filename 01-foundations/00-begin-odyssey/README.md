@@ -1,6 +1,6 @@
 # Algorithmic Thinking and Sorting
 
-Algorithms are easier to reason about once their moving parts have names. This opening pair sets the course habits by tracing state, invariants, data shape, and growth rate. Sorting makes those habits concrete with comparisons, swaps, and input-size experiments.
+Algorithms became a discipline when ordinary procedures could be described, compared, and trusted at scale. Sorting is a plain starting point, but it exposes the habits that make the rest of the material work. Trace state, name invariants, choose data shapes, and measure how running time grows as the input gets larger.
 
 ## Open
 

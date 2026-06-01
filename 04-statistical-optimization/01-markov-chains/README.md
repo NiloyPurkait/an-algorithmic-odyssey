@@ -1,6 +1,6 @@
 # Markov Chains
 
-Markov chains model systems whose next state depends only on the current state. A transition matrix moves probability mass through the state space, and repeated steps reveal long-run behavior. Uncertainty becomes dynamic rather than a one-time calculation.
+Andrey Markov developed chains of dependent random events in the early twentieth century, challenging the idea that probability only mattered for independent trials. A Markov chain keeps just enough memory for the next state to depend on the current one. Transition matrices then let uncertainty move through time.
 
 ## Open
 

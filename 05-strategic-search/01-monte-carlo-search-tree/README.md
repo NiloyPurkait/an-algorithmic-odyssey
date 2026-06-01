@@ -1,6 +1,6 @@
 # Monte Carlo Tree Search
 
-Monte Carlo Tree Search handles game trees too large to expand fully. It samples continuations, updates visit counts and win estimates, then uses those statistics to balance exploration and exploitation. Exhaustive certainty gives way to budgeted evidence.
+Monte Carlo Tree Search became prominent in the 2000s, especially through computer Go, where exhaustive search was impractical. Instead of expanding the whole tree, it samples play-outs and uses statistics to decide where to search next. The method turns limited computation into a balance between exploration and exploitation.
 
 ## Open
 

@@ -1,6 +1,6 @@
 # Zero-Knowledge Proofs
 
-Zero-knowledge proofs separate proving from revealing. Interaction and randomness let a Prover convince a Verifier that a statement is true while exposing no reusable witness in the protocol shown here. Repeated unpredictable challenges drive soundness error down.
+Zero-knowledge proofs emerged in the 1980s through work by Shafi Goldwasser, Silvio Micali, and Charles Rackoff. They answered a subtle cryptographic question. Can a claim be verified without handing over the secret that makes it true? Random challenges and repeated interaction make cheating unlikely while leaving no reusable witness in the protocol shown here.
 
 ## Open
 

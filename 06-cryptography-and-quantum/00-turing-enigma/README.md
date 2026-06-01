@@ -1,6 +1,6 @@
 # Enigma and the Bombe
 
-Enigma shows encryption as a changing state machine. Rotor, reflector, and plugboard permutations transform each letter, and rotor stepping makes the substitution change after every keypress. Mechanical state connects secrecy to cryptanalysis.
+Enigma began as a commercial cipher machine and was later adapted for military use with rotors, stepping, and plugboard wiring. Its wartime cryptanalysis depended on several groups, including Polish mathematicians such as Marian Rejewski and British work at Bletchley Park by Alan Turing, Gordon Welchman, and others. Encryption becomes a changing state machine whose structure can be searched for contradictions.
 
 ## Open
 

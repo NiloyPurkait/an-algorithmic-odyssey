@@ -1,6 +1,6 @@
 # Schelling's Model of Segregation
 
-Schelling's segregation model studies how local satisfaction rules can create population-level clustering. Agents move when their neighborhood falls below a tolerance threshold, even when that threshold allows mixed neighborhoods. The grid separates the local rule from the spatial pattern it produces.
+Thomas Schelling introduced this model in the early 1970s to study how residential patterns can emerge from individual preferences. The model does not require agents to prefer segregation, only local satisfaction thresholds that can still generate clustering at the population level. Moving unsatisfied agents on a grid turns social feedback into a visible spatial process.
 
 ## Open
 

@@ -1,6 +1,6 @@
 # Spatial Prisoner's Dilemma
 
-The Prisoner's Dilemma captures the tension between short-term betrayal and mutual cooperation. Placing strategies on a grid changes the game, because agents repeatedly meet neighbors and copy high-scoring local strategies. Tit-for-Tat clusters can make cooperation spatially defensible.
+The Prisoner's Dilemma came out of Cold War-era game theory work by Merrill Flood and Melvin Dresher, with Albert Tucker giving the story its familiar name. Robert Axelrod's later tournaments made Tit-for-Tat prominent as a simple strategy for repeated play. Placing strategies on a grid adds space to the dilemma, so local neighborhoods can protect cooperation from local extinction.
 
 ## Open
 

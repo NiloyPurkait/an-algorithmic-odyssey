@@ -1,6 +1,6 @@
 # Gale-Shapley Stable Matching
 
-Stable matching models allocation problems where two sides rank each other, such as residency matching and school choice. Gale-Shapley works by repeated proposals and rejections until no blocking pair remains. Proposal traces make convergence and stability visible rather than treating the final matching as a black box.
+David Gale and Lloyd Shapley introduced stable matching in 1962 while studying college admissions and marriage markets as mathematical allocation problems. Rankings on two sides can leave a blocking pair, meaning two participants would rather abandon their assigned matches for each other. Repeated proposals and rejections produce an assignment with no such pair, making stability something the algorithm can certify.
 
 ## Open
 

@@ -1,6 +1,6 @@
 # Dawkins' Biomorphs
 
-Dawkins' biomorphs turn artificial selection into a visual experiment. A small genome controls a recursive drawing, mutation creates nearby variants, and selection promotes one branch of the lineage. Cumulative selection appears without reducing visual form to a fixed numeric score.
+Richard Dawkins introduced biomorphs in The Blind Watchmaker in 1986 to illustrate cumulative selection. A small genome controls a recursive drawing, mutation creates nearby variants, and selection promotes one branch of the lineage. The result is an artificial-selection playground where visual form changes without a fixed numeric fitness score.
 
 ## Open
 

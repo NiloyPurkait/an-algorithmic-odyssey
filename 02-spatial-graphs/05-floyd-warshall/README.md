@@ -1,6 +1,6 @@
 # Floyd-Warshall
 
-Some graph questions need every route, not one source. Floyd-Warshall computes all-pairs shortest paths by allowing one more intermediate vertex at a time. The dynamic-programming idea from strings returns as a matrix of distances.
+All-pairs shortest paths arise when a whole network needs to be compared against itself rather than searched from one source. The Floyd-Warshall family of algorithms grew from early-1960s work by Robert Floyd and Stephen Warshall on shortest paths and transitive closure. One more allowed intermediate vertex at a time turns the graph into a dynamic-programming matrix.
 
 ## Open
 

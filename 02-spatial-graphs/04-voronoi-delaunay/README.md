@@ -1,6 +1,6 @@
 # Voronoi Diagrams and Delaunay Triangulation
 
-Spatial data often begins with nearest-neighbor ownership. A Voronoi diagram partitions the plane by closest site, while the Delaunay triangulation connects sites that share natural borders. Scattered points become cells, adjacencies, and live queries.
+Voronoi diagrams are named for Georgy Voronoi's early twentieth-century work, with older roots in Dirichlet's geometric partitions. The question is simple and useful. Which site is closest to each point in space? The paired Delaunay triangulation turns those regions into neighbor relationships for interpolation, meshes, maps, and spatial queries.
 
 ## Open
 

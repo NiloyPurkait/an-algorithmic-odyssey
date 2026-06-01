@@ -1,6 +1,6 @@
 # PageRank
 
-PageRank turns links into a probability model of attention. A random surfer moves through a directed graph, with teleportation preventing rank from getting trapped. Repeated probability flow settles into a stable importance score.
+Larry Page and Sergey Brin developed PageRank at Stanford during the early web search era, when counting pages was easier than judging their importance. Their key move was to treat links as endorsements flowing through a directed graph. A random-surfer model with teleportation turns repeated probability flow into a stable ranking.
 
 ## Open
 

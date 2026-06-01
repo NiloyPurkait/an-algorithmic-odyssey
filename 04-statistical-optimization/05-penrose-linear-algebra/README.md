@@ -1,6 +1,6 @@
 # Penrose Linear Algebra
 
-Linear algebra often becomes clearer when equations are rewritten. This folder pairs Penrose graphical notation for structure with the Moore-Penrose pseudoinverse for least-squares solutions. Together they show how representation affects what can be computed and explained.
+Generalized inverses arose because many linear systems are inconsistent or underdetermined, yet still need the closest useful solution. E. H. Moore and Roger Penrose formalized the pseudoinverse that now bears both names, while Penrose's diagrammatic notation gives a different way to see linear structure. This pair of notebooks connects computation with representation.
 
 ## Open
 

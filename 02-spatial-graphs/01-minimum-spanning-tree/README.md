@@ -1,6 +1,6 @@
 # Minimum Spanning Tree
 
-Network design often asks for connection without redundancy. A minimum spanning tree connects all vertices with no cycles while minimizing total edge weight. Kruskal's algorithm sorts edges by cost and accepts only the ones that safely join separate components.
+Minimum spanning trees formalize a basic infrastructure problem. Connect every site, avoid redundant loops, and pay as little total edge cost as possible. Kruskal's 1956 algorithm solves this by sorting edges and accepting only those that join separate components, so a local-looking choice earns a global guarantee.
 
 ## Open
 

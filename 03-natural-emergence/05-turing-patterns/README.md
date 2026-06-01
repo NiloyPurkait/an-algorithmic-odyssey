@@ -1,6 +1,6 @@
 # Turing Patterns
 
-Turing patterns come from reaction-diffusion systems, where local reaction and spatial diffusion pull in different directions. The same equations can form spots, bands, or waves depending on parameters. Emergence moves from agents and grids into continuous fields.
+Alan Turing's 1952 paper on morphogenesis proposed that chemicals reacting and diffusing at different rates could create biological pattern. The idea helped turn spots, stripes, and waves into mathematical objects rather than mere decoration. Emergence moves from agents and grids into continuous fields, where local reaction and spatial diffusion pull against each other.
 
 ## Open
 

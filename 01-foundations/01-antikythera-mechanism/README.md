@@ -1,6 +1,6 @@
 # Antikythera Mechanism
 
-The Antikythera Mechanism shows computation before software. Bronze gears encode astronomical ratios, and one crank turn propagates state through solar, lunar, and eclipse-cycle dials. It works here as a physical algorithm, where hardware stores the rule.
+Recovered from a shipwreck near the Greek island of Antikythera in 1901, the mechanism is usually dated to the Hellenistic world of the second or first century BCE. Bronze gear trains modeled astronomical cycles long before computation became electronic or programmable. It works here as a physical algorithm, where tooth counts encode ratios and turning a crank advances the system state.
 
 ## Open
 

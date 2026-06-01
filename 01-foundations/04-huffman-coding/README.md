@@ -1,6 +1,6 @@
 # Huffman Coding
 
-Compression begins with a simple asymmetry. Frequent symbols deserve short codes. Huffman coding uses that asymmetry greedily, repeatedly merging the two least frequent trees to build an optimal prefix code for known frequencies. A data distribution becomes a binary tree.
+David Huffman's 1952 coding method grew out of information theory's question of how to represent messages with as few bits as possible. If symbols appear with unequal frequencies, fixed-length codes waste space. Huffman coding builds an optimal prefix code for known frequencies by repeatedly merging the two least frequent trees.
 
 ## Open
 

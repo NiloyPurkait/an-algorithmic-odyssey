@@ -1,6 +1,6 @@
 # Levenshtein Distance
 
-Approximate text matching begins with a practical question. How far apart are two strings? Levenshtein distance answers by pricing insertions, deletions, and substitutions, then filling a dynamic-programming table over prefixes. A visible table trace turns local edit choices into a global minimum.
+Vladimir Levenshtein's mid-1960s work on error-correcting codes gave a precise way to reason about strings under editing errors. That language later became central to spell-checking, DNA sequence comparison, search, and record linkage. The version used here prices insertions, deletions, and substitutions, then fills a dynamic-programming table over prefixes so approximate matching becomes a traceable optimization problem.
 
 ## Open
 

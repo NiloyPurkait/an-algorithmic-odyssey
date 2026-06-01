@@ -1,6 +1,6 @@
 # Ant Colony Optimization
 
-Ant colony optimization turns collective trail-following into a search method. Candidate routes are built probabilistically from distance and pheromone, good tours reinforce their edges, and evaporation keeps exploration alive. Many weak local choices can concentrate around useful paths.
+Marco Dorigo developed ant colony optimization in the early 1990s after studying how real ants use pheromone trails to coordinate foraging. The algorithm turns that biological analogy into a method for hard routing and ordering problems. Candidate tours deposit virtual pheromone, evaporation prevents early lock-in, and many simple choices gradually bias the search.
 
 ## Open
 

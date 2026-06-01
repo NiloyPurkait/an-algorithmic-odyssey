@@ -1,6 +1,6 @@
 # Genetic Algorithms
 
-Genetic algorithms search by evolving a population rather than following one path. Candidate solutions are scored, selected, recombined, and mutated, so useful traits tend to spread while variation remains. Optimization becomes adaptation under a fitness function.
+John Holland's work in the 1970s framed adaptation as a computational search process. Genetic algorithms keep a population of candidate solutions, score them, and generate new candidates through selection, crossover, and mutation. Optimization becomes population-level adaptation rather than a single path through a search tree.
 
 ## Open
 
