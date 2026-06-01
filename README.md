@@ -1,6 +1,7 @@
-# Algorithmic Notebook Curriculum
+# An Algorithmic Odyssey
 
-This repository is organized as six modules. Each module has a short README, a recommended path, and self-contained notebooks with runnable simulations. Treat it as less of a "course" and more of a digital memory palace of algorithms, across several disciplines of science. This also means you have no obligation to explore it sequentially, pick whatever interests you. 
+Many of nature's most intricate patterns, like flocking birds to the stripes forming on a shell, all turn out to be the output of simple procedures repeated over time. This collection of notebooks attempts to reconstruct such procedures and lets you run them. Treat them as less of a "course" and more of a non-exaustive digital memory palace for computational ideas, across several disciplines of science. This also means you have no obligation to explore it sequentially, pick whatever interests you. 
+
 
 ## Modules
 
