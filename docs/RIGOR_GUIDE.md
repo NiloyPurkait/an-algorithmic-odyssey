@@ -17,7 +17,7 @@ Every algorithm should answer:
 | --- | --- | --- |
 | Foundations | loop invariants, induction, exchange arguments | Why does the table/tree/state machine produce the intended result? |
 | Spatial Graphs | cut properties, nearest-neighbor invariants, relaxation invariants, residual reasoning | Why is this region/path/tree/flow globally valid after local decisions? |
-| Natural Emergence | local rule analysis, social-agent assumptions, genotype-phenotype mapping, stability, numerical assumptions | Which patterns come from the rule, the threshold, the genome, the selection pressure, or the implementation? |
+| Natural Emergence | local rule analysis, social-agent and payoff assumptions, stability, numerical assumptions | Which patterns come from the rule, the threshold, the interaction structure, or the implementation? |
 | Statistical Optimization | expectation, convergence, approximation, objective monotonicity | What is exact, what is estimated, and what is optimized? |
 | Strategic Search | minimax induction, sampling error, metaheuristic convergence | Which search spaces are tractable, heuristic, or adversarial? |
 | Cryptography and Quantum | number theory, modular structure, period finding | What makes a cipher hard, and which assumption does quantum period finding break? |
