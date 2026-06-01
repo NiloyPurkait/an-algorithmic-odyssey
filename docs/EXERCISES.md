@@ -2,7 +2,7 @@
 
 These prompts turn the notebooks into practice. Each exercise should produce three things: a prediction, a changed input or parameter, and one sentence explaining the observed result.
 
-For full course assignments with implementation, proof, visual traces, and rubrics, use the [problem sets](problem-sets/README.md). This file is the lightweight studio-practice layer.
+For full course assignments with implementation, proof, visual traces, and rubrics, use the [problem sets](../problem-sets/README.md). This file is the lightweight studio-practice layer.
 
 ## Module 1: Foundations
 

@@ -34,4 +34,4 @@ Treat each notebook as a small experiment: change one thing, rerun, and explain 
 
 ## Higher-Rigor Track
 
-Pair each module with its matching [problem set](problem-sets/README.md). Strong submissions should include a visual trace, a correctness handle, a complexity argument, a failure-mode test, and a transfer connection to another notebook.
+Pair each module with its matching [problem set](../problem-sets/README.md). Strong submissions should include a visual trace, a correctness handle, a complexity argument, a failure-mode test, and a transfer connection to another notebook.

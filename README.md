@@ -14,13 +14,13 @@ The sequence moves from deterministic mechanics to graph structure, natural emer
 
 ## Course Guides
 
-- [Learning Map](LEARNING_MAP.md): the module sequence, core skills, and checkpoints.
-- [Concept Index](CONCEPTS.md): recurring ideas that appear across notebooks.
-- [Exercises](EXERCISES.md): lightweight practice prompts and module checkpoints.
+- [Learning Map](docs/LEARNING_MAP.md): the module sequence, core skills, and checkpoints.
+- [Concept Index](docs/CONCEPTS.md): recurring ideas that appear across notebooks.
+- [Exercises](docs/EXERCISES.md): lightweight practice prompts and module checkpoints.
 - [Problem Sets](problem-sets/README.md): deeper implementation, proof, visualization, and reflection assignments.
-- [Rigor Guide](RIGOR_GUIDE.md): proof patterns, invariants, complexity standards, and failure-mode checks.
-- [Visual Trace Standard](VISUAL_TRACE_STANDARD.md): the shared animation contract for notebooks.
-- [Visual Algorithm Gallery](VISUAL_ALGORITHM_GALLERY.html): a standalone interactive gallery of algorithm traces.
+- [Rigor Guide](docs/RIGOR_GUIDE.md): proof patterns, invariants, complexity standards, and failure-mode checks.
+- [Visual Trace Standard](docs/VISUAL_TRACE_STANDARD.md): the shared animation contract for notebooks.
+- [Visual Algorithm Gallery](docs/VISUAL_ALGORITHM_GALLERY.html): a standalone interactive gallery of algorithm traces.
 
 ## How to Use This Course
 
