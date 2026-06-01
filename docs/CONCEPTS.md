@@ -81,8 +81,8 @@ Players choose moves against other players; the payoff structure decides whether
 
 Evolutionary systems generate variation and preserve selected structure over repeated generations.
 
-- [Dawkins' Biomorphs](../05-strategic-search/03-biomorphs/biomorphs.ipynb): artificial selection chooses among small integer-gene mutations.
-- [Genetic Algorithms](../05-strategic-search/02-ant-colony/genetic-algorithms.ipynb): selection, crossover, and mutation optimize candidate solutions.
+- [Dawkins' Biomorphs](../05-strategic-search/04-biomorphs/biomorphs.ipynb): artificial selection chooses among small integer-gene mutations.
+- [Genetic Algorithms](../05-strategic-search/03-genetic-algorithms/genetic-algorithms.ipynb): selection, crossover, and mutation optimize candidate solutions.
 - [Ant Colony Optimization](../05-strategic-search/02-ant-colony/ant-colony.ipynb): successful paths reinforce future search behavior.
 
 ## State Machines
@@ -113,7 +113,7 @@ Randomness can reduce memory, model uncertainty, or search spaces too large to e
 - [Perlin Noise](../04-statistical-optimization/07-perlin-noise/perlin-noise.ipynb)
 - [Monte Carlo Tree Search](../05-strategic-search/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
 - [Ant Colony Optimization](../05-strategic-search/02-ant-colony/ant-colony.ipynb)
-- [Genetic Algorithms](../05-strategic-search/02-ant-colony/genetic-algorithms.ipynb)
+- [Genetic Algorithms](../05-strategic-search/03-genetic-algorithms/genetic-algorithms.ipynb)
 
 ## Optimization
 
@@ -122,7 +122,7 @@ Optimization searches for better choices under a cost, score, or constraint.
 - [k-means](../04-statistical-optimization/03-kmeans-cluster/kmeans-cluster.ipynb): improve cluster centers.
 - [Gradient Descent](../04-statistical-optimization/04-gradient-descent/gradient-descent.ipynb): reduce loss by following a slope.
 - [Ant Colony Optimization](../05-strategic-search/02-ant-colony/ant-colony.ipynb): reinforce useful paths.
-- [Genetic Algorithms](../05-strategic-search/02-ant-colony/genetic-algorithms.ipynb): evolve better candidates.
+- [Genetic Algorithms](../05-strategic-search/03-genetic-algorithms/genetic-algorithms.ipynb): evolve better candidates.
 
 ## Trees
 
