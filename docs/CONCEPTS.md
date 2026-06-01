@@ -90,7 +90,7 @@ Evolutionary systems generate variation and preserve selected structure over rep
 A state machine changes behavior based on its current state and input.
 
 - [Antikythera Mechanism](../01-foundations/01-antikythera-mechanism/antikythera-mechanism.ipynb): crank position determines every connected dial.
-- [Universal Turing Machine](../01-foundations/05-turing-universal-machine/universal-turing-machine.ipynb)
+- [Universal Turing Machine](../01-foundations/06-turing-universal-machine/universal-turing-machine.ipynb)
 - [Markov Chains](../04-statistical-optimization/01-markov-chains/markov-chains.ipynb)
 - [Enigma](../06-cryptography-and-quantum/00-turing-enigma/enigma.ipynb)
 
@@ -131,7 +131,7 @@ Trees appear as compression structures, search spaces, and recursive decompositi
 - [Huffman Coding](../01-foundations/04-huffman-coding/huffman-coding.ipynb)
 - [Minimax](../05-strategic-search/00-min-max/min-max.ipynb)
 - [Monte Carlo Tree Search](../05-strategic-search/01-monte-carlo-search-tree/monte-carlo-search-tree.ipynb)
-- [Penrose Tiling](../01-foundations/06-penrose-tiling/tiling.ipynb)
+- [Penrose Tiling](../01-foundations/05-penrose-tiling/tiling.ipynb)
 
 ## Signals and Structure
 

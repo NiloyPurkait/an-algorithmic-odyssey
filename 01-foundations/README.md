@@ -13,8 +13,8 @@ Classical computer science and discrete mathematics.
 3. [Levenshtein Distance](02-levenshtein-distance/levenshtein-distance.ipynb) introduces dynamic programming through a small, visual string matrix.
 4. [Gale-Shapley](03-gale-shapley/gale-shapley.ipynb) shows stable convergence using plain logic and repeated proposals.
 5. [Huffman Coding](04-huffman-coding/huffman-coding.ipynb) introduces greedy compression and the first major tree structure.
-6. [Universal Turing Machine](05-turing-universal-machine/universal-turing-machine.ipynb) asks what a program is at its most mechanical level.
-7. [Penrose Tiling](06-penrose-tiling/tiling.ipynb) ends with recursion made visible: a deterministic substitution rule whose tile count grows exponentially with depth.
+6. [Penrose Tiling](05-penrose-tiling/tiling.ipynb) makes recursion visible: a deterministic substitution rule whose self-similar structure and exponential tile count bridge tree-building to general computation.
+7. [Universal Turing Machine](06-turing-universal-machine/universal-turing-machine.ipynb) closes the module by reducing any program to a tape, a head, and a transition table.
 
 ## Lesson Guide
 
@@ -25,8 +25,8 @@ Classical computer science and discrete mathematics.
 | [Levenshtein Distance](02-levenshtein-distance/levenshtein-distance.ipynb) | 2/5 | 35 min | String dynamic programming matrix |
 | [Gale-Shapley](03-gale-shapley/gale-shapley.ipynb) | 2/5 | 30 min | Stable matching loop |
 | [Huffman Coding](04-huffman-coding/huffman-coding.ipynb) | 3/5 | 40 min | Greedy binary tree |
-| [Universal Turing Machine](05-turing-universal-machine/universal-turing-machine.ipynb) | 3/5 | 45 min | Tape and state machine |
-| [Penrose Tiling](06-penrose-tiling/tiling.ipynb) | 3/5 | 40 min | Recursive substitution |
+| [Penrose Tiling](05-penrose-tiling/tiling.ipynb) | 3/5 | 40 min | Recursive substitution |
+| [Universal Turing Machine](06-turing-universal-machine/universal-turing-machine.ipynb) | 3/5 | 45 min | Tape and state machine |
 
 ## Why This Module Comes First
 
