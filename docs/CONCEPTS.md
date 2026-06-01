@@ -141,4 +141,5 @@ Some algorithms reveal hidden structure by changing representation.
 - [Fast Fourier Transform](../04-statistical-optimization/06-fast-fourier-transform/fft.ipynb): time samples become frequencies.
 - [Perlin Noise](../04-statistical-optimization/07-perlin-noise/perlin-noise.ipynb): octaves synthesize a signal by layering frequencies.
 - [Penrose Graphical Notation](../04-statistical-optimization/05-penrose-linear-algebra/graph-notation.ipynb): tensor operations become diagrams.
+- [Grover's Algorithm](../06-cryptography-and-quantum/03-grovers-algorithm/grovers-algorithm.ipynb): interference amplifies the marked state in the amplitude vector.
 - [Shor's Algorithm](../06-cryptography-and-quantum/04-shors-algorithm/shors-algorithm.ipynb): factoring becomes period finding.

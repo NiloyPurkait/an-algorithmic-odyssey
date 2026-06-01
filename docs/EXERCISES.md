@@ -54,6 +54,7 @@ For full course assignments with implementation, proof, visual traces, and rubri
 - Encrypt a new message with Enigma and trace how rotor state changes the output.
 - Generate a small RSA keypair, encrypt a short message, then explain why factoring `n` would break it.
 - Run the zero-knowledge cave verifier for `k` rounds, compute the cheat's success `(1/2)^k`, and find the `k` that beats one in a million; then make the challenge predictable and watch a cheat pass every round.
+- Run Grover's algorithm on 8 states, watch the target probability peak at two iterations, then keep iterating and explain why over-rotation makes it worse.
 - Build a modular-power table for a small composite and find the period, the way Shor's algorithm relies on.
 - Checkpoint: connect RSA's factoring assumption to Shor's period finding and explain what changes what is practical.
 

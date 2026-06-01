@@ -511,7 +511,7 @@
     <aside>
       <div class="brand">
         <h1>Algorithm Lab</h1>
-        <p>Thirty-eight course topics, each shown as state changing over time.</p>
+        <p>Thirty-nine course topics, each shown as state changing over time.</p>
       </div>
       <div class="filters">
         <input id="search" class="search" type="search" placeholder="Search algorithms">
@@ -649,6 +649,7 @@
       lesson("enigma", "crypto", "Enigma", "enigma", "Rotor state machine", "A letter path changes because the rotor state steps after each character.", "For a fixed state, wiring is reversible.", "O(message length) encryption; brute force scales with key space.", "Repeated settings and procedures leak structure.", "Why does the same input letter produce a new output?", "step rotor\npass signal through rotors\nreflect\npass back through rotors\nemit ciphertext"),
       lesson("rsa", "crypto", "RSA", "rsa", "Modular exponentiation and keys", "Repeated squaring turns a huge exponent into a small sequence of modular steps.", "Public and private exponents are modular inverses.", "Modular exponentiation is polynomial in bit length; factoring is the hard classical step.", "Tiny primes and bad padding break real security.", "Which squaring step contributes to the result?", "choose primes p, q\nn = p*q\nchoose e and d\ncipher = message^e mod n"),
       lesson("zkp", "crypto", "Zero-Knowledge Proofs", "zkp", "Prove a fact, reveal nothing", "Each random challenge a cheat can dodge with probability one half, so the verifier's doubt falls as (1/2)^k.", "An honest prover passes every challenge; a false claim survives each round with probability at most one half.", "k rounds of O(1) work; soundness error shrinks as (1/2)^k.", "Predictable challenges let a cheat pre-position and pass every round.", "How many rounds until a faker's odds fall below one in a million?", "repeat k times:\n  prover commits\n  verifier issues a random challenge\n  prover answers\n  reject on any failure"),
+      lesson("grover", "crypto", "Grover's Algorithm", "grover", "Quantum search by amplitude amplification", "Oracle and diffusion invert amplitudes about the mean, amplifying the marked answer each round.", "Amplitudes stay normalized; success after k steps is sin^2((2k+1)*theta) with sin(theta)=1/sqrt(N).", "Optimal iterations about (pi/4)*sqrt(N); O(sqrt(N)) queries versus the classical O(N).", "Too many iterations over-rotate past the target and reduce the success probability.", "How many iterations until the marked state is almost certain?", "uniform superposition\nrepeat about (pi/4)*sqrt(N) times:\n  oracle: flip the target's sign\n  invert about the mean\nmeasure"),
       lesson("shor", "crypto", "Shor's Algorithm", "period", "Factoring through period finding", "Modular powers repeat; the period can reveal a factor.", "A usable even period gives gcd(a^(r/2)-1, n).", "Quantum period finding is polynomial; the classical baseline is not known polynomial.", "Some bases give unusable periods.", "When does the modular cycle repeat?", "choose random base a\nfind period r of a^x mod n\nif r usable:\n  compute gcd factors")
     ];
 
@@ -882,6 +883,7 @@
         enigma: buildEnigma,
         rsa: buildRsa,
         zkp: buildZkp,
+        grover: buildGrover,
         period: buildPeriod
       };
       return builders[lesson.kind](mode);
@@ -1359,6 +1361,38 @@
       return frames;
     }
 
+    function buildGrover(mode) {
+      const N = 8, target = 5;
+      const iters = mode === "failure" ? 6 : (mode === "stress" ? 7 : 3);
+      let amp = new Array(N).fill(1 / Math.sqrt(N));
+      const frames = [];
+      const pushFrame = (k) => {
+        const probs = amp.map((a) => a * a);
+        const mean = probs.reduce((s, p) => s + p, 0) / N;
+        frames.push(frame(
+          `iteration ${k}`,
+          mode === "failure"
+            ? "Too many iterations over-rotate past the target: the marked probability rises, peaks, then falls."
+            : "The oracle flips the target's sign and inversion about the mean amplifies it; the marked bar grows.",
+          { probs, target, mean, iter: k, mode },
+          { iteration: k, targetProb: `${Math.round(probs[target] * 100)}%` },
+          [
+            { color: C.rose, label: "marked answer" },
+            { color: C.blue, label: "other states" },
+            { color: C.amber, label: "mean probability" }
+          ]
+        ));
+      };
+      pushFrame(0);
+      for (let k = 1; k <= iters; k++) {
+        amp[target] = -amp[target];                       // oracle
+        const m = amp.reduce((s, a) => s + a, 0) / N;
+        amp = amp.map((a) => 2 * m - a);                  // inversion about the mean
+        pushFrame(k);
+      }
+      return frames;
+    }
+
     function buildBoids(mode) {
       const bounds = { x: 110, y: 86, w: 1060, h: 565 };
       const count = mode === "stress" ? 120 : 90;
@@ -1699,6 +1733,7 @@
         enigma: drawEnigma,
         rsa: drawRsa,
         zkp: drawZkp,
+        grover: drawGrover,
         period: drawPeriod
       };
       clearCanvas();
@@ -2079,6 +2114,41 @@
       ctx.font = "700 18px sans-serif";
       ctx.textAlign = "left";
       ctx.fillText(readout, ox, oy - h - 24);
+    }
+
+    function drawGrover(s) {
+      const probs = s.probs, n = probs.length, target = s.target;
+      const x0 = 240, baseY = 560, chartW = 800, chartH = 410;
+      const gap = chartW / n, barW = gap * 0.66;
+      ctx.strokeStyle = C.line;
+      ctx.lineWidth = 2;
+      line(x0, baseY, x0 + chartW, baseY);
+      for (let i = 0; i < n; i++) {
+        const h = probs[i] * chartH;
+        const bx = x0 + i * gap + (gap - barW) / 2;
+        ctx.fillStyle = i === target ? C.rose : C.blue;
+        rounded(bx, baseY - h, barW, h, 6);
+        ctx.fillStyle = C.text;
+        ctx.font = "16px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(i, bx + barW / 2, baseY + 24);
+        ctx.fillStyle = C.muted;
+        ctx.font = "13px sans-serif";
+        ctx.fillText(`${Math.round(probs[i] * 100)}%`, bx + barW / 2, baseY - h - 8);
+      }
+      const meanY = baseY - s.mean * chartH;
+      ctx.save();
+      ctx.setLineDash([7, 7]);
+      ctx.strokeStyle = C.amber;
+      ctx.lineWidth = 2;
+      line(x0, meanY, x0 + chartW, meanY);
+      ctx.restore();
+      label(x0 + chartW - 44, meanY - 10, "mean", C.amber);
+      label(x0 + chartW / 2, baseY + 54, "measurement outcome (basis state)", C.muted);
+      ctx.fillStyle = C.text;
+      ctx.font = "700 18px sans-serif";
+      ctx.textAlign = "left";
+      ctx.fillText(`iteration ${s.iter}: P(answer) = ${Math.round(probs[target] * 100)}%`, x0, 122);
     }
 
     function drawBoids(s) {

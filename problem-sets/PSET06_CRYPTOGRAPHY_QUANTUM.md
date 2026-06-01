@@ -2,7 +2,7 @@
 
 ## Goals
 
-Students should be able to model classical encryption as state, build public-key cryptography from modular arithmetic and explain why its security rests on a hardness assumption, prove a statement without revealing it and bound a cheating prover's success, and show how quantum period finding threatens the hardness assumption.
+Students should be able to model classical encryption as state, build public-key cryptography from modular arithmetic and explain why its security rests on a hardness assumption, prove a statement without revealing it and bound a cheating prover's success, search an unstructured space with a quantum square-root speedup, and show how quantum period finding threatens the hardness assumption.
 
 ## Problems
 
@@ -37,7 +37,18 @@ Deliverables:
 - the smallest `k` that pushes the cheat below one in a million
 - a predictable-challenge run showing the cheat now passes every round, and one sentence on why independent randomness is what makes the proof sound
 
-### 4. Shor's Period-Finding Bridge
+### 4. Grover Amplitude Amplification
+
+Simulate Grover's algorithm on an 8-state system with one marked answer, recording the target probability after each iteration.
+
+Deliverables:
+
+- probability of the marked state after 0, 1, and 2 iterations
+- the optimal iteration count from `(pi/4)*sqrt(N)` and the success probability it reaches
+- an over-rotation run showing the probability fall past the optimal iteration, with one sentence on why more iterations hurt
+- the classical-versus-Grover query counts for `N = 10^6`
+
+### 5. Shor's Period-Finding Bridge
 
 For a small composite `N`, choose a base `a` with `gcd(a, N) = 1` and compute modular powers until a period appears.
 

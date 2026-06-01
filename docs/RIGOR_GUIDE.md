@@ -20,7 +20,7 @@ Every algorithm should answer:
 | Natural Emergence | local rule analysis, social-agent and payoff assumptions, stability, numerical assumptions | Which patterns come from the rule, the threshold, the interaction structure, or the implementation? |
 | Statistical Optimization | expectation, convergence, approximation, objective monotonicity | What is exact, what is estimated, and what is optimized? |
 | Strategic Search | minimax induction, sampling error, metaheuristic convergence | Which search spaces are tractable, heuristic, or adversarial? |
-| Cryptography and Quantum | number theory, modular structure, period finding, interactive soundness and zero-knowledge, probabilistic error bounds | What makes a cipher hard, how much a proof reveals, and which assumption does quantum period finding break? |
+| Cryptography and Quantum | number theory, modular structure, period finding, amplitude amplification, interactive soundness and zero-knowledge, probabilistic error bounds | What makes a cipher hard, how much a proof reveals, how many rounds a quantum search needs, and which assumption does quantum period finding break? |
 
 ## Complexity Standard
 
@@ -62,6 +62,7 @@ Each notebook should include one assumption-breaking test:
 - Enigma with repeated settings
 - RSA with tiny primes
 - a zero-knowledge proof with predictable challenges, so a cheating prover passes every round
+- Grover's algorithm run for too many iterations, so it over-rotates past the target and the success probability falls
 - Shor with a base that gives an unusable period
 
 Students should see both the successful case and the assumption that makes it fail.
